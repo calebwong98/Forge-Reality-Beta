@@ -1,0 +1,22 @@
+@use '../abstracts' as *;
+
+.navigation {
+  --flex-column-gap: #{$navigation-flex-column-gap};
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $navigation-color-default;
+    font-family: $navigation-font-family;
+    font-size: $navigation-font-size;
+    opacity: 0.6;
+    transition: opacity 350ms;
+
+    &:is(:hover, :focus) {
+      opacity: 1;
+    }
+  }
+}

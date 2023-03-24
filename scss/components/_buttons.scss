@@ -1,10 +1,18 @@
 @use '../abstracts' as *;
 
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
 .button {
   display: inline-flex;
   cursor: pointer;
   text-decoration: none;
   line-height: 1;
+
+  position: relative;
 
   font-family: $button-font-family;
   font-size: $button-font-size;
@@ -16,12 +24,32 @@
   border-radius: $button-border-radius;
   transition: $button-transition;
 
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -0.25rem;
+    z-index: -1;
+    background: conic-gradient(
+      from var(--gradient-angle),
+      $color-gradient-accent
+    );
+    border-radius: inherit;
+  }
+
+  &::after {
+    filter: blur(0.2rem);
+    transition: filter 350ms;
+    animation: blur 20s linear infinite;
+  }
+
   &[data-type='primary'] {
     background-color: $button-primary-background;
     color: $button-primary-color;
 
     &:is(:hover, :focus) {
-      background-color: $button-primary-background-hover;
+      background: $button-primary-background-hover;
+      transition: background 350ms;
       color: $button-primary-color-hover;
     }
   }
@@ -31,8 +59,22 @@
     color: $button-accent-color;
 
     &:is(:hover, :focus) {
-      background-color: $button-accent-background-hover;
+      background: transparent;
       color: $button-accent-color-hover;
+
+      &::after {
+        opacity: 0.5;
+        filter: blur(1.5rem);
+      }
     }
+  }
+}
+
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
   }
 }

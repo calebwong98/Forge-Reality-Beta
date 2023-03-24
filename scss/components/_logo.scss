@@ -1,0 +1,6 @@
+@use '../abstracts' as *;
+
+.logo {
+  width: $logo-width;
+  height: $logo-height;
+}

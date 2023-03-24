@@ -1,0 +1,9 @@
+@use '../abstracts' as *;
+
+.primary-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  .container {
+  }
+}

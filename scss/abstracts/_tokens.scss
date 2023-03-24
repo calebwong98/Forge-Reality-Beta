@@ -3,10 +3,16 @@
 @use 'sizes' as *;
 
 // Contextual
-$color-text-default: $color-primary-700;
-$color-background-default: $color-primary-100;
-$color-text-interactive-default: $color-accent-400;
-$color-text-interactive-hover: $color-accent-500;
+$color-text-default: $color-neutral-100;
+$color-background-default: $color-neutral-900;
+$color-text-interactive-default: $color-neutral-100;
+$color-text-interactive-hover: $color-neutral-100;
+
+$gradient-1: (#f2a38d, #f294bd, #af52ed, #9250d7, #af52ed, #f294bd, #f2a38d);
+
+$gradient-2: (#052b2f, #073438, #0e4b50, #2d8f85, #637c54);
+
+$color-gradient-accent: $gradient-1;
 
 $letter-spacing-loose: 0.16em;
 
@@ -26,9 +32,11 @@ $box-shadow-5: 0px 6px 5px rgb(0, 0, 0, 0.04), 0px 22px 18px rgb(0, 0, 0, 0.06),
 
 // Body
 $body-font-family: $font-family-base;
-$body-font-size: $font-size-400;
+$body-font-size-default: $font-size-500;
+$body-font-size-bold: $font-size-500;
+$body-font-weight-default: $font-weight-default;
+$body-font-weight-bold: $font-weight-bold;
 $body-line-height: 1.5;
-$body-font-weight: $font-weight-default;
 $body-color-default: $color-text-default;
 $body-background-color: $color-background-default;
 
@@ -51,28 +59,47 @@ $flow-spacer: $size-4;
 $hero-padding-block: clamp(15rem, 15vh, 20rem);
 $section-padding-block: clamp(3rem, 10vh, 7rem);
 
-$container-min-margin-inline: $size-4;
-$container-max-width: 60rem;
-$container-max-width-narrow: 40rem;
-$container-max-width-wide: 75rem;
+$container-min-margin-inline: $size-8;
+$container-max-width: 80rem;
+$container-max-width-narrow: 70rem;
+$container-max-width-wide: 90rem;
 
 $card-body-padding: $size-8;
 
+// Primary Header
+$primary-header-margin-top: $size-11;
+
+// Logo
+$logo-width: 12.75rem;
+$logo-height: 1.5rem;
+
+// Links
+$link-width: 2rem;
+$link-height: 2rem;
+
+// Navigation
+$navigation-flex-column-gap: $size-10;
+$navigation-color-default: $body-color-default;
+$navigation-font-family: $body-font-family;
+$navigation-font-size: $body-font-size-bold;
+$navigation-font-weight: $body-font-weight-bold;
+
 // buttons
 $button-font-family: $body-font-family;
-$button-font-size: $body-font-size;
-$button-font-weight: $font-weight-bold;
-$button-padding-default: 0.75em 2em;
+$button-font-size: $body-font-size-default;
+$button-font-weight: $body-font-weight-bold;
+$button-padding-default: 0.75em 2.2em;
 $button-text-transform: none;
-$button-border-default: 0;
+$button-border-default: none;
 $button-border-radius: $border-radius-1;
 
 $button-transition: 0;
 
 $button-accent-color: $color-neutral-100;
-$button-accent-background: $color-accent-400;
+$button-accent-background: $color-neutral-900;
+$button-accent-background-border: $color-gradient-accent;
 $button-accent-color-hover: $color-neutral-100;
-$button-accent-background-hover: $color-accent-500;
+$button-accent-background-hover: $color-neutral-100;
 
 $button-primary-color: $color-neutral-100;
 $button-primary-background: $color-primary-700;

@@ -1,10 +1,10 @@
 // global typography tokens
 
-$-ff-sans: 'Source Sans Pro', sans-serif;
-$-ff-serif: 'Alegreya SC', serif;
+$-ff-regular: 'Inter', sans-serif;
+$-ff-black: 'Inter Black', serif;
 
-$font-family-base: $-ff-sans;
-$font-family-accent: $-ff-serif;
+$font-family-base: $-ff-regular;
+$font-family-accent: $-ff-black;
 
 $font-sizes: (
   'small': (
@@ -33,9 +33,7 @@ $font-size-800: var(--fs-800);
 $font-size-900: var(--fs-900);
 
 $-fw-400: 400;
-$-fw-500: 500;
 $-fw-700: 700;
 
 $font-weight-default: $-fw-400;
-$font-weight-semi-bold: $-fw-500;
 $font-weight-bold: $-fw-700;

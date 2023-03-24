@@ -1,12 +1,18 @@
 @use '../abstracts' as *;
 
+html {
+  width: 100%;
+}
+
 body {
+  width: 100%;
   font-family: $body-font-family;
-  font-weight: $body-font-weight;
-  font-size: $body-font-size;
+  font-weight: $body-font-weight-bold;
+  font-size: $body-font-size-default;
   color: $body-color-default;
   background-color: $body-background-color;
   line-height: $body-line-height;
+  overflow: hidden;
 }
 
 a {

@@ -4,6 +4,13 @@
 @use 'breakpoints' as *;
 @use 'tokens' as *;
 
+// Debug
+@mixin outline {
+  outline: 2px solid red;
+  outline-offset: 0px;
+}
+
+// Layout
 @mixin mq($size) {
   @if map.has-key($breakpoints, $size) {
     $breakpoint: map-get($breakpoints, $size);
