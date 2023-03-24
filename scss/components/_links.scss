@@ -2,11 +2,20 @@
 
 .links {
   display: flex;
+  align-items: center;
   width: fit-content;
-  margin-inline: auto;
+  margin-bottom: $link-margin-bottom;
+
+  --grid-gap: #{$link-grid-gap};
 }
 
 .link {
   width: $link-width;
   height: $link-height;
+  opacity: 0.6;
+  transition: opacity 500ms;
+
+  &:is(:hover, :focus) {
+    opacity: 1;
+  }
 }

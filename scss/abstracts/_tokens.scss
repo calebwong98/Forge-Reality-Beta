@@ -3,21 +3,24 @@
 @use 'sizes' as *;
 
 // Contextual
-$color-text-default: $color-neutral-100;
 $color-background-default: $color-neutral-900;
+$color-text-default: $color-neutral-100;
 $color-text-interactive-default: $color-neutral-100;
 $color-text-interactive-hover: $color-neutral-100;
 
-$gradient-1: (#f2a38d, #f294bd, #af52ed, #9250d7, #af52ed, #f294bd, #f2a38d);
+$-grd-1: (#f2a38d, #f294bd, #af52ed, #9250d7, #af52ed, #f294bd, #f2a38d);
 
-$gradient-2: (#052b2f, #073438, #0e4b50, #2d8f85, #637c54);
+$-grd-2: (#052b2f, #073438, #0e4b50, #2d8f85, #637c54);
 
-$color-gradient-accent: $gradient-1;
+$color-gradient-1: $-grd-1;
+$color-gradient-2: $-grd-2;
 
 $letter-spacing-loose: 0.16em;
 
-$border-radius-1: $size-2;
-$border-radius-2: $size-4;
+$border-radius-1: $size-1;
+$border-radius-2: $size-3;
+$border-radius-3: $size-5;
+$border-radius-4: $size-7;
 
 $box-shadow-1: 0px 6px 5px rgb(0, 0, 0, 0.012),
   0px 22px 18px rgb(0, 0, 0, 0.018), 0px 100px 80px rgb(0, 0, 0, 0.03);
@@ -31,12 +34,12 @@ $box-shadow-5: 0px 6px 5px rgb(0, 0, 0, 0.04), 0px 22px 18px rgb(0, 0, 0, 0.06),
   0px 100px 80px rgb(0, 0, 0, 0.1);
 
 // Body
-$body-font-family: $font-family-base;
-$body-font-size-default: $font-size-500;
-$body-font-size-bold: $font-size-500;
+$body-font-family: $font-family-regular;
+$body-font-size-default: $font-size-400;
+$body-font-size-bold: $font-size-400;
 $body-font-weight-default: $font-weight-default;
 $body-font-weight-bold: $font-weight-bold;
-$body-line-height: 1.5;
+$body-line-height: 2;
 $body-color-default: $color-text-default;
 $body-background-color: $color-background-default;
 
@@ -44,7 +47,7 @@ $body-background-color: $color-background-default;
 $link-color: $color-text-interactive-default;
 $link-color-hover: $color-text-interactive-hover;
 
-$heading-font-family: $font-family-accent;
+$heading-font-family: $font-family-black;
 $heading-font-weight: $font-weight-bold;
 $heading-letter-spacing: $letter-spacing-loose;
 $heading-line-height: 1;
@@ -52,59 +55,73 @@ $heading-text-transform: uppercase;
 $heading-color-default: $body-color-default;
 
 // Layout
-$grid-gap: $size-6;
-$flex-group-gap: $size-4;
-$flow-spacer: $size-4;
+$grid-gap: $size-9;
+$flex-group-gap: $size-11;
+$flow-spacer: $size-2;
 
 $hero-padding-block: clamp(15rem, 15vh, 20rem);
 $section-padding-block: clamp(3rem, 10vh, 7rem);
 
 $container-min-margin-inline: $size-8;
-$container-max-width: 80rem;
-$container-max-width-narrow: 70rem;
-$container-max-width-wide: 90rem;
+$container-max-width: 60rem;
+$container-max-width-narrow: 45rem;
+$container-max-width-wide: 75rem;
 
 $card-body-padding: $size-8;
 
 // Primary Header
-$primary-header-margin-top: $size-11;
+$primary-header-margin-top: $size-9;
 
 // Logo
-$logo-width: 12.75rem;
+$logo-width: 9rem;
 $logo-height: 1.5rem;
 
-// Links
-$link-width: 2rem;
-$link-height: 2rem;
-
 // Navigation
-$navigation-flex-column-gap: $size-10;
-$navigation-color-default: $body-color-default;
+$navigation-flex-column-gap: $size-9;
+$navigation-text-transform: uppercase;
+$navigation-color: $body-color-default;
 $navigation-font-family: $body-font-family;
 $navigation-font-size: $body-font-size-bold;
 $navigation-font-weight: $body-font-weight-bold;
+$navigation-opacity-passive: 0.6;
+$navigation-opacity-transition: 500ms;
+
+// Primary Footer
+$primary-footer-margin-bottom: $size-2;
+
+// Links
+$link-grid-gap: $grid-gap;
+$link-margin-bottom: $size-8;
+$link-width: $size-6;
+$link-height: $size-6;
 
 // buttons
 $button-font-family: $body-font-family;
 $button-font-size: $body-font-size-default;
 $button-font-weight: $body-font-weight-bold;
-$button-padding-default: 0.75em 2.2em;
+
+$button-padding-default: 0.5em 2.25em;
 $button-text-transform: none;
 $button-border-default: none;
 $button-border-radius: $border-radius-1;
-
 $button-transition: 0;
 
-$button-accent-color: $color-neutral-100;
-$button-accent-background: $color-neutral-900;
-$button-accent-background-border: $color-gradient-accent;
-$button-accent-color-hover: $color-neutral-100;
-$button-accent-background-hover: $color-neutral-100;
-
-$button-primary-color: $color-neutral-100;
 $button-primary-background: $color-primary-700;
-$button-primary-color-hover: $color-neutral-100;
+$button-primary-color: $color-neutral-100;
 $button-primary-background-hover: $color-primary-800;
+$button-primary-color-hover: $color-neutral-100;
+
+$button-accent-background: $color-neutral-900;
+$button-accent-color: $color-neutral-100;
+$button-accent-background-hover: $color-neutral-100;
+$button-accent-color-hover: $color-neutral-100;
+
+$button-gradient-background: $color-neutral-900;
+$button-gradient-color: $color-neutral-100;
+$button-gradient-background-hover: transparent;
+$button-gradient-color-hover: $color-neutral-100;
+$button-gradient-border-width: -0.1rem;
+$button-gradient-conic: $color-gradient-1;
 
 // cards
 $card-font-family: $body-font-family;

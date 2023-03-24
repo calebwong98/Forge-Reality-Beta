@@ -8,12 +8,13 @@
 
   a {
     text-decoration: none;
-    text-transform: uppercase;
-    color: $navigation-color-default;
+    text-transform: $navigation-text-transform;
+    color: $navigation-color;
     font-family: $navigation-font-family;
     font-size: $navigation-font-size;
-    opacity: 0.6;
-    transition: opacity 350ms;
+    font-weight: $navigation-font-weight;
+    opacity: $navigation-opacity-passive;
+    transition: opacity $navigation-opacity-transition;
 
     &:is(:hover, :focus) {
       opacity: 1;

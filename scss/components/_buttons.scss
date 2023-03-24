@@ -6,6 +6,24 @@
   inherits: false;
 }
 
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+@keyframes blur {
+  0% {
+    filter: blur(0.5rem);
+  }
+  100% {
+    filter: blur(2rem);
+  }
+}
+
 .button {
   display: inline-flex;
   cursor: pointer;
@@ -24,57 +42,60 @@
   border-radius: $button-border-radius;
   transition: $button-transition;
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    inset: -0.25rem;
-    z-index: -1;
-    background: conic-gradient(
-      from var(--gradient-angle),
-      $color-gradient-accent
-    );
-    border-radius: inherit;
-  }
-
-  &::after {
-    filter: blur(0.2rem);
-    transition: filter 350ms;
-    animation: blur 20s linear infinite;
-  }
-
   &[data-type='primary'] {
     background-color: $button-primary-background;
     color: $button-primary-color;
 
     &:is(:hover, :focus) {
       background: $button-primary-background-hover;
-      transition: background 350ms;
       color: $button-primary-color-hover;
     }
   }
 
   &[data-type='accent'] {
-    background-color: $button-accent-background;
+    background: $button-accent-background;
     color: $button-accent-color;
 
     &:is(:hover, :focus) {
-      background: transparent;
+      background: $button-accent-background-hover;
       color: $button-accent-color-hover;
-
-      &::after {
-        opacity: 0.5;
-        filter: blur(1.5rem);
-      }
     }
   }
-}
 
-@keyframes rotation {
-  0% {
-    --gradient-angle: 0deg;
-  }
-  100% {
-    --gradient-angle: 360deg;
+  &[data-type='gradient'] {
+    background: $button-gradient-background;
+    color: $button-gradient-color;
+
+    &::before,
+    &::after {
+      content: '';
+      z-index: -1;
+      position: absolute;
+      border-radius: inherit;
+      inset: $button-gradient-border-width;
+      background: conic-gradient(
+        from var(--gradient-angle),
+        $button-gradient-conic
+      );
+      animation: rotation 20s linear infinite;
+    }
+
+    &::after {
+      opacity: 0.5;
+      filter: blur(0.75rem);
+      // transition: filter 500ms;
+      // animation: blur 3s alternate infinite;
+    }
+
+    &:is(:hover, :focus) {
+      background: $button-gradient-background-hover;
+      color: $button-gradient-color-hover;
+
+      &::after {
+        opacity: 0.75;
+        // filter: blur(2rem);
+        animation: blur 3s alternate infinite;
+      }
+    }
   }
 }
