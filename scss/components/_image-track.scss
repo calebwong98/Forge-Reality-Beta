@@ -1,21 +1,21 @@
 @use '../abstracts' as *;
 
-#image-track {
-  display: flex;
-  gap: 3vmin;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(0%, -50%);
-  user-select: none;
-}
+// #image-track {
+//   display: flex;
+//   gap: 3vmin;
+//   position: absolute;
+//   left: 50%;
+//   top: 50%;
+//   transform: translate(0%, -50%);
+//   user-select: none;
+// }
 
-#image-track > .image {
-  width: 40vmin;
-  height: 56vmin;
-  object-fit: cover;
-  object-position: 100% center;
-}
+// #image-track > .image {
+//   width: 40vmin;
+//   height: 56vmin;
+//   object-fit: cover;
+//   object-position: 100% center;
+// }
 
 //______________________________________________GRID
 // #image-track {
@@ -46,39 +46,42 @@
 // }
 
 //______________________________________________FLEX
-// #image-track {
-//   margin: auto;
+#image-track {
+  // background: red;
 
-//   display: flex;
-//   gap: 3vmin;
-//   overflow-x: auto;
-//   overscroll-behavior-inline: contain;
+  display: flex;
+  gap: 4vmin;
+  align-items: center;
+  // justify-content: center;
+  // overflow-x: scroll;
+  // overscroll-behavior-inline: contain;
 
-//   // position: absolute;
-//   // left: 50%;
-//   // top: 50%;
-//   // transform: translate(0%, -50%);
+  // scroll-behavior: smooth;
 
-//   user-select: none;
+  // position: absolute;
+  // left: 50%;
+  // top: 50%;
+  // transform: translate(-100%, 0%);
 
-//   // Hide Scrollbar
-//   -ms-overflow-style: none; /* IE and Edge */
-//   scrollbar-width: none; /* Firefox */
-//   &::-webkit-scrollbar {
-//     display: none;
-//   }
-// }
+  user-select: none;
 
-// #image-track > .image {
-//   width: 40vmin;
-//   height: 56vmin;
-//   object-fit: cover;
-//   object-position: 100% center;
+  // Hide Scrollbar
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
 
-//   &:first-child {
-//     margin-left: 45%;
-//   }
-//   &:last-child {
-//     margin-right: 5rem;
-//   }
-// }
+#image-track > .image {
+  // position: absolute;
+  width: 40vmin;
+  height: 56vmin;
+  transition: 500ms;
+  object-fit: cover;
+  object-position: 100% center;
+
+  &:hover {
+    height: 100vh;
+  }
+}
