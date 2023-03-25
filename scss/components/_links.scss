@@ -12,7 +12,7 @@
 .link {
   width: $link-width;
   height: $link-height;
-  opacity: 0.6;
+  opacity: $link-opacity-passive;
   transition: opacity 500ms;
 
   &:is(:hover, :focus) {

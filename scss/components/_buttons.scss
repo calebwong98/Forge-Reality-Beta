@@ -65,6 +65,7 @@
   &[data-type='gradient'] {
     background: $button-gradient-background;
     color: $button-gradient-color;
+    transition: background 400ms;
 
     &::before,
     &::after {
@@ -82,7 +83,7 @@
 
     &::after {
       opacity: 0.5;
-      filter: blur(0.75rem);
+      filter: blur(0.65rem);
       // transition: filter 500ms;
       // animation: blur 3s alternate infinite;
     }

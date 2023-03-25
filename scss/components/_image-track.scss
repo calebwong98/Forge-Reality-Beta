@@ -2,7 +2,7 @@
 
 #image-track {
   display: flex;
-  gap: 4vmin;
+  gap: 3vmin;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -16,3 +16,69 @@
   object-fit: cover;
   object-position: 100% center;
 }
+
+//______________________________________________GRID
+// #image-track {
+//   margin: auto;
+
+//   display: grid;
+//   gap: 3vmin;
+//   grid-auto-flow: column;
+//   grid-auto-columns: 23%;
+//   overflow-x: auto;
+//   overscroll-behavior-inline: contain;
+
+//   user-select: none;
+
+//   // Hide Scrollbar
+//   -ms-overflow-style: none; /* IE and Edge */
+//   scrollbar-width: none; /* Firefox */
+//   &::-webkit-scrollbar {
+//     display: none;
+//   }
+// }
+
+// #image-track > .image {
+//   inline-size: 100%;
+//   aspect-ratio: 3 / 4;
+//   object-fit: cover;
+//   object-position: 100% center;
+// }
+
+//______________________________________________FLEX
+// #image-track {
+//   margin: auto;
+
+//   display: flex;
+//   gap: 3vmin;
+//   overflow-x: auto;
+//   overscroll-behavior-inline: contain;
+
+//   // position: absolute;
+//   // left: 50%;
+//   // top: 50%;
+//   // transform: translate(0%, -50%);
+
+//   user-select: none;
+
+//   // Hide Scrollbar
+//   -ms-overflow-style: none; /* IE and Edge */
+//   scrollbar-width: none; /* Firefox */
+//   &::-webkit-scrollbar {
+//     display: none;
+//   }
+// }
+
+// #image-track > .image {
+//   width: 40vmin;
+//   height: 56vmin;
+//   object-fit: cover;
+//   object-position: 100% center;
+
+//   &:first-child {
+//     margin-left: 45%;
+//   }
+//   &:last-child {
+//     margin-right: 5rem;
+//   }
+// }

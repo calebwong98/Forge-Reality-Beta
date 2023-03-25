@@ -4,9 +4,11 @@
   --flex-column-gap: #{$navigation-flex-column-gap};
   ul {
     list-style: none;
+    height: fit-content;
   }
 
   a {
+    position: relative;
     text-decoration: none;
     text-transform: $navigation-text-transform;
     color: $navigation-color;
@@ -18,6 +20,22 @@
 
     &:is(:hover, :focus) {
       opacity: 1;
+    }
+
+    &::after {
+      background: $navigation-color;
+      content: '';
+      position: absolute;
+
+      height: $navigation-hover-line-height;
+      left: 0;
+      bottom: -0.3rem;
+      width: 0%;
+      transition: width 300ms;
+    }
+
+    &:hover::after {
+      width: 100%;
     }
   }
 }

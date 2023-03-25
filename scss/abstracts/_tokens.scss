@@ -15,6 +15,8 @@ $-grd-2: (#052b2f, #073438, #0e4b50, #2d8f85, #637c54);
 $color-gradient-1: $-grd-1;
 $color-gradient-2: $-grd-2;
 
+$opacity-passive: 0.4;
+
 $letter-spacing-loose: 0.16em;
 
 $border-radius-1: $size-1;
@@ -83,8 +85,9 @@ $navigation-color: $body-color-default;
 $navigation-font-family: $body-font-family;
 $navigation-font-size: $body-font-size-bold;
 $navigation-font-weight: $body-font-weight-bold;
-$navigation-opacity-passive: 0.6;
+$navigation-opacity-passive: $opacity-passive;
 $navigation-opacity-transition: 500ms;
+$navigation-hover-line-height: 2px;
 
 // Primary Footer
 $primary-footer-margin-bottom: $size-2;
@@ -94,6 +97,7 @@ $link-grid-gap: $grid-gap;
 $link-margin-bottom: $size-8;
 $link-width: $size-6;
 $link-height: $size-6;
+$link-opacity-passive: $opacity-passive;
 
 // buttons
 $button-font-family: $body-font-family;
@@ -118,9 +122,9 @@ $button-accent-color-hover: $color-neutral-100;
 
 $button-gradient-background: $color-neutral-900;
 $button-gradient-color: $color-neutral-100;
-$button-gradient-background-hover: transparent;
+$button-gradient-background-hover: rgba(0, 0, 0, 0);
 $button-gradient-color-hover: $color-neutral-100;
-$button-gradient-border-width: -0.1rem;
+$button-gradient-border-width: -0.125rem;
 $button-gradient-conic: $color-gradient-1;
 
 // cards
