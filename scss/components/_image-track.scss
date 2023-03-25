@@ -82,6 +82,11 @@
   object-position: 100% center;
 
   &:hover {
+    // height: 100vh;
+  }
+
+  &[data-type='none'] {
+    opacity: 0;
     height: 100vh;
   }
 }

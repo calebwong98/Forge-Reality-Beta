@@ -44,7 +44,7 @@ window.onwheel = (e) => {
   console.log(window.innerWidth);
 
   const wheelDelta = e.deltaY,
-    maxDelta = track.offsetWidth;
+    maxDelta = window.innerWidth;
 
   const percentage = (wheelDelta / maxDelta) * -50,
     nextPercentageUnconstrained =
