@@ -17,7 +17,7 @@
 
 @keyframes blur {
   0% {
-    filter: blur(0.5rem);
+    filter: blur(0.65rem);
   }
   100% {
     filter: blur(2rem);
@@ -82,7 +82,7 @@
     }
 
     &::after {
-      opacity: 0.5;
+      opacity: 0.65;
       filter: blur(0.65rem);
       // transition: filter 500ms;
       // animation: blur 3s alternate infinite;
@@ -95,7 +95,7 @@
       &::after {
         opacity: 0.75;
         // filter: blur(2rem);
-        animation: blur 3s alternate infinite;
+        animation: blur 1.5s alternate infinite;
       }
     }
   }

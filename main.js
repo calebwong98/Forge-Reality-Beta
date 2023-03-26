@@ -1,5 +1,6 @@
 const track = document.getElementById('image-track');
 
+// Mouse Drag Scroll
 window.onmousedown = (e) => {
   track.dataset.mouseDownAt = e.clientX;
 };
@@ -15,7 +16,7 @@ window.onmousemove = (e) => {
   const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
     maxDelta = window.innerWidth;
 
-  const percentage = (mouseDelta / maxDelta) * -50,
+  const percentage = (mouseDelta / maxDelta) * -100,
     nextPercentageUnconstrained =
       parseFloat(track.dataset.prevPercentage) + percentage,
     nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -50);
@@ -39,6 +40,7 @@ window.onmousemove = (e) => {
   }
 };
 
+// Mouse Wheel Scroll
 window.onwheel = (e) => {
   console.log(track.offsetWidth);
   console.log(window.innerWidth);
@@ -46,7 +48,7 @@ window.onwheel = (e) => {
   const wheelDelta = e.deltaY,
     maxDelta = window.innerWidth;
 
-  const percentage = (wheelDelta / maxDelta) * -50,
+  const percentage = (wheelDelta / maxDelta) * -100,
     nextPercentageUnconstrained =
       parseFloat(track.dataset.prevPercentage) + percentage,
     nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -50);

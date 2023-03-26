@@ -19,39 +19,55 @@
 
 //______________________________________________GRID
 // #image-track {
-//   margin: auto;
+//   // background: red;
+//   margin-block: auto;
+//   align-items: center;
+//   // margin-left: 10rem;
 
 //   display: grid;
 //   gap: 3vmin;
 //   grid-auto-flow: column;
-//   grid-auto-columns: 23%;
-//   overflow-x: auto;
-//   overscroll-behavior-inline: contain;
+//   grid-auto-columns: 23.5%;
+//   // overflow-x: auto;
+//   // overscroll-behavior-inline: contain;
+
+//   transform: translate(0%, 0%);
 
 //   user-select: none;
 
-//   // Hide Scrollbar
-//   -ms-overflow-style: none; /* IE and Edge */
-//   scrollbar-width: none; /* Firefox */
-//   &::-webkit-scrollbar {
-//     display: none;
-//   }
+//   // // Hide Scrollbar
+//   // -ms-overflow-style: none; /* IE and Edge */
+//   // scrollbar-width: none; /* Firefox */
+//   // &::-webkit-scrollbar {
+//   //   display: none;
+//   // }
 // }
 
 // #image-track > .image {
+//   // width: 40vmin;
+//   // height: 56vmin;
 //   inline-size: 100%;
 //   aspect-ratio: 3 / 4;
 //   object-fit: cover;
 //   object-position: 100% center;
+//   transition: height 500ms;
+
+//   &:hover {
+//     // height: 100vh;
+//     width: 100vw;
+//   }
 // }
 
 //______________________________________________FLEX
 #image-track {
   // background: red;
+  margin-inline: auto;
 
   display: flex;
-  gap: 4vmin;
+  // gap: 4vmin;
   align-items: center;
+  transition: 500ms;
+
   // justify-content: center;
   // overflow-x: scroll;
   // overscroll-behavior-inline: contain;
@@ -61,32 +77,38 @@
   // position: absolute;
   // left: 50%;
   // top: 50%;
-  // transform: translate(-100%, 0%);
+  // transform: translate(0%, 0%);
 
   user-select: none;
 
   // Hide Scrollbar
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  // -ms-overflow-style: none; /* IE and Edge */
+  // scrollbar-width: none; /* Firefox */
+  // &::-webkit-scrollbar {
+  //   display: none;
+  // }
 }
 
 #image-track > .image {
-  // position: absolute;
   width: 40vmin;
   height: 56vmin;
+  margin-right: 3vmin;
   transition: 500ms;
   object-fit: cover;
   object-position: 100% center;
 
   &:hover {
-    // height: 100vh;
-  }
-
-  &[data-type='none'] {
-    opacity: 0;
     height: 100vh;
   }
+
+  // &:nth-child(7) {
+  //   margin-right: 0;
+  //   height: 100vh;
+  //   width: 100vw;
+  // }
+
+  // &:not(:nth-child(7)) {
+  //   width: 0;
+  //   margin-right: 0;
+  // }
 }
