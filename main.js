@@ -32,55 +32,28 @@ for (let i = 0; i < image.length; i++) {
       }
     }
 
-    // if (i !== imageOrder) {
-    //   image[i].animate(
-    //     {
-    //       // transform: `translate(${
-    //       //   i * (100 + 10) - track.dataset.imageOrder * (100 + 10)
-    //       // }%, 0%)`,
-    //       height: `0`,
-    //     },
-    //     { duration: 0, fill: 'forwards' }
-    //   );
-    // } else {
-    //   image[i].animate(
-    //     {
-    //       height: `100%`,
-    //       width: `100%`,
-    //       transform: `translate(0, 0)`,
-    //     },
-    //     { duration: 1200, fill: 'forwards' }
-    //   );
-    // }
-
     if (i === imageOrder) {
       image[i].animate(
         {
           transform: `translate(0%, 0%)`,
         },
-        { duration: 1500, fill: 'forwards' }
+        {
+          duration: 500,
+          fill: 'forwards',
+          animation_timing_function: 'ease-in-out',
+        }
       );
     }
-
-    // image[i].animate(
-    //   {
-    //     transform: `translate(${
-    //       i * (100 + 10) - (image.length - 1) * ((-nextPercentage / 100) * 110)
-    //     }%, 0%)`,
-    //     objectPosition: `${100 + nextPercentage}% center`,
-    //   },
-    //   { duration: 1200, fill: 'forwards' }
-    // );
 
     // Set the selected state to true
     isImageSelected = true;
   });
 }
 
+// Remove the "selected" and "others" classes from all image
+// Scroll the image track to the position where the selected image is at the center
 function deselectImage() {
-  // Remove the "selected" and "others" classes from all image
   for (let i = 0; i < image.length; i++) {
-    console.log(i * (100 + 10) - (track.dataset.imageOrder + 1) * (100 + 10));
     image[i].classList.remove('selected');
     image[i].classList.remove('others');
 
@@ -91,7 +64,7 @@ function deselectImage() {
             i * (100 + 10) - track.dataset.imageOrder * (100 + 10)
           }%, 0%)`,
         },
-        { duration: 0, fill: 'forwards' }
+        { duration: 100, fill: 'forwards' }
       );
     } else {
       image[i].animate(

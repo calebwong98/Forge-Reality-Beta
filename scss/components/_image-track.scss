@@ -1,98 +1,24 @@
 @use '../abstracts' as *;
 
-// #image-track {
-//   display: flex;
-//   gap: 3vmin;
-//   position: absolute;
-//   left: 50%;
-//   top: 50%;
-//   transform: translate(0%, -50%);
-//   user-select: none;
-// }
-
-// #image-track > .image {
-//   width: 40vmin;
-//   height: 56vmin;
-//   object-fit: cover;
-//   object-position: 100% center;
-// }
-
-//______________________________________________GRID
-// #image-track {
-//   // background: red;
-//   margin-block: auto;
-//   align-items: center;
-//   // margin-left: 10rem;
-
-//   display: grid;
-//   gap: 3vmin;
-//   grid-auto-flow: column;
-//   grid-auto-columns: 23.5%;
-//   // overflow-x: auto;
-//   // overscroll-behavior-inline: contain;
-
-//   transform: translate(0%, 0%);
-
-//   user-select: none;
-
-//   // // Hide Scrollbar
-//   // -ms-overflow-style: none; /* IE and Edge */
-//   // scrollbar-width: none; /* Firefox */
-//   // &::-webkit-scrollbar {
-//   //   display: none;
-//   // }
-// }
-
-// #image-track > .image {
-//   // width: 40vmin;
-//   // height: 56vmin;
-//   inline-size: 100%;
-//   aspect-ratio: 3 / 4;
-//   object-fit: cover;
-//   object-position: 100% center;
-//   transition: height 500ms;
-
-//   &:hover {
-//     // height: 100vh;
-//     width: 100vw;
-//   }
-// }
-
-//______________________________________________FLEX
 #image-track {
   // background: red;
   position: relative;
   height: 100vh;
   width: 100vw;
-  // margin-inline: 10rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 500ms;
-  // margin-inline: auto;
-
-  // position: absolute;
-  // left: 50%;
-  // top: 50%;
 
   user-select: none;
 }
 
 .image {
-  // opacity: 0;
-  // overflow: hidden;
   position: absolute;
   width: 40vmin;
-  height: 56vmin;
-  // height: 100%;
-  // margin-right: 4vmin;
-  transition: 1.5s ease-in-out;
-
-  // transform: translate(0%, 0%);
+  height: 100%;
 
   object-fit: cover;
-  // object-fit: none;
   object-position: 100% center;
 
   @for $i from 1 through 12 {
@@ -101,34 +27,22 @@
     }
   }
 
-  &:hover {
-    height: 100%;
-    // transform: translate(0%, 0%);
-    // width: 100vw;
-  }
-
-  // &:nth-child(1) {
-  //   margin-right: 0;
-  //   height: 100vh;
-  //   width: 100vw;
+  clip-path: inset(18% 0 18% 0);
+  // &:hover {
+  //   clip-path: inset(0 0 0 0);
   // }
 
-  // &:not(:nth-child(0)) {
-  //   width: 0;
-  //   margin-right: 0;
-  // }
+  transition: transform 0.5s ease-in-out, width 1s ease-in-out 150ms,
+    clip-path 0.75s ease-in-out;
 }
 
 .selected {
-  // margin-inline: 0;
-  height: 100%;
+  z-index: 99;
   width: 100%;
-  // transform: translate(0%, 0%);
+  clip-path: inset(0 0 0 0);
+  transition: width 1s ease-in-out 150ms, clip-path 1.8s ease-in-out;
 }
 
 .others {
-  // margin-inline: 0;
-  // width: 0;
-  height: 0;
-  // display: none;
+  clip-path: inset(100% 0 100% 0);
 }
