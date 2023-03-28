@@ -61,7 +61,7 @@
 //______________________________________________FLEX
 #image-track {
   // background: red;
-  // position: relative;
+  position: relative;
   height: 100vh;
   width: 100vw;
   // margin-inline: 10rem;
@@ -81,28 +81,28 @@
 
 .image {
   // opacity: 0;
+  // overflow: hidden;
   position: absolute;
   width: 40vmin;
   height: 56vmin;
+  // height: 100%;
   // margin-right: 4vmin;
-  transition: 1500ms;
+  transition: 1.5s ease-in-out;
 
   // transform: translate(0%, 0%);
 
-  &:nth-child(1) {
-    transform: translate(0%, 0%);
-  }
-  &:nth-child(2) {
-    transform: translate(110%, 0%);
-  }
-  &:nth-child(3) {
-    transform: translate(220%, 0%);
-  }
   object-fit: cover;
-  object-position: 50% center;
+  // object-fit: none;
+  object-position: 100% center;
+
+  @for $i from 1 through 12 {
+    &:nth-child(#{$i}) {
+      transform: translate(($i - 1) * (100%+10%), 0%);
+    }
+  }
 
   &:hover {
-    height: 100vh;
+    height: 100%;
     // transform: translate(0%, 0%);
     // width: 100vw;
   }
@@ -120,12 +120,15 @@
 }
 
 .selected {
-  margin-inline: 0;
-  height: 100vh;
-  width: 100vw;
+  // margin-inline: 0;
+  height: 100%;
+  width: 100%;
+  // transform: translate(0%, 0%);
 }
 
 .others {
-  margin-inline: 0;
-  width: 0;
+  // margin-inline: 0;
+  // width: 0;
+  height: 0;
+  // display: none;
 }
