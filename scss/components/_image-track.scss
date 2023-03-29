@@ -3,46 +3,43 @@
 #image-track {
   // background: red;
   position: relative;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 
   display: flex;
   align-items: center;
   justify-content: center;
-
-  user-select: none;
 }
 
 .image {
   position: absolute;
-  width: 40vmin;
-  height: 100%;
+  width: $image-clip-width-default;
+  height: $image-clip-height-hidden;
+  clip-path: $image-clip-height-default;
 
   object-fit: cover;
-  object-position: 100% center;
+  object-position: $image-object-position-default;
 
   @for $i from 1 through 12 {
     &:nth-child(#{$i}) {
-      transform: translate(($i - 1) * (100%+10%), 0%);
+      transform: translate(($i - 1) * (100% + $image-gap), 0%);
     }
   }
 
-  clip-path: inset(18% 0 18% 0);
-  // &:hover {
-  //   clip-path: inset(0 0 0 0);
-  // }
-
-  transition: transform 0.5s ease-in-out, width 1s ease-in-out 150ms,
-    clip-path 0.75s ease-in-out;
+  transition: $image-transition-transform, $image-transition-width,
+    $image-clip-height-hidden-selected-transition, $image-transition-height;
 }
 
 .selected {
   z-index: 99;
-  width: 100%;
-  clip-path: inset(0 0 0 0);
-  transition: width 1s ease-in-out 150ms, clip-path 1.8s ease-in-out;
+  width: $image-clip-width-selected;
+  height: $image-clip-height-hidden-selected;
+  clip-path: $image-clip-height-selected;
+  transition: $image-clip-width-selected-transition,
+    $image-clip-height-hidden-selected-transition,
+    $image-clip-height-selected-transition;
 }
 
 .others {
-  clip-path: inset(100% 0 100% 0);
+  clip-path: $image-clip-height-others;
 }

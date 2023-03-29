@@ -110,10 +110,15 @@ function scrollImage(e) {
           i * (100 + 10) -
           (image.length - 1) * ((-nextPercentage / 100) * (100 + 10))
         }%, 0%)`,
-        objectPosition: `${(100 + nextPercentage) / 2 + 25}% center`,
+        objectPosition: `${
+          (110 + (nextPercentage + 10)) / 2 - 25 * i + 50 * i
+        }% center`,
+        // objectPosition: `${100 + nextPercentage + 50}% center`,
       },
-      { duration: 1200, fill: 'forwards' }
+      { duration: 1200, fill: 'both' }
     );
+
+    // console.log((100 + nextPercentage) / 2 - 25 * i);
   }
 }
 

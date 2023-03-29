@@ -140,3 +140,21 @@ $card-background-default: $color-primary-100;
 
 $card-heading-font-size: $font-size-600;
 $card-heading-color-default: $card-color-default;
+
+// image track
+
+$image-gap: 10%;
+$image-object-position-default: 50% center;
+$image-transition-transform: transform 0.5s ease-in-out;
+$image-transition-width: width 1s ease-in-out 150ms;
+$image-transition-height: clip-path 0.75s ease-in-out;
+$image-clip-width-default: 40vmin;
+$image-clip-width-selected: 100%;
+$image-clip-width-selected-transition: width 1s ease-in-out 150ms;
+$image-clip-height-hidden: 100%;
+$image-clip-height-hidden-selected: 100%;
+$image-clip-height-hidden-selected-transition: height 1s ease-in-out;
+$image-clip-height-default: inset(18% 0% 18% 0%);
+$image-clip-height-selected: inset(0 0 0 0);
+$image-clip-height-selected-transition: clip-path 1.8s ease-in-out;
+$image-clip-height-others: inset(100% 0 100% 0);
