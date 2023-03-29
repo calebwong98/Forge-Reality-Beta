@@ -2,11 +2,11 @@
 
 .links {
   display: flex;
+  gap: $link-flex-gap;
+  margin-inline: auto;
   align-items: center;
   width: fit-content;
   margin-bottom: $link-margin-bottom;
-
-  --grid-gap: #{$link-grid-gap};
 }
 
 .link {

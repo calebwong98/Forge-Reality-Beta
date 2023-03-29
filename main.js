@@ -1,6 +1,5 @@
 const track = document.getElementById('image-track');
 const image = track.children;
-const imageOrder = track.dataset.imageOrder;
 let isImageSelected = false;
 
 // Select & Unselect Image
@@ -10,29 +9,29 @@ for (let i = 0; i < image.length; i++) {
 
     // Use event.target to get the clicked image element
     const selectedImage = event.target;
-    const imageOrder = Array.prototype.indexOf.call(image, selectedImage);
+    const order = Array.prototype.indexOf.call(image, selectedImage);
 
-    track.dataset.imageOrder = imageOrder;
+    track.dataset.imageOrder = order;
 
     // Add the "selected" class to the selected child element
     selectedImage.classList.add('selected');
 
     // Remove the "selected" class from other image elements
     for (let i = 0; i < image.length; i++) {
-      if (i !== imageOrder) {
+      if (i !== order) {
         image[i].classList.remove('selected');
       }
     }
     // Modify the style of other child elements
     for (let i = 0; i < image.length; i++) {
-      if (i !== imageOrder) {
+      if (i !== order) {
         image[i].classList.add('others');
       } else {
         image[i].classList.remove('others');
       }
     }
 
-    if (i === imageOrder) {
+    if (i === order) {
       image[i].animate(
         {
           transform: `translate(0%, 0%)`,
@@ -40,9 +39,12 @@ for (let i = 0; i < image.length; i++) {
         {
           duration: 500,
           fill: 'forwards',
-          animation_timing_function: 'ease-in-out',
         }
       );
+
+      track.dataset.percentage = (order / (image.length - 1)) * -100;
+
+      track.dataset.prevPercentage = track.dataset.percentage;
     }
 
     // Set the selected state to true
@@ -53,11 +55,12 @@ for (let i = 0; i < image.length; i++) {
 // Remove the "selected" and "others" classes from all image
 // Scroll the image track to the position where the selected image is at the center
 function deselectImage() {
+  if (typeof track.dataset.imageOrder === 'undefined') return;
   for (let i = 0; i < image.length; i++) {
     image[i].classList.remove('selected');
     image[i].classList.remove('others');
 
-    if (i !== imageOrder) {
+    if (i !== track.dataset.imageOrder) {
       image[i].animate(
         {
           transform: `translate(${
@@ -77,6 +80,11 @@ function deselectImage() {
       );
     }
   }
+
+  track.dataset.percentage =
+    (track.dataset.imageOrder / (image.length - 1)) * -100;
+
+  track.dataset.prevPercentage = track.dataset.percentage;
 
   isImageSelected = false;
 }
@@ -99,9 +107,10 @@ function scrollImage(e) {
     image[i].animate(
       {
         transform: `translate(${
-          i * (100 + 10) - (image.length - 1) * ((-nextPercentage / 100) * 110)
+          i * (100 + 10) -
+          (image.length - 1) * ((-nextPercentage / 100) * (100 + 10))
         }%, 0%)`,
-        objectPosition: `${100 + nextPercentage}% center`,
+        objectPosition: `${(100 + nextPercentage) / 2 + 25}% center`,
       },
       { duration: 1200, fill: 'forwards' }
     );
@@ -135,9 +144,10 @@ function dragImage(e) {
     image[i].animate(
       {
         transform: `translate(${
-          i * (100 + 10) - (image.length - 1) * ((-nextPercentage / 100) * 110)
+          i * (100 + 10) -
+          (image.length - 1) * ((-nextPercentage / 100) * (100 + 10))
         }%, 0%)`,
-        objectPosition: `${100 + nextPercentage}% center`,
+        objectPosition: `${(100 + nextPercentage) / 2 + 25}% center`,
       },
       { duration: 1200, fill: 'forwards' }
     );
@@ -145,6 +155,13 @@ function dragImage(e) {
 }
 
 // Event Listeners
+window.addEventListener('wheel', function (e) {
+  if (isImageSelected) {
+    deselectImage();
+  } else {
+    scrollImage(e);
+  }
+});
 window.addEventListener('mousedown', function (e) {
   if (isImageSelected) {
     return;
@@ -164,13 +181,5 @@ window.addEventListener('mousemove', function (e) {
     return;
   } else {
     dragImage(e);
-  }
-});
-
-window.addEventListener('wheel', function (e) {
-  if (isImageSelected) {
-    deselectImage();
-  } else {
-    scrollImage(e);
   }
 });

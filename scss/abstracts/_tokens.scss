@@ -57,7 +57,8 @@ $heading-text-transform: uppercase;
 $heading-color-default: $body-color-default;
 
 // Layout
-$grid-gap: $size-9;
+$grid-gap: 0;
+$flex-gap: $size-9;
 $flex-group-gap: $size-11;
 $flow-spacer: $size-2;
 
@@ -93,7 +94,7 @@ $navigation-hover-line-height: 2px;
 $primary-footer-margin-bottom: $size-2;
 
 // Links
-$link-grid-gap: $grid-gap;
+$link-flex-gap: $flex-gap;
 $link-margin-bottom: $size-4;
 $link-width: $size-6;
 $link-height: $size-6;
