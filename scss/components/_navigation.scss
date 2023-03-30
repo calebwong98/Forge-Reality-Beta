@@ -2,6 +2,10 @@
 
 .navigation {
   --flex-column-gap: #{$navigation-flex-column-gap};
+
+  #check {
+    display: none;
+  }
   ul {
     list-style: none;
     height: fit-content;
@@ -36,6 +40,40 @@
 
     &:hover::after {
       width: 100%;
+    }
+  }
+
+  @include mq($breakpoint-medium) {
+    position: absolute;
+    z-index: -1;
+    ul {
+      position: fixed;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: $overlay-background-color-default;
+      flex-direction: column;
+      // margin-inline: auto;
+      justify-content: center;
+      overflow: hidden;
+
+      transition: $overlay-top-transition;
+
+      a {
+        width: fit-content;
+        opacity: 0;
+        transition: $overlay-opacity-transition;
+      }
+    }
+  }
+}
+
+#check:checked ~ ul {
+  @include mq($breakpoint-medium) {
+    top: 0;
+    a {
+      opacity: 1;
     }
   }
 }

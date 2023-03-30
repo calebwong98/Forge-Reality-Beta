@@ -4,6 +4,7 @@
 
 // Contextual
 $color-background-default: $color-neutral-900;
+$color-background-light: $color-neutral-100;
 $color-text-default: $color-neutral-100;
 $color-text-interactive-default: $color-neutral-100;
 $color-text-interactive-hover: $color-neutral-100;
@@ -14,6 +15,9 @@ $-grd-2: (#052b2f, #073438, #0e4b50, #2d8f85, #637c54);
 
 $color-gradient-1: $-grd-1;
 $color-gradient-2: $-grd-2;
+
+$breakpoint-medium: medium;
+$breakpoint-small: small;
 
 $opacity-passive: 0.4;
 
@@ -43,7 +47,10 @@ $body-font-weight-default: $font-weight-default;
 $body-font-weight-bold: $font-weight-bold;
 $body-line-height: 2;
 $body-color-default: $color-text-default;
-$body-background-color: $color-background-default;
+$body-color-inverted: $color-text-interactive-hover;
+$body-color-inverted-passive: $color-text-interactive-default;
+$body-background-color-default: $color-background-default;
+$body-background-color-light: $color-background-light;
 
 // General
 $link-color: $color-text-interactive-default;
@@ -73,7 +80,8 @@ $container-max-width-wide: 75rem;
 $card-body-padding: $size-8;
 
 // Primary Header
-$primary-header-margin-top: $size-9;
+$primary-header-padding-top: $size-9;
+$primary-header-transition: all 300ms ease-in-out;
 
 // Logo
 $logo-width: 9rem;
@@ -89,6 +97,20 @@ $navigation-font-weight: $body-font-weight-bold;
 $navigation-opacity-passive: $opacity-passive;
 $navigation-opacity-transition: 500ms;
 $navigation-hover-line-height: 2px;
+
+// Call to Action
+$hamburger-color: $body-color-default;
+$cta-gap: $size-6;
+
+// Overlay
+$overlay-text-light-color: $body-color-default;
+$overlay-text-medium-color: red;
+$overlay-text-dark-color: $body-color-inverted;
+$overlay-text-medium-dark-color: $body-color-inverted-passive;
+$overlay-background-color-default: $body-background-color-default;
+$overlay-background-color-light: $body-background-color-light;
+$overlay-top-transition: top 0.5s;
+$overlay-opacity-transition: opacity 1s 0.5s;
 
 // Primary Footer
 $primary-footer-margin-bottom: $size-2;
@@ -135,7 +157,7 @@ $card-padding: $size-8;
 $card-line-height: 1.25;
 $card-border-radius: $border-radius-2;
 $card-box-shadow: $box-shadow-1;
-$card-color-default: $body-background-color;
+$card-color-default: $body-background-color-default;
 $card-background-default: $color-primary-100;
 
 $card-heading-font-size: $font-size-600;
@@ -144,7 +166,7 @@ $card-heading-color-default: $card-color-default;
 // image track
 
 $image-gap: 10%;
-$image-object-position-default: 50% center;
+// $image-object-position-default: 50% center;
 $image-transition-transform: transform 0.5s ease-in-out;
 $image-transition-width: width 1s ease-in-out 150ms;
 $image-transition-height: clip-path 0.75s ease-in-out;

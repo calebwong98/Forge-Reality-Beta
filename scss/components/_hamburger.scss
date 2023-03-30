@@ -1,0 +1,25 @@
+@use '../abstracts' as *;
+
+.hamburger {
+  cursor: pointer;
+  display: none;
+
+  @include mq($breakpoint-medium) {
+    display: block;
+    stroke: $hamburger-color;
+  }
+}
+
+.cta {
+  display: flex;
+  gap: $cta-gap;
+  width: fit-content;
+  height: fit-content;
+  justify-content: flex-end;
+  align-items: center;
+  .button {
+    @include mq($breakpoint-small) {
+      display: none;
+    }
+  }
+}

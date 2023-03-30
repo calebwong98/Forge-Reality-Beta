@@ -2,7 +2,7 @@ const track = document.getElementById('image-track');
 const image = track.children;
 let isImageSelected = false;
 
-// Select & Unselect Image
+// SELECT IMAGE
 for (let i = 0; i < image.length; i++) {
   image[i].addEventListener('click', function (event) {
     if (isImageSelected) return;
@@ -12,6 +12,8 @@ for (let i = 0; i < image.length; i++) {
     const order = Array.prototype.indexOf.call(image, selectedImage);
 
     track.dataset.imageOrder = order;
+    track.dataset.percentage = (order / (image.length - 1)) * -100;
+    track.dataset.prevPercentage = track.dataset.percentage;
 
     // Add the "selected" class to the selected child element
     selectedImage.classList.add('selected');
@@ -41,10 +43,6 @@ for (let i = 0; i < image.length; i++) {
           fill: 'forwards',
         }
       );
-
-      track.dataset.percentage = (order / (image.length - 1)) * -100;
-
-      track.dataset.prevPercentage = track.dataset.percentage;
     }
 
     // Set the selected state to true
@@ -52,13 +50,29 @@ for (let i = 0; i < image.length; i++) {
   });
 }
 
+// UNSELECT IMAGE
 // Remove the "selected" and "others" classes from all image
-// Scroll the image track to the position where the selected image is at the center
+// Move the image track to the position where the selected image is at the center
 function deselectImage() {
   if (typeof track.dataset.imageOrder === 'undefined') return;
   for (let i = 0; i < image.length; i++) {
+    track.dataset.percentage =
+      (track.dataset.imageOrder / (image.length - 1)) * -100;
+
+    track.dataset.prevPercentage = track.dataset.percentage;
+
     image[i].classList.remove('selected');
     image[i].classList.remove('others');
+
+    image[i].animate(
+      {
+        objectPosition: `${
+          (100 + (track.dataset.imageOrder / (image.length - 1)) * -100) / 2 +
+          (50 / (image.length - 1)) * i
+        }% center`,
+      },
+      { duration: 100, fill: 'forwards' }
+    );
 
     if (i !== track.dataset.imageOrder) {
       image[i].animate(
@@ -76,21 +90,17 @@ function deselectImage() {
             i * (100 + 10) - track.dataset.imageOrder * (100 + 10)
           }%, 0%)`,
         },
-        { duration: 1200, fill: 'forwards' }
+        { duration: 100, fill: 'forwards' }
       );
     }
   }
 
-  track.dataset.percentage =
-    (track.dataset.imageOrder / (image.length - 1)) * -100;
-
-  track.dataset.prevPercentage = track.dataset.percentage;
-
   isImageSelected = false;
 }
 
-// Mouse Wheel Scroll
+// MOUSEWHEEL SCROLL
 function scrollImage(e) {
+  // Calculate percentage of wheel scrolled
   const wheelDelta = e.deltaY,
     maxDelta = window.innerWidth;
 
@@ -103,6 +113,7 @@ function scrollImage(e) {
 
   track.dataset.prevPercentage = track.dataset.percentage;
 
+  // TranslateX each image and inner image position
   for (let i = 0; i < image.length; i++) {
     image[i].animate(
       {
@@ -111,18 +122,15 @@ function scrollImage(e) {
           (image.length - 1) * ((-nextPercentage / 100) * (100 + 10))
         }%, 0%)`,
         objectPosition: `${
-          (110 + (nextPercentage + 10)) / 2 - 25 * i + 50 * i
+          (100 + nextPercentage) / 2 + (50 / (image.length - 1)) * i
         }% center`,
-        // objectPosition: `${100 + nextPercentage + 50}% center`,
       },
       { duration: 1200, fill: 'both' }
     );
-
-    // console.log((100 + nextPercentage) / 2 - 25 * i);
   }
 }
 
-// Mouse Drag Scroll
+// MOUSEDRAG SCROLL
 function mouseDownAt(e) {
   track.dataset.mouseDownAt = e.clientX;
 }
@@ -152,14 +160,35 @@ function dragImage(e) {
           i * (100 + 10) -
           (image.length - 1) * ((-nextPercentage / 100) * (100 + 10))
         }%, 0%)`,
-        objectPosition: `${(100 + nextPercentage) / 2 + 25}% center`,
+        objectPosition: `${
+          (100 + nextPercentage) / 2 + (50 / (image.length - 1)) * i
+        }% center`,
       },
       { duration: 1200, fill: 'forwards' }
     );
   }
 }
 
-// Event Listeners
+// checkbox.addEventListener('change', function () {
+//   if (this.checked) {
+//     header.classList.remove('overlay-light');
+//     header.classList.add('overlay-dark');
+//   } else {
+//     header.classList.remove('overlay-dark');
+//     header.classList.add('overlay-light');
+//   }
+
+//   // if (this.checked) {
+//   //   body.style.overflow = 'hidden';
+//   //   // header.style.paddingRight = `${scrollbarWidth}px`;
+//   // } else {
+//   //   // on closing modal
+//   //   body.style.overflow = 'unset';
+//   //   // header.style.paddingRight = '0px';
+//   // }
+// });
+
+// EVENT LISTENER
 window.addEventListener('wheel', function (e) {
   if (isImageSelected) {
     deselectImage();

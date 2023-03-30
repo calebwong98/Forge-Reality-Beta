@@ -18,11 +18,12 @@
   clip-path: $image-clip-height-default;
 
   object-fit: cover;
-  object-position: $image-object-position-default;
+  // object-position: $image-object-position-default;
 
-  @for $i from 1 through 12 {
+  @for $i from 1 through 8 {
     &:nth-child(#{$i}) {
       transform: translate(($i - 1) * (100% + $image-gap), 0%);
+      object-position: (50% + calc(50% / 7) * ($i - 1)) center;
     }
   }
 

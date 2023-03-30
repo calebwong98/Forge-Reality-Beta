@@ -1,0 +1,63 @@
+@use '../abstracts' as *;
+
+.overlay-dark {
+  .logo {
+    fill: $overlay-text-light-color;
+  }
+
+  .hamburger {
+    stroke: $overlay-text-light-color;
+  }
+
+  a {
+    color: $overlay-text-medium-color;
+  }
+
+  a::after {
+    background-color: $overlay-text-light-color;
+  }
+
+  a:hover {
+    color: $overlay-text-light-color;
+  }
+  a.current {
+    color: $overlay-text-light-color;
+  }
+  .cta {
+    color: $overlay-text-light-color;
+    background: $overlay-text-light-color;
+  }
+}
+
+.overlay-light {
+  background: $overlay-text-light-color;
+
+  box-shadow: 0px 0px 50px hsl(0, 0, 0, 0.8);
+
+  .logo {
+    fill: $overlay-text-dark-color;
+  }
+
+  .hamburger {
+    stroke: $overlay-text-dark-color;
+  }
+
+  a {
+    color: $overlay-text-medium-dark-color;
+  }
+
+  a::after {
+    background-color: $overlay-text-dark-color;
+  }
+
+  a:hover {
+    color: $overlay-text-dark-color;
+  }
+  a.current {
+    color: $overlay-text-dark-color;
+  }
+  .cta {
+    color: $overlay-text-dark-color;
+    border-color: $overlay-text-dark-color;
+  }
+}
