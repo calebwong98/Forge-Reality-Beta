@@ -103,14 +103,16 @@ $hamburger-color: $body-color-default;
 $cta-gap: $size-6;
 
 // Overlay
+$overlay-flex-row-gap: $size-11;
+$overlay-font-size: $font-size-600;
 $overlay-text-light-color: $body-color-default;
-$overlay-text-medium-color: red;
+$overlay-text-medium-color: $body-color-default;
 $overlay-text-dark-color: $body-color-inverted;
 $overlay-text-medium-dark-color: $body-color-inverted-passive;
 $overlay-background-color-default: $body-background-color-default;
 $overlay-background-color-light: $body-background-color-light;
 $overlay-top-transition: top 0.5s;
-$overlay-opacity-transition: opacity 1s 0.5s;
+$overlay-opacity-transition: opacity 500ms 500ms;
 
 // Primary Footer
 $primary-footer-margin-bottom: $size-2;
@@ -130,7 +132,7 @@ $button-font-weight: $body-font-weight-bold;
 $button-padding-default: 0.5em 2.25em;
 $button-text-transform: none;
 $button-border-default: none;
-$button-border-radius: $border-radius-1;
+$button-border-radius: $border-radius-4;
 $button-transition: 0;
 
 $button-primary-background: $color-primary-700;
@@ -164,7 +166,6 @@ $card-heading-font-size: $font-size-600;
 $card-heading-color-default: $card-color-default;
 
 // image track
-
 $image-gap: 10%;
 // $image-object-position-default: 50% center;
 $image-transition-transform: transform 0.5s ease-in-out;
@@ -172,7 +173,7 @@ $image-transition-width: width 1s ease-in-out 150ms;
 $image-transition-height: clip-path 0.75s ease-in-out;
 $image-clip-width-default: 40vmin;
 $image-clip-width-selected: 100%;
-$image-clip-width-selected-transition: width 1s ease-in-out 150ms;
+$image-clip-width-selected-transition: width 1s ease-out 500ms;
 $image-clip-height-hidden: 100%;
 $image-clip-height-hidden-selected: 100%;
 $image-clip-height-hidden-selected-transition: height 1s ease-in-out;

@@ -1,12 +1,13 @@
 @use '../abstracts' as *;
 
-.links {
+#links {
   display: flex;
   gap: $link-flex-gap;
   margin-inline: auto;
   align-items: center;
   width: fit-content;
   margin-bottom: $link-margin-bottom;
+  transition: opacity 500ms 500ms;
 }
 
 .link {

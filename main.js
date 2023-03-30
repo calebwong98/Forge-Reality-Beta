@@ -1,6 +1,11 @@
 const track = document.getElementById('image-track');
 const image = track.children;
-let isImageSelected = false;
+const links = document.getElementById('links');
+const home = document.getElementById('Home');
+const gallery = document.getElementById('Gallery');
+const store = document.getElementById('Store');
+const about = document.getElementById('About');
+let isImageSelected = true;
 
 // SELECT IMAGE
 for (let i = 0; i < image.length; i++) {
@@ -15,7 +20,7 @@ for (let i = 0; i < image.length; i++) {
     track.dataset.percentage = (order / (image.length - 1)) * -100;
     track.dataset.prevPercentage = track.dataset.percentage;
 
-    // Add the "selected" class to the selected child element
+    // Animate the width and clip height of selected element to full screen
     selectedImage.classList.add('selected');
 
     // Remove the "selected" class from other image elements
@@ -24,7 +29,7 @@ for (let i = 0; i < image.length; i++) {
         image[i].classList.remove('selected');
       }
     }
-    // Modify the style of other child elements
+    // Animate the clip height of elements other than selected to 0
     for (let i = 0; i < image.length; i++) {
       if (i !== order) {
         image[i].classList.add('others');
@@ -32,6 +37,19 @@ for (let i = 0; i < image.length; i++) {
         image[i].classList.remove('others');
       }
     }
+
+    // Fade out social media links
+    links.classList.add('fade-out');
+    // Highlight home
+    if (i === 0) {
+      home.classList.add('current');
+    } else {
+      home.classList.remove('current');
+    }
+    // Remove highlight
+    gallery.classList.remove('current');
+    store.classList.remove('current');
+    about.classList.remove('current');
 
     if (i === order) {
       image[i].animate(
@@ -45,14 +63,26 @@ for (let i = 0; i < image.length; i++) {
       );
     }
 
+    image[i].animate(
+      {
+        objectPosition: `${
+          (100 + (track.dataset.imageOrder / (image.length - 1)) * -100) / 2 +
+          (50 / (image.length - 1)) * i
+        }% center`,
+      },
+      { duration: 500, fill: 'forwards' }
+    );
+
     // Set the selected state to true
     isImageSelected = true;
   });
 }
 
+// FLIP IMAGE
+
 // UNSELECT IMAGE
 // Remove the "selected" and "others" classes from all image
-// Move the image track to the position where the selected image is at the center
+// Move the image track to the position where the selected image is at the screen center
 function deselectImage() {
   if (typeof track.dataset.imageOrder === 'undefined') return;
   for (let i = 0; i < image.length; i++) {
@@ -60,6 +90,13 @@ function deselectImage() {
       (track.dataset.imageOrder / (image.length - 1)) * -100;
 
     track.dataset.prevPercentage = track.dataset.percentage;
+
+    // Add "current" class to gallery link
+    // Remove "current" class from all other links
+    gallery.classList.add('current');
+    home.classList.remove('current');
+    store.classList.remove('current');
+    about.classList.remove('current');
 
     image[i].classList.remove('selected');
     image[i].classList.remove('others');
@@ -94,6 +131,9 @@ function deselectImage() {
       );
     }
   }
+
+  // Fade in social media links
+  links.classList.remove('fade-out');
 
   isImageSelected = false;
 }
@@ -195,6 +235,9 @@ window.addEventListener('wheel', function (e) {
   } else {
     scrollImage(e);
   }
+});
+gallery.addEventListener('click', function () {
+  deselectImage();
 });
 window.addEventListener('mousedown', function (e) {
   if (isImageSelected) {

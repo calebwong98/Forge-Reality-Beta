@@ -2,6 +2,7 @@
 
 .navigation {
   --flex-column-gap: #{$navigation-flex-column-gap};
+  --flex-row-gap: #{$overlay-flex-row-gap};
 
   #check {
     display: none;
@@ -44,6 +45,7 @@
   }
 
   @include mq($breakpoint-medium) {
+    // Mobile Menu Overlay
     position: absolute;
     z-index: -1;
     ul {
@@ -52,15 +54,18 @@
       left: 0;
       width: 100%;
       height: 100%;
+      min-height: 25rem;
       background: $overlay-background-color-default;
+      // background: red;
       flex-direction: column;
       // margin-inline: auto;
       justify-content: center;
-      overflow: hidden;
+      // overflow: hidden;
 
       transition: $overlay-top-transition;
 
       a {
+        font-size: $overlay-font-size;
         width: fit-content;
         opacity: 0;
         transition: $overlay-opacity-transition;
@@ -73,7 +78,12 @@
   @include mq($breakpoint-medium) {
     top: 0;
     a {
+      // opacity: $overlay-text-medium-color;
       opacity: 1;
+
+      // &:hover {
+      //   opacity: 1;
+      // }
     }
   }
 }
