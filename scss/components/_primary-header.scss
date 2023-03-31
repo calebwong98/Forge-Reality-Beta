@@ -8,9 +8,15 @@
   padding-top: $primary-header-padding-top;
   // transition: $primary-header-transition;
 
+  transition: transform 1s;
+
   .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
+}
+
+.remove-overlay-top .primary-header {
+  transform: translate3d(0, -100%, 0);
 }

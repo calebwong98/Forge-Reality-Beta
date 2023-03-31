@@ -7,6 +7,9 @@
   width: 100%;
   margin-inline: auto;
   margin-bottom: $primary-footer-margin-bottom;
-  .container {
+
+  @include mq($breakpoint-medium) {
+    position: static;
+    margin-top: $primary-footer-margin-top;
   }
 }

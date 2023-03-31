@@ -1,11 +1,16 @@
+const body = document.body;
 const track = document.getElementById('image-track');
 const image = track.children;
+
 const links = document.getElementById('links');
+
 const home = document.getElementById('Home');
 const gallery = document.getElementById('Gallery');
 const store = document.getElementById('Store');
 const about = document.getElementById('About');
+
 let isImageSelected = true;
+let lastScroll = 0;
 
 // SELECT IMAGE
 for (let i = 0; i < image.length; i++) {
@@ -29,6 +34,7 @@ for (let i = 0; i < image.length; i++) {
         image[i].classList.remove('selected');
       }
     }
+
     // Animate the clip height of elements other than selected to 0
     for (let i = 0; i < image.length; i++) {
       if (i !== order) {
@@ -37,20 +43,6 @@ for (let i = 0; i < image.length; i++) {
         image[i].classList.remove('others');
       }
     }
-
-    // Fade out social media links
-    links.classList.add('fade-out');
-    // Highlight home
-    if (i === 0) {
-      home.classList.add('current');
-    } else {
-      home.classList.remove('current');
-    }
-    // Remove highlight
-    gallery.classList.remove('current');
-    store.classList.remove('current');
-    about.classList.remove('current');
-
     if (i === order) {
       image[i].animate(
         {
@@ -62,7 +54,6 @@ for (let i = 0; i < image.length; i++) {
         }
       );
     }
-
     image[i].animate(
       {
         objectPosition: `${
@@ -73,16 +64,89 @@ for (let i = 0; i < image.length; i++) {
       { duration: 500, fill: 'forwards' }
     );
 
+    // Fade out social media links
+    links.classList.add('fade-out');
+    // Highlight home
+    if (i === 0) {
+      home.classList.add('current');
+      gallery.classList.remove('current');
+    } else {
+      home.classList.remove('current');
+    }
+    // Remove highlight
+    // gallery.classList.remove('current');
+    store.classList.remove('current');
+    about.classList.remove('current');
+
     // Set the selected state to true
     isImageSelected = true;
   });
 }
 
 // FLIP IMAGE
+function flipImage() {
+  const quarterPoint = window.innerWidth / 4;
+  const order = parseFloat(track.dataset.imageOrder);
+  let nextOrder = 0;
+
+  if (track.dataset.mouseDownAt > quarterPoint * 3) {
+    nextOrder = order + 1;
+  } else if (track.dataset.mouseDownAt < quarterPoint) {
+    nextOrder = order - 1;
+  } else return;
+
+  if (nextOrder < 0 || nextOrder >= image.length) {
+    track.dataset.mouseDownAt = '0';
+    return;
+  }
+
+  track.dataset.imageOrder = nextOrder;
+
+  // Animate the width and clip height of selected element to full screen
+  image[nextOrder].classList.add('selected');
+  // Remove the "selected" class from other image elements
+  for (let i = 0; i < image.length; i++) {
+    if (i !== nextOrder) {
+      image[i].classList.remove('selected');
+    }
+  }
+  // Animate the clip height of elements other than selected to 0
+  for (let i = 0; i < image.length; i++) {
+    if (i !== nextOrder) {
+      image[i].classList.add('others');
+    } else if (i === nextOrder) {
+      image[i].classList.remove('others');
+    }
+  }
+  image[nextOrder].animate(
+    {
+      transform: `translate(0%, 0%)`,
+    },
+    {
+      duration: 0,
+      fill: 'forwards',
+    }
+  );
+  image[nextOrder].animate(
+    {
+      objectPosition: `${
+        (100 + (track.dataset.imageOrder / (image.length - 1)) * -100) / 2 +
+        (50 / (image.length - 1)) * nextOrder
+      }% center`,
+    },
+    { duration: 0, fill: 'forwards' }
+  );
+
+  home.classList.toggle('current', nextOrder === 0);
+  gallery.classList.toggle('current', nextOrder !== 0);
+
+  track.dataset.prevPercentage = (nextOrder / (image.length - 1)) * -100;
+  track.dataset.percentage = track.dataset.prevPercentage;
+  track.dataset.mouseDownAt = '0';
+  isImageSelected = true;
+}
 
 // UNSELECT IMAGE
-// Remove the "selected" and "others" classes from all image
-// Move the image track to the position where the selected image is at the screen center
 function deselectImage() {
   if (typeof track.dataset.imageOrder === 'undefined') return;
   for (let i = 0; i < image.length; i++) {
@@ -98,9 +162,11 @@ function deselectImage() {
     store.classList.remove('current');
     about.classList.remove('current');
 
+    // Remove the "selected" and "others" classes from all image
     image[i].classList.remove('selected');
     image[i].classList.remove('others');
 
+    // Move the image track to the position where the selected image is at the screen center
     image[i].animate(
       {
         objectPosition: `${
@@ -118,7 +184,7 @@ function deselectImage() {
             i * (100 + 10) - track.dataset.imageOrder * (100 + 10)
           }%, 0%)`,
         },
-        { duration: 100, fill: 'forwards' }
+        { duration: 500, fill: 'forwards' }
       );
     } else {
       image[i].animate(
@@ -127,7 +193,7 @@ function deselectImage() {
             i * (100 + 10) - track.dataset.imageOrder * (100 + 10)
           }%, 0%)`,
         },
-        { duration: 100, fill: 'forwards' }
+        { duration: 500, fill: 'forwards' }
       );
     }
   }
@@ -181,7 +247,7 @@ function mouseUp() {
 }
 
 function dragImage(e) {
-  if (track.dataset.mouseDownAt === '0') return;
+  if (track.dataset.mouseDownAt === '0' || isImageSelected === true) return;
 
   const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
     maxDelta = window.innerWidth / 2;
@@ -229,34 +295,77 @@ function dragImage(e) {
 // });
 
 // EVENT LISTENER
+if (window.innerWidth > 880) {
+}
 window.addEventListener('wheel', function (e) {
-  if (isImageSelected) {
+  if (window.innerWidth > 880) {
+    if (isImageSelected) {
+      deselectImage();
+    } else {
+      scrollImage(e);
+    }
+  }
+});
+gallery.onclick = function () {
+  if (window.innerWidth > 880) {
     deselectImage();
-  } else {
-    scrollImage(e);
+  }
+};
+
+track.addEventListener('mousedown', function (e) {
+  if (window.innerWidth > 880) {
+    if (isImageSelected) {
+      mouseDownAt(e);
+    } else {
+      mouseDownAt(e);
+    }
   }
 });
-gallery.addEventListener('click', function () {
-  deselectImage();
-});
-window.addEventListener('mousedown', function (e) {
-  if (isImageSelected) {
-    return;
-  } else {
-    mouseDownAt(e);
+track.addEventListener('mouseup', function () {
+  if (window.innerWidth > 880) {
+    if (isImageSelected) {
+      return;
+    } else {
+      mouseUp();
+    }
   }
 });
-window.addEventListener('mouseup', function () {
-  if (isImageSelected) {
-    return;
-  } else {
-    mouseUp();
+track.addEventListener('mouseup', function () {
+  if (window.innerWidth > 880) {
+    if (isImageSelected) {
+      flipImage();
+    } else {
+      return;
+    }
   }
 });
 window.addEventListener('mousemove', function (e) {
-  if (isImageSelected) {
-    return;
-  } else {
-    dragImage(e);
+  if (window.innerWidth > 880) {
+    if (isImageSelected) {
+      return;
+    } else {
+      dragImage(e);
+    }
   }
+});
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.scrollY;
+
+  if (currentScroll <= 0) {
+    body.classList.remove('remove-overlay-top');
+  }
+
+  if (currentScroll > 0 && currentScroll > lastScroll) {
+    body.classList.add('remove-overlay-top');
+  }
+
+  if (
+    currentScroll < lastScroll &&
+    body.classList.contains('remove-overlay-top')
+  ) {
+    body.classList.remove('remove-overlay-top');
+  }
+
+  lastScroll = currentScroll;
 });

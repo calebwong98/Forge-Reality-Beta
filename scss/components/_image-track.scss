@@ -1,5 +1,14 @@
 @use '../abstracts' as *;
 
+@keyframes introLoad {
+  from {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
 #image-track {
   position: relative;
   height: 100%;
@@ -8,13 +17,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 2s;
+
+  animation: introLoad 2s forwards;
+
+  @include mq($breakpoint-medium) {
+    position: static;
+    display: block;
+    width: fit-content;
+    height: fit-content;
+
+    clip-path: inset(0 0 0 0);
+    transform: translate(0, 0);
+    object-position: center center;
+  }
 }
 
 .image {
   position: absolute;
   width: $image-clip-width-default;
-  height: $image-clip-height-hidden;
   clip-path: $image-clip-height-default;
+  height: $image-clip-height-hidden;
 
   object-fit: cover;
   // object-position: $image-object-position-default;
@@ -27,19 +50,39 @@
   }
 
   transition: $image-transition-transform, $image-transition-width,
-    $image-clip-height-hidden-selected-transition, $image-transition-height;
+    $image-clip-selected-height-hidden-transition, $image-transition-height;
+
+  @include mq($breakpoint-medium) {
+    display: block;
+    position: static;
+    width: 100%;
+    height: 100vh;
+
+    clip-path: inset(0 0 0 0);
+    @for $i from 1 through 8 {
+      &:nth-child(#{$i}) {
+        transform: translate(0, 0);
+        object-position: center center;
+      }
+    }
+  }
 }
 
 .selected {
   z-index: 99;
-  width: $image-clip-width-selected;
-  height: $image-clip-height-hidden-selected;
-  clip-path: $image-clip-height-selected;
-  transition: $image-clip-width-selected-transition,
-    $image-clip-height-hidden-selected-transition,
-    $image-clip-height-selected-transition;
+  width: $image-clip-selected-width;
+  height: $image-clip-selected-height-hidden;
+  clip-path: $image-clip-selected-height;
+  transition: $image-clip-selected-width-transition,
+    $image-clip-selected-height-hidden-transition,
+    $image-clip-selected-height-transition;
 }
 
 .others {
-  clip-path: $image-clip-height-others;
+  // width: $image-clip-other-width;
+  // height: $image-clip-other-height-hidden;
+  clip-path: $image-clip-other-height;
+  // transition: $image-clip-other-width-transition,
+  //   $image-clip-other-height-hidden-transition,
+  //   $image-clip-other-height-transition;
 }

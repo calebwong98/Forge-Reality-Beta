@@ -116,6 +116,7 @@ $overlay-opacity-transition: opacity 500ms 500ms;
 
 // Primary Footer
 $primary-footer-margin-bottom: $size-2;
+$primary-footer-margin-top: $size-12;
 
 // Links
 $link-flex-gap: $flex-gap;
@@ -168,16 +169,22 @@ $card-heading-color-default: $card-color-default;
 // image track
 $image-gap: 10%;
 // $image-object-position-default: 50% center;
-$image-transition-transform: transform 0.5s ease-in-out;
+$image-clip-width-default: 40vmin;
+// $image-clip-width-default: 100%;
+$image-clip-height-default: inset(18% 0% 18% 0%);
+$image-clip-height-hidden: 100%;
 $image-transition-width: width 1s ease-in-out 150ms;
 $image-transition-height: clip-path 0.75s ease-in-out;
-$image-clip-width-default: 40vmin;
-$image-clip-width-selected: 100%;
-$image-clip-width-selected-transition: width 1s ease-out 500ms;
-$image-clip-height-hidden: 100%;
-$image-clip-height-hidden-selected: 100%;
-$image-clip-height-hidden-selected-transition: height 1s ease-in-out;
-$image-clip-height-default: inset(18% 0% 18% 0%);
-$image-clip-height-selected: inset(0 0 0 0);
-$image-clip-height-selected-transition: clip-path 1.8s ease-in-out;
-$image-clip-height-others: inset(100% 0 100% 0);
+$image-transition-transform: transform 0.5s ease-in-out;
+$image-clip-selected-width: 100%;
+$image-clip-selected-height: inset(0 0 0 0);
+$image-clip-selected-height-hidden: 100%;
+$image-clip-selected-width-transition: width 1s ease-out;
+$image-clip-selected-height-hidden-transition: height 1s ease-in-out;
+$image-clip-selected-height-transition: clip-path 1.8s ease-in-out;
+$image-clip-other-width: 100%;
+$image-clip-other-height: inset(100% 0 100% 0);
+$image-clip-other-height-hidden: 100%;
+$image-clip-other-width-transition: width 1s ease-out 500ms;
+$image-clip-other-height-hidden-transition: height 1s ease-in-out;
+$image-clip-other-height-transition: clip-path 1.8s ease-in-out;
