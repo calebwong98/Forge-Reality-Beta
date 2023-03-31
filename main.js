@@ -3,6 +3,7 @@ const track = document.getElementById('image-track');
 const image = track.children;
 
 const links = document.getElementById('links');
+// const copyright = document.getElementById('copyright');
 
 const home = document.getElementById('Home');
 const gallery = document.getElementById('Gallery');
@@ -15,6 +16,7 @@ let lastScroll = 0;
 // SELECT IMAGE
 for (let i = 0; i < image.length; i++) {
   image[i].addEventListener('click', function (event) {
+    if (window.innerWidth < 880) return;
     if (isImageSelected) return;
 
     // Use event.target to get the clicked image element
@@ -49,7 +51,7 @@ for (let i = 0; i < image.length; i++) {
           transform: `translate(0%, 0%)`,
         },
         {
-          duration: 500,
+          duration: 0,
           fill: 'forwards',
         }
       );
@@ -66,6 +68,7 @@ for (let i = 0; i < image.length; i++) {
 
     // Fade out social media links
     links.classList.add('fade-out');
+    // copyright.classList.add('opacity-increase');
     // Highlight home
     if (i === 0) {
       home.classList.add('current');
@@ -200,6 +203,7 @@ function deselectImage() {
 
   // Fade in social media links
   links.classList.remove('fade-out');
+  // copyright.classList.remove('opacity-increase');
 
   isImageSelected = false;
 }
@@ -349,23 +353,23 @@ window.addEventListener('mousemove', function (e) {
   }
 });
 
-window.addEventListener('scroll', () => {
-  const currentScroll = window.scrollY;
+// window.addEventListener('scroll', () => {
+//   const currentScroll = window.scrollY;
 
-  if (currentScroll <= 0) {
-    body.classList.remove('remove-overlay-top');
-  }
+//   if (currentScroll <= 0) {
+//     body.classList.remove('remove-overlay-top');
+//   }
 
-  if (currentScroll > 0 && currentScroll > lastScroll) {
-    body.classList.add('remove-overlay-top');
-  }
+//   if (currentScroll > 0 && currentScroll > lastScroll) {
+//     body.classList.add('remove-overlay-top');
+//   }
 
-  if (
-    currentScroll < lastScroll &&
-    body.classList.contains('remove-overlay-top')
-  ) {
-    body.classList.remove('remove-overlay-top');
-  }
+//   if (
+//     currentScroll < lastScroll &&
+//     body.classList.contains('remove-overlay-top')
+//   ) {
+//     body.classList.remove('remove-overlay-top');
+//   }
 
-  lastScroll = currentScroll;
-});
+//   lastScroll = currentScroll;
+// });

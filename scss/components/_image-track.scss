@@ -11,7 +11,7 @@
 
 #image-track {
   position: relative;
-  height: 100%;
+  height: 100vh;
   width: 100%;
 
   display: flex;
@@ -76,6 +76,13 @@
   transition: $image-clip-selected-width-transition,
     $image-clip-selected-height-hidden-transition,
     $image-clip-selected-height-transition;
+
+  @include mq($breakpoint-medium) {
+    position: static;
+    display: block;
+    width: 100%;
+    height: 100vh;
+  }
 }
 
 .others {
@@ -85,4 +92,8 @@
   // transition: $image-clip-other-width-transition,
   //   $image-clip-other-height-hidden-transition,
   //   $image-clip-other-height-transition;
+
+  @include mq($breakpoint-medium) {
+    display: none;
+  }
 }

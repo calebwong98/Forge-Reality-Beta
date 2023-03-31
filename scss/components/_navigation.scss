@@ -64,7 +64,7 @@
       a {
         font-size: $overlay-font-size;
         width: fit-content;
-        opacity: 0;
+        opacity: $opacity-active;
         transition: $overlay-opacity-transition;
       }
     }
@@ -74,13 +74,5 @@
 #check:checked ~ ul {
   @include mq($breakpoint-medium) {
     top: 0;
-    a {
-      // opacity: $overlay-text-medium-color;
-      opacity: 1;
-
-      // &:hover {
-      //   opacity: 1;
-      // }
-    }
   }
 }

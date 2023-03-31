@@ -6,10 +6,79 @@
   bottom: 0;
   width: 100%;
   margin-inline: auto;
-  margin-bottom: $primary-footer-margin-bottom;
+  margin-block: $primary-footer-margin-block;
 
   @include mq($breakpoint-medium) {
     position: static;
-    margin-top: $primary-footer-margin-top;
+    margin-block: $primary-footer-margin-block-mobile;
   }
 }
+
+#links {
+  display: flex;
+  gap: $link-flex-gap;
+  margin-inline: auto;
+  margin-block: $link-margin-block;
+
+  width: fit-content;
+  transition: opacity 500ms 500ms;
+  @include mq($breakpoint-medium) {
+    margin-block: $link-margin-block-mobile;
+  }
+}
+
+.link {
+  width: $link-width;
+  height: $link-height;
+  opacity: $link-opacity-passive;
+  transition: opacity 500ms;
+
+  &:is(:hover, :focus) {
+    opacity: 1;
+  }
+  @include mq($breakpoint-medium) {
+    opacity: $opacity-active;
+  }
+}
+
+.location {
+  display: none;
+  justify-content: center;
+  gap: $size-2;
+  margin-inline: auto;
+  opacity: $opacity-passive;
+
+  .link {
+    opacity: $opacity-active;
+  }
+  p {
+    width: fit-content;
+  }
+  @include mq($breakpoint-medium) {
+    display: flex;
+    opacity: $opacity-active;
+  }
+}
+
+#copyright {
+  width: fit-content;
+  margin: auto;
+  opacity: $opacity-light;
+  transition: 1s;
+  @include mq($breakpoint-medium) {
+    opacity: $opacity-passive;
+  }
+}
+
+// Links fade out
+.fade-out {
+  opacity: 0;
+  @include mq($breakpoint-medium) {
+    opacity: $opacity-active;
+  }
+}
+
+// // Copyright highlight
+// #copyright.opacity-increase {
+//   opacity: $opacity-passive;
+// }

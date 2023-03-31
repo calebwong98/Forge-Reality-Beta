@@ -1,12 +1,10 @@
 @use '../abstracts' as *;
 
 .app {
-  // display: flex;
-  height: 100dvh;
+  height: fit-content;
   width: 100%;
   overflow: hidden;
   @include mq($breakpoint-medium) {
-    // display: contents;
     overflow: visible;
   }
 }
