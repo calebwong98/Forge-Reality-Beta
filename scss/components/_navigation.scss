@@ -1,10 +1,26 @@
 @use '../abstracts' as *;
 
+@keyframes buttonLoad {
+  from {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+#check {
+  display: none;
+}
+
 .navigation {
   --flex-column-gap: #{$navigation-flex-column-gap};
   --flex-row-gap: #{$overlay-flex-row-gap};
 
-  #check {
+  .button[data-type='gradient'] {
+    display: none;
+  }
+  .location {
     display: none;
   }
   ul {
@@ -12,8 +28,10 @@
     height: fit-content;
   }
 
-  a {
+  a,
+  #Gallery {
     position: relative;
+    cursor: pointer;
     text-decoration: none;
     text-transform: $navigation-text-transform;
     color: $navigation-color;
@@ -46,33 +64,78 @@
 
   @include mq($breakpoint-medium) {
     // Mobile Menu Overlay
-    position: absolute;
     z-index: -1;
+    // opacity: 0;
+    position: fixed;
+
+    top: -110%;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    min-height: 25rem;
+    background: $overlay-background-color-default;
+    padding-top: 5rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+
+    transition: $overlay-top-transition;
+
     ul {
-      position: fixed;
-      top: -100%;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      min-height: 25rem;
-      background: $overlay-background-color-default;
+      display: flex;
       flex-direction: column;
-      justify-content: center;
-
-      transition: $overlay-top-transition;
-
-      a {
+      width: 80%;
+      text-align: right;
+      a,
+      #Gallery {
         font-size: $overlay-font-size;
         width: fit-content;
-        opacity: $opacity-active;
         transition: $overlay-opacity-transition;
+        clip-path: inset(0 0 0 100%);
       }
+    }
+    .button[data-type='gradient'] {
+      display: inline-flex;
+      opacity: 0;
+      width: fit-content;
+      font-size: $overlay-font-size;
+    }
+    .location {
+      display: flex;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      margin-inline: auto;
+      margin-block: 4vmin;
+
+      // TRANSITION
+      opacity: 0;
     }
   }
 }
 
-#check:checked ~ ul {
+#check:checked ~ .navigation {
   @include mq($breakpoint-medium) {
+    // opacity: 1;
     top: 0;
+
+    a,
+    #Gallery {
+      clip-path: inset(0 0 0 -10%);
+      transition: clip-path 500ms 500ms;
+    }
+
+    .button[data-type='gradient'] {
+      opacity: 1;
+    }
+
+    .location {
+      // TRANSITION
+      opacity: $opacity-active;
+      transition: opacity 500ms 500ms;
+    }
   }
 }

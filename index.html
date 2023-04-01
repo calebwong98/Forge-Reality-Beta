@@ -68,25 +68,30 @@
 
       <header class="primary-header">
         <div class="container">
-          <a href="index.html">
+          <a href="/">
             <img class="logo" src="images/logo.svg" alt="CalebWONG Logo" />
           </a>
+          <input type="checkbox" id="check" />
           <nav class="navigation">
-            <input type="checkbox" id="check" />
             <ul class="flex-group text-center">
               <li>
-                <a id="Home" class="current" href="index.html">Home</a>
+                <a id="Home" class="current" href="/">Home</a>
               </li>
               <li>
-                <a id="Gallery" href="#">Gallery</a>
+                <label for="check" id="Gallery">Gallery</label>
               </li>
               <li>
-                <a id="Store" href="#">Store</a>
+                <a id="Store" href="/store">Store</a>
               </li>
               <li>
-                <a id="About" href="#">About</a>
+                <a id="About" href="/about">About</a>
               </li>
             </ul>
+            <button class="button" data-type="gradient">Start a Project</button>
+            <div class="location">
+              <img class="link" src="./images/location.svg" alt="location" />
+              <p>Ipoh, Malaysia</p>
+            </div>
           </nav>
           <div class="cta">
             <button class="button" data-type="gradient">Start a Project</button>

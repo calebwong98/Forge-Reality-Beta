@@ -1,17 +1,17 @@
 @use '../abstracts' as *;
 
 .primary-footer {
-  z-index: 9999;
-  position: fixed;
+  z-index: 99;
+  position: absolute;
   bottom: 0;
   width: 100%;
   margin-inline: auto;
   margin-block: $primary-footer-margin-block;
 
-  @include mq($breakpoint-medium) {
-    position: static;
-    margin-block: $primary-footer-margin-block-mobile;
-  }
+  // @include mq($breakpoint-small) {
+  //   position: static;
+  //   margin-block: $primary-footer-margin-block-mobile;
+  // }
 }
 
 #links {
@@ -22,7 +22,7 @@
 
   width: fit-content;
   transition: opacity 500ms 500ms;
-  @include mq($breakpoint-medium) {
+  @include mq($breakpoint-small) {
     margin-block: $link-margin-block-mobile;
   }
 }
@@ -42,11 +42,11 @@
 }
 
 .location {
-  display: none;
+  display: flex;
   justify-content: center;
   gap: $size-2;
   margin-inline: auto;
-  opacity: $opacity-passive;
+  opacity: $opacity-active;
 
   .link {
     opacity: $opacity-active;
@@ -63,7 +63,7 @@
 #copyright {
   width: fit-content;
   margin: auto;
-  opacity: $opacity-light;
+  opacity: $opacity-passive;
   transition: 1s;
   @include mq($breakpoint-medium) {
     opacity: $opacity-passive;
@@ -73,9 +73,9 @@
 // Links fade out
 .fade-out {
   opacity: 0;
-  @include mq($breakpoint-medium) {
-    opacity: $opacity-active;
-  }
+  // @include mq($breakpoint-small) {
+  //   opacity: $opacity-active;
+  // }
 }
 
 // // Copyright highlight

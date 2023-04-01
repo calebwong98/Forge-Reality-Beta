@@ -113,7 +113,7 @@ $overlay-text-dark-color: $body-color-inverted;
 $overlay-text-medium-dark-color: $body-color-inverted-passive;
 $overlay-background-color-default: $body-background-color-default;
 $overlay-background-color-light: $body-background-color-light;
-$overlay-top-transition: top 0.5s;
+$overlay-top-transition: top 0.5s ease-in-out;
 $overlay-opacity-transition: opacity 500ms;
 
 // Primary Footer
@@ -121,11 +121,11 @@ $primary-footer-margin-block: $size-4 $size-2;
 $primary-footer-margin-block-mobile: $size-12 $size-8;
 // Links
 $link-flex-gap: $flex-gap;
-$link-margin-block: $size-4;
-$link-margin-block-mobile: $size-10;
+$link-margin-block: 3.5vmin;
+$link-margin-block-mobile: $size-6;
 $link-width: $size-6;
 $link-height: $size-6;
-$link-opacity-passive: $opacity-passive;
+$link-opacity-passive: $opacity-active;
 
 // buttons
 $button-font-family: $body-font-family;

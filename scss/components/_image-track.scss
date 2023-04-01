@@ -21,16 +21,16 @@
 
   animation: introLoad 2s forwards;
 
-  @include mq($breakpoint-medium) {
-    position: static;
-    display: block;
-    width: fit-content;
-    height: fit-content;
+  // @include mq($breakpoint-small) {
+  //   position: static;
+  //   display: block;
+  //   width: fit-content;
+  //   height: fit-content;
 
-    clip-path: inset(0 0 0 0);
-    transform: translate(0, 0);
-    object-position: center center;
-  }
+  //   clip-path: inset(0 0 0 0);
+  //   transform: translate(0, 0);
+  //   object-position: center center;
+  // }
 }
 
 .image {
@@ -52,20 +52,20 @@
   transition: $image-transition-transform, $image-transition-width,
     $image-clip-selected-height-hidden-transition, $image-transition-height;
 
-  @include mq($breakpoint-medium) {
-    display: block;
-    position: static;
-    width: 100%;
-    height: 100vh;
+  // @include mq($breakpoint-small) {
+  //   display: block;
+  //   position: static;
+  //   width: 100%;
+  //   height: 100vh;
 
-    clip-path: inset(0 0 0 0);
-    @for $i from 1 through 8 {
-      &:nth-child(#{$i}) {
-        transform: translate(0, 0);
-        object-position: center center;
-      }
-    }
-  }
+  //   clip-path: inset(0 0 0 0);
+  //   @for $i from 1 through 8 {
+  //     &:nth-child(#{$i}) {
+  //       transform: translate(0, 0) !important;
+  //       object-position: center center !important;
+  //     }
+  //   }
+  // }
 }
 
 .selected {
@@ -77,12 +77,12 @@
     $image-clip-selected-height-hidden-transition,
     $image-clip-selected-height-transition;
 
-  @include mq($breakpoint-medium) {
-    position: static;
-    display: block;
-    width: 100%;
-    height: 100vh;
-  }
+  // @include mq($breakpoint-small) {
+  //   position: static;
+  //   display: block;
+  //   width: 100%;
+  //   height: 100vh;
+  // }
 }
 
 .others {
@@ -93,7 +93,7 @@
   //   $image-clip-other-height-hidden-transition,
   //   $image-clip-other-height-transition;
 
-  @include mq($breakpoint-medium) {
-    display: none;
-  }
+  // @include mq($breakpoint-small) {
+  //   display: none;
+  // }
 }

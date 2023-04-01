@@ -10,13 +10,16 @@ const gallery = document.getElementById('Gallery');
 const store = document.getElementById('Store');
 const about = document.getElementById('About');
 
+const tablet = 880;
+const mobile = 560;
+
 let isImageSelected = true;
 let lastScroll = 0;
 
 // SELECT IMAGE
 for (let i = 0; i < image.length; i++) {
   image[i].addEventListener('click', function (event) {
-    if (window.innerWidth < 880) return;
+    // if (window.innerWidth < mobile) return;
     if (isImageSelected) return;
 
     // Use event.target to get the clicked image element
@@ -279,6 +282,46 @@ function dragImage(e) {
   }
 }
 
+// TOUCHDRAG SCROLL
+function touchStart(e) {
+  track.dataset.mouseDownAt = e.touches[0].clientX;
+}
+
+function touchEnd() {
+  track.dataset.mouseDownAt = '0';
+  track.dataset.prevPercentage = track.dataset.percentage;
+}
+
+function touchMove(e) {
+  if (track.dataset.mouseDownAt === '0' || isImageSelected === true) return;
+
+  const mouseDelta =
+      parseFloat(track.dataset.mouseDownAt) - e.touches[0].clientX,
+    maxDelta = window.innerWidth / 2;
+
+  const percentage = (mouseDelta / maxDelta) * -100,
+    nextPercentageUnconstrained =
+      parseFloat(track.dataset.prevPercentage) + percentage,
+    nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+
+  track.dataset.percentage = nextPercentage;
+
+  for (let i = 0; i < image.length; i++) {
+    image[i].animate(
+      {
+        transform: `translate(${
+          i * (100 + 10) -
+          (image.length - 1) * ((-nextPercentage / 100) * (100 + 10))
+        }%, 0%)`,
+        objectPosition: `${
+          (100 + nextPercentage) / 2 + (50 / (image.length - 1)) * i
+        }% center`,
+      },
+      { duration: 1200, fill: 'forwards' }
+    );
+  }
+}
+
 // checkbox.addEventListener('change', function () {
 //   if (this.checked) {
 //     header.classList.remove('overlay-light');
@@ -299,10 +342,8 @@ function dragImage(e) {
 // });
 
 // EVENT LISTENER
-if (window.innerWidth > 880) {
-}
 window.addEventListener('wheel', function (e) {
-  if (window.innerWidth > 880) {
+  if (window.innerWidth) {
     if (isImageSelected) {
       deselectImage();
     } else {
@@ -311,13 +352,14 @@ window.addEventListener('wheel', function (e) {
   }
 });
 gallery.onclick = function () {
-  if (window.innerWidth > 880) {
+  if (window.innerWidth) {
     deselectImage();
   }
 };
 
+// Desktop
 track.addEventListener('mousedown', function (e) {
-  if (window.innerWidth > 880) {
+  if (window.innerWidth) {
     if (isImageSelected) {
       mouseDownAt(e);
     } else {
@@ -326,7 +368,7 @@ track.addEventListener('mousedown', function (e) {
   }
 });
 track.addEventListener('mouseup', function () {
-  if (window.innerWidth > 880) {
+  if (window.innerWidth) {
     if (isImageSelected) {
       return;
     } else {
@@ -334,21 +376,50 @@ track.addEventListener('mouseup', function () {
     }
   }
 });
-track.addEventListener('mouseup', function () {
-  if (window.innerWidth > 880) {
-    if (isImageSelected) {
-      flipImage();
-    } else {
-      return;
-    }
-  }
-});
 window.addEventListener('mousemove', function (e) {
-  if (window.innerWidth > 880) {
+  if (window.innerWidth) {
     if (isImageSelected) {
       return;
     } else {
       dragImage(e);
+    }
+  }
+});
+// Mobile
+track.addEventListener('touchstart', function (e) {
+  if (window.innerWidth) {
+    if (isImageSelected) {
+      touchStart(e);
+    } else {
+      touchStart(e);
+    }
+  }
+});
+track.addEventListener('touchend', function () {
+  if (window.innerWidth) {
+    if (isImageSelected) {
+      return;
+    } else {
+      touchEnd();
+    }
+  }
+});
+window.addEventListener('touchmove', function (e) {
+  if (window.innerWidth) {
+    if (isImageSelected) {
+      return;
+    } else {
+      touchMove(e);
+    }
+  }
+});
+
+track.addEventListener('mouseup', function () {
+  if (window.innerWidth) {
+    if (isImageSelected) {
+      flipImage();
+    } else {
+      return;
     }
   }
 });
