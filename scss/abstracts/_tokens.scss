@@ -105,7 +105,7 @@ $hamburger-color: $body-color-default;
 $cta-gap: $size-6;
 
 // Overlay
-$overlay-flex-row-gap: $size-11;
+$overlay-flex-row-gap: $size-10;
 $overlay-font-size: $font-size-600;
 $overlay-text-light-color: $body-color-default;
 $overlay-text-medium-color: $body-color-default;
@@ -118,7 +118,7 @@ $overlay-opacity-transition: opacity 500ms;
 
 // Primary Footer
 $primary-footer-margin-block: $size-4 $size-2;
-$primary-footer-margin-block-mobile: $size-12 $size-8;
+$primary-footer-linkmargin-block-mobile: $size-12 $size-8;
 // Links
 $link-flex-gap: $flex-gap;
 $link-margin-block: 3.5vmin;

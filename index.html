@@ -9,63 +9,6 @@
   </head>
   <body>
     <div class="app">
-      <div
-        id="image-track"
-        data-mouse-down-at="0"
-        data-prev-percentage="0"
-        data-image-order="0"
-        data-percentage="0"
-      >
-        <img
-          src="images/img1.jpg"
-          class="image selected"
-          alt="img1"
-          draggable="false"
-        />
-        <img
-          src="images/img2.jpg"
-          class="image others"
-          alt="img2"
-          draggable="false"
-        />
-        <img
-          src="images/img3.jpg"
-          class="image others"
-          alt="img3"
-          draggable="false"
-        />
-        <img
-          src="images/img4.jpg"
-          class="image others"
-          alt="img4"
-          draggable="false"
-        />
-        <img
-          src="images/img5.jpg"
-          class="image others"
-          alt="img5"
-          draggable="false"
-        />
-        <img
-          src="images/img6.jpg"
-          class="image others"
-          alt="img6"
-          draggable="false"
-        />
-        <img
-          src="images/img7.jpg"
-          class="image others"
-          alt="img7"
-          draggable="false"
-        />
-        <img
-          src="images/img8.jpg"
-          class="image others"
-          alt="img8"
-          draggable="false"
-        />
-      </div>
-
       <header class="primary-header">
         <div class="container">
           <a href="/">
@@ -108,7 +51,80 @@
           </div>
         </div>
       </header>
-      <!-- <main></main> -->
+      <main>
+        <div
+          id="image-track"
+          data-mouse-down-at="0"
+          data-prev-percentage="0"
+          data-image-order="0"
+          data-percentage="0"
+        >
+          <img
+            src="images/img1.jpg"
+            class="image selected"
+            alt="img1"
+            draggable="false"
+          />
+          <img
+            src="images/img2.jpg"
+            class="image others"
+            alt="img2"
+            draggable="false"
+          />
+          <img
+            src="images/img3.jpg"
+            class="image others"
+            alt="img3"
+            draggable="false"
+          />
+          <img
+            src="images/img4.jpg"
+            class="image others"
+            alt="img4"
+            draggable="false"
+          />
+          <img
+            src="images/img5.jpg"
+            class="image others"
+            alt="img5"
+            draggable="false"
+          />
+          <img
+            src="images/img6.jpg"
+            class="image others"
+            alt="img6"
+            draggable="false"
+          />
+          <img
+            src="images/img7.jpg"
+            class="image others"
+            alt="img7"
+            draggable="false"
+          />
+          <img
+            src="images/img8.jpg"
+            class="image others"
+            alt="img8"
+            draggable="false"
+          />
+        </div>
+        <div id="myModal" class="modal">
+          <div class="container">
+            <h2>Contact Us</h2>
+            <form class="form">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+              <label for="message">Message:</label>
+              <textarea id="message" name="message" required></textarea>
+              <button type="submit" class="button" data-type="gradient">
+                Send
+              </button>
+            </form>
+          </div>
+        </div>
+      </main>
       <footer class="primary-footer">
         <div class="container | flow">
           <div id="links" class="fade-out">
