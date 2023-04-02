@@ -2,6 +2,9 @@ const body = document.body;
 const track = document.getElementById('image-track');
 const image = track.children;
 
+const check = document.getElementById('check');
+const buttonMenu = document.getElementById('button-menu');
+
 const links = document.getElementById('links');
 // const copyright = document.getElementById('copyright');
 
@@ -15,6 +18,11 @@ const mobile = 560;
 
 let isImageSelected = true;
 let lastScroll = 0;
+
+// TOGGLE MENU
+function toggleCheck() {
+  check.checked = !check.checked;
+}
 
 // SELECT IMAGE
 for (let i = 0; i < image.length; i++) {
@@ -80,7 +88,7 @@ for (let i = 0; i < image.length; i++) {
       home.classList.remove('current');
     }
     // Remove highlight
-    // gallery.classList.remove('current');
+    gallery.classList.remove('current');
     store.classList.remove('current');
     about.classList.remove('current');
 
@@ -144,7 +152,7 @@ function flipImage() {
   );
 
   home.classList.toggle('current', nextOrder === 0);
-  gallery.classList.toggle('current', nextOrder !== 0);
+  // gallery.classList.toggle('current', nextOrder !== 0);
 
   track.dataset.prevPercentage = (nextOrder / (image.length - 1)) * -100;
   track.dataset.percentage = track.dataset.prevPercentage;
@@ -152,7 +160,7 @@ function flipImage() {
   isImageSelected = true;
 }
 
-// UNSELECT IMAGE
+// DESELECT IMAGE
 function deselectImage() {
   if (typeof track.dataset.imageOrder === 'undefined') return;
   for (let i = 0; i < image.length; i++) {
@@ -342,6 +350,7 @@ function touchMove(e) {
 // });
 
 // EVENT LISTENER
+buttonMenu.onclick = toggleCheck;
 window.addEventListener('wheel', function (e) {
   if (window.innerWidth) {
     if (isImageSelected) {
@@ -352,10 +361,21 @@ window.addEventListener('wheel', function (e) {
   }
 });
 gallery.onclick = function () {
-  if (window.innerWidth) {
+  if (window.location.pathname === '/') {
     deselectImage();
+  } else {
+    sessionStorage.setItem('deselectImage', 'true');
+    window.location.href = window.location.origin + '/';
+    // deselectImage();
   }
 };
+if (sessionStorage.getItem('deselectImage') === 'true') {
+  // Call the deselectImage function
+  deselectImage();
+
+  // Clear the flag in sessionStorage
+  sessionStorage.removeItem('deselectImage');
+}
 
 // Desktop
 track.addEventListener('mousedown', function (e) {

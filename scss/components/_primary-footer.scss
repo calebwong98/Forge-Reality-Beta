@@ -30,7 +30,14 @@
   width: $link-width;
   height: $link-height;
   opacity: $link-opacity-passive;
-  transition: opacity 500ms;
+
+  clip-path: inset(0 0 0 0);
+
+  @for $i from 1 through 4 {
+    &:nth-child(#{$i}) {
+      transition: clip-path 500ms (200ms * $i), opacity 250ms;
+    }
+  }
 
   &:is(:hover, :focus) {
     opacity: 1;
@@ -71,7 +78,10 @@
 
 // Links fade out
 .fade-out {
-  opacity: 0;
+  // opacity: 0;
+  .link {
+    clip-path: inset(100% 0 100% 0);
+  }
   // @include mq($breakpoint-small) {
   //   opacity: $opacity-active;
   // }

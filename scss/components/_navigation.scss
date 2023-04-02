@@ -45,21 +45,24 @@
       opacity: 1;
     }
 
-    &::after {
-      background: $navigation-color;
-      content: '';
-      position: absolute;
+    // &::after {
+    //   background: $navigation-color;
+    //   content: '';
+    //   position: absolute;
 
-      height: $navigation-hover-line-height;
-      left: 0;
-      bottom: -0.3rem;
-      width: 0%;
-      transition: width 300ms;
-    }
+    //   height: $navigation-hover-line-height;
+    //   left: 0;
+    //   bottom: -0.3rem;
+    //   width: 0%;
+    //   transition: width 300ms;
+    // }
 
-    &:hover::after {
-      width: 100%;
-    }
+    // &:hover::after {
+    //   width: 100%;
+    // }
+    // &.current::after {
+    //   width: 100%;
+    // }
   }
 
   @include mq($breakpoint-medium) {
