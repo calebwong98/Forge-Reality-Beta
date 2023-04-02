@@ -39,8 +39,10 @@
             </div>
           </nav>
           <div class="cta">
-            <button class="button" data-type="gradient">Start a Project</button>
-            <label for="check" class="menu">
+            <button class="button" data-type="gradient" id="button-overlay">
+              Start a Project
+            </button>
+            <label for="check" id="menu">
               <svg width="28" height="23" viewBox="0 0 28 23">
                 <path
                   d="M1.51904 1.75H26.1571M1.51904 11.5H26.1571M1.51904 21.25H26.1571"
@@ -110,9 +112,9 @@
             draggable="false"
           />
         </div>
-        <div id="myModal" class="modal">
+        <div id="modal" class="modal">
           <div class="container">
-            <h2>Contact Us</h2>
+            <!-- <h2>Contact Us</h2> -->
             <form class="form">
               <label for="name">Name:</label>
               <input type="text" id="name" name="name" required />

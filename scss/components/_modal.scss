@@ -1,19 +1,29 @@
 @use '../abstracts' as *;
 
 .modal {
-  display: none;
+  // display: none;
   z-index: 99;
   background: grey;
   color: black;
   position: absolute;
-  top: 0;
-  height: 100vh;
+  bottom: -100%;
+  // top: -110%;
+  // clip-path: inset(100% 0 0 0);
+  right: 0;
+  height: 80vh;
   width: 100%;
+  transition: bottom 0.5s ease-in-out;
+
+  &.open {
+    // clip-path: inset(0 0 0 0);
+    bottom: 0;
+  }
 
   .form {
+    display: none;
     // background: red;
     // margin-block: auto;
-    display: flex;
+    // display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
