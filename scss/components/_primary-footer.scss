@@ -49,6 +49,7 @@
 
 .location {
   display: flex;
+  display: none;
   justify-content: center;
   gap: $size-2;
   margin-inline: auto;
@@ -62,6 +63,7 @@
   }
   @include mq($breakpoint-medium) {
     display: flex;
+    display: none;
     opacity: $opacity-active;
   }
 }
