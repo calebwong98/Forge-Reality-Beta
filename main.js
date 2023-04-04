@@ -1,3 +1,6 @@
+import page from 'page';
+import './js/routes';
+
 const body = document.body;
 const track = document.getElementById('image-track');
 const image = track.children;
@@ -20,16 +23,20 @@ const tablet = 880;
 const mobile = 560;
 
 let isImageSelected = true;
-let lastScroll = 0;
+// let lastScroll = 0;
+
+// // ROUTES
+
+page();
 
 // TOGGLE MENU
 function toggleCheck() {
   check.checked = !check.checked;
 }
-// TOGGLE OVERLAY
-function toggleOverlay() {
-  overlay.classList.toggle('open');
-}
+// // TOGGLE OVERLAY
+// function toggleOverlay() {
+//   overlay.classList.toggle('open');
+// }
 
 // SELECT IMAGE
 for (let i = 0; i < image.length; i++) {
@@ -359,12 +366,13 @@ function touchMove(e) {
 // EVENT LISTENER
 buttonMenu.onclick = function () {
   toggleCheck();
-  toggleOverlay();
+  // toggleOverlay();
 };
-buttonOverlay.onclick = toggleOverlay;
-menu.onclick = function () {
-  overlay.classList.remove('open');
-};
+// buttonOverlay.onclick = toggleOverlay;
+// menu.onclick = function () {
+//   overlay.classList.remove('open');
+// };
+
 window.addEventListener('wheel', function (e) {
   if (window.innerWidth) {
     if (isImageSelected) {
