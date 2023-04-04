@@ -8,53 +8,53 @@
     <link rel="stylesheet" href="/scss/main.scss" />
   </head>
   <body>
-    <header class="primary-header">
-      <div class="container">
-        <a href="/">
-          <img class="logo" src="images/logo.svg" alt="CalebWONG Logo" />
-        </a>
-        <input type="checkbox" id="check" />
-        <nav class="navigation">
-          <ul class="flex-group text-center">
-            <li>
-              <a id="Home" class="current" href="/">Home</a>
-            </li>
-            <li>
-              <label for="check" id="Gallery">Gallery</label>
-            </li>
-            <li>
-              <a id="Store" href="/store">Store</a>
-            </li>
-            <li>
-              <a id="About" href="/">About</a>
-            </li>
-          </ul>
-          <button class="button" data-type="gradient" id="button-menu">
-            Start a Project
-          </button>
-          <div class="location">
-            <img class="link" src="./images/location.svg" alt="location" />
-            <p>Ipoh, Malaysia</p>
-          </div>
-        </nav>
-        <div class="cta">
-          <button class="button" data-type="gradient" id="button-overlay">
-            Start a Project
-          </button>
-          <label for="check" id="menu">
-            <svg width="28" height="23" viewBox="0 0 28 23">
-              <path
-                d="M1.51904 1.75H26.1571M1.51904 11.5H26.1571M1.51904 21.25H26.1571"
-                stroke-width="2.67"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </label>
-        </div>
-      </div>
-    </header>
     <div class="app" id="app">
+      <header class="primary-header">
+        <div class="container">
+          <a href="/">
+            <img class="logo" src="images/logo.svg" alt="CalebWONG Logo" />
+          </a>
+          <input type="checkbox" id="check" />
+          <nav class="navigation">
+            <ul class="flex-group text-center">
+              <li>
+                <a id="Home" class="current" href="/">Home</a>
+              </li>
+              <li>
+                <label for="check" id="Gallery">Gallery</label>
+              </li>
+              <li>
+                <a id="Store" href="/store">Store</a>
+              </li>
+              <li>
+                <a id="About" href="/">About</a>
+              </li>
+            </ul>
+            <button class="button" data-type="gradient" id="button-menu">
+              Start a Project
+            </button>
+            <div class="location">
+              <img class="link" src="./images/location.svg" alt="location" />
+              <p>Ipoh, Malaysia</p>
+            </div>
+          </nav>
+          <div class="cta">
+            <button class="button" data-type="gradient" id="button-overlay">
+              Start a Project
+            </button>
+            <label for="check" id="menu">
+              <svg width="28" height="23" viewBox="0 0 28 23">
+                <path
+                  d="M1.51904 1.75H26.1571M1.51904 11.5H26.1571M1.51904 21.25H26.1571"
+                  stroke-width="2.67"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </label>
+          </div>
+        </div>
+      </header>
       <main>
         <div
           id="image-track"
@@ -113,32 +113,32 @@
           />
         </div>
       </main>
+      <footer class="primary-footer">
+        <div class="container | flow">
+          <div id="links" class="fade-out">
+            <a href="#" class="link">
+              <img src="./images/Twitter.svg" alt="my twitter" />
+            </a>
+            <a href="#" class="link">
+              <img src="./images/Instagram.svg" alt="my instagram" />
+            </a>
+            <a href="#" class="link">
+              <img src="./images/Facebook.svg" alt="my facebook" />
+            </a>
+            <a href="#" class="link">
+              <img src="./images/Discord.svg" alt="my discord" />
+            </a>
+          </div>
+          <div class="location">
+            <img class="link" src="./images/location.svg" alt="location" />
+            <p>Ipoh, Malaysia</p>
+          </div>
+          <div id="copyright" class="opacity-increase">
+            <p>© 2023 CalebWONG. All Rights Reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
-    <footer class="primary-footer">
-      <div class="container | flow">
-        <div id="links" class="fade-out">
-          <a href="#" class="link">
-            <img src="./images/Twitter.svg" alt="my twitter" />
-          </a>
-          <a href="#" class="link">
-            <img src="./images/Instagram.svg" alt="my instagram" />
-          </a>
-          <a href="#" class="link">
-            <img src="./images/Facebook.svg" alt="my facebook" />
-          </a>
-          <a href="#" class="link">
-            <img src="./images/Discord.svg" alt="my discord" />
-          </a>
-        </div>
-        <div class="location">
-          <img class="link" src="./images/location.svg" alt="location" />
-          <p>Ipoh, Malaysia</p>
-        </div>
-        <div id="copyright" class="opacity-increase">
-          <p>© 2023 CalebWONG. All Rights Reserved.</p>
-        </div>
-      </div>
-    </footer>
 
     <script type="module" src="/main.js"></script>
   </body>
