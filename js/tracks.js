@@ -1,16 +1,3 @@
-// import page from 'page';
-// import './js/routes';
-// import './js/tracks';
-
-// // Start Page.js
-// page.start();
-
-// // Handle URL changes
-// window.addEventListener('popstate', function (event) {
-//   // Call the Page.js dispatch function to handle the URL change
-//   page.dispatch(event.state.path);
-// });
-
 // const body = document.body;
 const track = document.getElementById('image-track');
 const image = track.children;

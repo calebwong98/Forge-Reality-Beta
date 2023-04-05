@@ -3,6 +3,7 @@
 .app {
   position: relative;
   height: fit-content;
+  height: 100vh;
   width: 100%;
   overflow: hidden;
   // @include mq($breakpoint-small) {
