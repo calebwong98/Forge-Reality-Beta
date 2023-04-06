@@ -1,14 +1,5 @@
 import page from 'page';
 
-// Define routes and their associated controllers
-// const routes = {
-//   '/': home,
-//   '/store': store,
-//   '/about': about,
-//   // ... other routes
-//   '*': notFound,
-// };
-
 function home() {
   fetch('/templates/home.html')
     .then((response) => {
@@ -29,6 +20,7 @@ function home() {
         'Failed to load the home page. Please try again later.';
     });
 }
+
 function store() {
   fetch('/templates/store.html')
     .then((response) => {
@@ -49,6 +41,7 @@ function store() {
         'Failed to load the store page. Please try again later.';
     });
 }
+
 function about() {
   fetch('/templates/about.html')
     .then((response) => {
@@ -69,6 +62,7 @@ function about() {
         'Failed to load the about page. Please try again later.';
     });
 }
+
 function notFound() {
   // Fetch the HTML template for the 404 page
   fetch('/templates/404.html')
