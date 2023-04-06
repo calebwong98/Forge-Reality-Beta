@@ -17,8 +17,6 @@ const about = document.getElementById('About');
 const tablet = 880;
 const mobile = 560;
 
-console.log(track);
-
 let isImageSelected = true;
 // let lastScroll = 0;
 
@@ -28,75 +26,71 @@ function toggleCheck() {
 }
 
 // SELECT IMAGE
-for (let i = 0; i < image.length; i++) {
-  image[i].addEventListener('click', function (event) {
-    // if (window.innerWidth < mobile) return;
-    if (isImageSelected) return;
+function selectImage(order) {
+  // if (window.innerWidth < mobile) return;
+  if (isImageSelected) return;
 
-    // Use event.target to get the clicked image element
-    const selectedImage = event.target;
-    const order = Array.prototype.indexOf.call(image, selectedImage);
+  // Use order to get the selected image element
+  const selectedImage = image[order];
 
-    track.dataset.imageOrder = order;
-    track.dataset.percentage = (order / (image.length - 1)) * -100;
-    track.dataset.prevPercentage = track.dataset.percentage;
+  track.dataset.imageOrder = order;
+  track.dataset.percentage = (order / (image.length - 1)) * -100;
+  track.dataset.prevPercentage = track.dataset.percentage;
 
-    // Animate the width and clip height of selected element to full screen
-    selectedImage.classList.add('selected');
+  // Animate the width and clip height of selected element to full screen
+  selectedImage.classList.add('selected');
 
-    // Remove the "selected" class from other image elements
-    for (let i = 0; i < image.length; i++) {
-      if (i !== order) {
-        image[i].classList.remove('selected');
-      }
+  // Remove the "selected" class from other image elements
+  for (let i = 0; i < image.length; i++) {
+    if (i !== order) {
+      image[i].classList.remove('selected');
     }
+  }
 
-    // Animate the clip height of elements other than selected to 0
-    for (let i = 0; i < image.length; i++) {
-      if (i !== order) {
-        image[i].classList.add('others');
-      } else {
-        image[i].classList.remove('others');
-      }
-    }
-    if (i === order) {
-      image[i].animate(
-        {
-          transform: `translate(0%, 0%)`,
-        },
-        {
-          duration: 0,
-          fill: 'forwards',
-        }
-      );
-    }
-    image[i].animate(
-      {
-        objectPosition: `${
-          (100 + (track.dataset.imageOrder / (image.length - 1)) * -100) / 2 +
-          (50 / (image.length - 1)) * i
-        }% center`,
-      },
-      { duration: 500, fill: 'forwards' }
-    );
-
-    // Fade out social media links
-    links.classList.add('fade-out');
-    // Highlight home
-    if (i === 0) {
-      home.classList.add('current');
-      gallery.classList.remove('current');
+  // Animate the clip height of elements other than selected to 0
+  for (let i = 0; i < image.length; i++) {
+    if (i !== order) {
+      image[i].classList.add('others');
     } else {
-      home.classList.remove('current');
+      image[i].classList.remove('others');
     }
-    // Remove highlight
-    gallery.classList.remove('current');
-    store.classList.remove('current');
-    about.classList.remove('current');
+  }
+  image[order].animate(
+    {
+      transform: `translate(0%, 0%)`,
+    },
+    {
+      duration: 0,
+      fill: 'forwards',
+    }
+  );
 
-    // Set the selected state to true
-    isImageSelected = true;
-  });
+  image[order].animate(
+    {
+      objectPosition: `${
+        (100 + (track.dataset.imageOrder / (image.length - 1)) * -100) / 2 +
+        (50 / (image.length - 1)) * order
+      }% center`,
+    },
+    { duration: 500, fill: 'forwards' }
+  );
+
+  // Fade out social media links
+  links.classList.add('fade-out');
+  // Highlight home
+  if (order === 0) {
+    home.classList.add('current');
+    gallery.classList.remove('current');
+  } else {
+    home.classList.remove('current');
+  }
+  // Remove highlight
+  gallery.classList.remove('current');
+  store.classList.remove('current');
+  about.classList.remove('current');
+
+  // Set the selected state to true
+  isImageSelected = true;
 }
 
 // FLIP IMAGE
@@ -429,3 +423,12 @@ track.addEventListener('mouseup', function () {
     }
   }
 });
+
+for (let i = 0; i < image.length; i++) {
+  image[i].addEventListener('click', function (event) {
+    // Use event.target to get the clicked image element
+    const selectedImage = event.target;
+    const order = Array.prototype.indexOf.call(image, selectedImage);
+    selectImage(order);
+  });
+}

@@ -9,7 +9,6 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "hogan.js": "^3.0.2",
     "page": "^1.11.6",
     "prettier": "2.8.6",
     "sass": "^1.59.3",
