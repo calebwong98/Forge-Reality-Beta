@@ -1,5 +1,7 @@
 import page from 'page';
 
+import { getElement, trackModule } from './trackModule.js';
+
 function home() {
   fetch('/templates/home.html')
     .then((response) => {
@@ -13,16 +15,8 @@ function home() {
     .then((html) => {
       document.getElementById('main').innerHTML = html;
 
-      const track = document.getElementById('image-track');
-
-      console.log(track);
-
-      function mouseDownAt(e) {
-        track.dataset.mouseDownAt = e.clientX;
-      }
-      track.addEventListener('click', function (e) {
-        mouseDownAt(e);
-      });
+      // const track = document.getElementById('image-track');
+      trackModule.init();
     })
     .catch((error) => {
       console.error(error); // Log the error to the console
