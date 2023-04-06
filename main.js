@@ -1,12 +1,12 @@
 import page from 'page';
 import './js/routes';
-import './js/track';
+// import './js/track';
 
-// Start Page.js
-page.start();
+page.base(location.pathname.replace('/templates/', ''));
+page('*', init.ctx);
+page('/templates/home', route.home);
+page('/templates/store', route.store);
+page('/templates/about', route.about);
+page('*', render.content);
 
-// Handle URL changes
-window.addEventListener('popstate', function (event) {
-  // Call the Page.js dispatch function to handle the URL change
-  page.dispatch(event.state.path);
-});
+page();

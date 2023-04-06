@@ -17,6 +17,8 @@ const about = document.getElementById('About');
 const tablet = 880;
 const mobile = 560;
 
+console.log(track);
+
 let isImageSelected = true;
 // let lastScroll = 0;
 
@@ -370,6 +372,7 @@ track.addEventListener('mousedown', function (e) {
     }
   }
 });
+
 track.addEventListener('mouseup', function () {
   if (window.innerWidth) {
     if (isImageSelected) {
