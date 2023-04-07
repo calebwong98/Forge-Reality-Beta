@@ -1,6 +1,6 @@
 import page from 'page';
 
-import { getElement, trackModule } from './trackModule.js';
+import { trackModule } from './trackModule.js';
 
 function home() {
   fetch('/templates/home.html')
@@ -15,7 +15,6 @@ function home() {
     .then((html) => {
       document.getElementById('main').innerHTML = html;
 
-      // const track = document.getElementById('image-track');
       trackModule.init();
     })
     .catch((error) => {

@@ -1,28 +1,16 @@
-export function getElement(selector) {
-  const element = document.querySelector(selector);
-  if (!element) {
-    return;
-  }
-  return element;
-}
-
 var trackModule = (function () {
   // Private function to handle form submission
   // SELECT IMAGE
   function selectImage(
-    isImageSelected,
     track,
     image,
     order,
     links,
     home,
+    gallery,
     about,
     store
   ) {
-    console.log(isImageSelected);
-    // if (window.innerWidth < mobile) return;
-    if (isImageSelected) return;
-
     // Use order to get the selected image element
     const selectedImage = image[order];
 
@@ -81,9 +69,6 @@ var trackModule = (function () {
     gallery.classList.remove('current');
     store.classList.remove('current');
     about.classList.remove('current');
-
-    // Set the selected state to true
-    isImageSelected = true;
   }
 
   // TOGGLE MENU
@@ -92,15 +77,15 @@ var trackModule = (function () {
   }
 
   // FLIP IMAGE
-  function flipImage(track, image, home, isImageSelected) {
+  function flipImage(track, image, home) {
     const quarterPoint = window.innerWidth / 4;
-    const order = parseFloat(track.dataset.imageOrder);
+    const imageOrder = parseFloat(track.dataset.imageOrder);
     let nextOrder = 0;
 
     if (track.dataset.mouseDownAt > quarterPoint * 3) {
-      nextOrder = order + 1;
+      nextOrder = imageOrder + 1;
     } else if (track.dataset.mouseDownAt < quarterPoint) {
-      nextOrder = order - 1;
+      nextOrder = imageOrder - 1;
     } else return;
 
     if (nextOrder < 0 || nextOrder >= image.length) {
@@ -151,23 +136,11 @@ var trackModule = (function () {
     track.dataset.prevPercentage = (nextOrder / (image.length - 1)) * -100;
     track.dataset.percentage = track.dataset.prevPercentage;
     track.dataset.mouseDownAt = '0';
-    isImageSelected = true;
   }
 
   // DESELECT IMAGE
-  function deselectImage(
-    track,
-    image,
-    gallery,
-    home,
-    store,
-    about,
-    links,
-    isImageSelected
-  ) {
+  function deselectImage(track, image, gallery, home, store, about, links) {
     if (typeof track.dataset.imageOrder === 'undefined') return;
-
-    isImageSelected = false;
     for (let i = 0; i < image.length; i++) {
       track.dataset.percentage =
         (track.dataset.imageOrder / (image.length - 1)) * -100;
@@ -262,7 +235,7 @@ var trackModule = (function () {
     track.dataset.prevPercentage = track.dataset.percentage;
   }
   function dragImage(track, image, e) {
-    if (track.dataset.mouseDownAt === '0' || isImageSelected === true) return;
+    if (track.dataset.mouseDownAt === '0') return;
 
     const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
       maxDelta = window.innerWidth / 2;
@@ -298,8 +271,8 @@ var trackModule = (function () {
     track.dataset.mouseDownAt = '0';
     track.dataset.prevPercentage = track.dataset.percentage;
   }
-  function touchMove(track, image, isImageSelected, e) {
-    if (track.dataset.mouseDownAt === '0' || isImageSelected === true) return;
+  function touchMove(track, image, e) {
+    if (track.dataset.mouseDownAt === '0') return;
 
     const mouseDelta =
         parseFloat(track.dataset.mouseDownAt) - e.touches[0].clientX,
@@ -331,7 +304,7 @@ var trackModule = (function () {
   // Public function to initialize the module
   function init() {
     // const body = document.body;
-    const track = getElement('#image-track');
+    const track = document.getElementById('image-track');
     const image = track.children;
 
     // const menu = document.getElementById('menu');
@@ -358,39 +331,21 @@ var trackModule = (function () {
     };
 
     window.addEventListener('wheel', function (e) {
-      if (window.innerWidth) {
-        if (isImageSelected) {
-          deselectImage(
-            track,
-            image,
-            gallery,
-            home,
-            store,
-            about,
-            links,
-            isImageSelected
-          );
-        } else {
-          scrollImage(e, track, image);
-        }
+      if (isImageSelected) {
+        deselectImage(track, image, gallery, home, store, about, links);
+        isImageSelected = false;
+      } else {
+        scrollImage(e, track, image);
       }
     });
+
     gallery.onclick = function () {
       if (window.location.pathname === '/') {
-        deselectImage(
-          track,
-          image,
-          gallery,
-          home,
-          store,
-          about,
-          links,
-          isImageSelected
-        );
+        deselectImage(track, image, gallery, home, store, about, links);
+        isImageSelected = false;
       } else {
         sessionStorage.setItem('deselectImage', 'true');
         window.location.href = window.location.origin + '/';
-        // deselectImage();
       }
     };
     if (sessionStorage.getItem('deselectImage') === 'true') {
@@ -405,76 +360,54 @@ var trackModule = (function () {
         links,
         isImageSelected
       );
-
+      isImageSelected = false;
       // Clear the flag in sessionStorage
       sessionStorage.removeItem('deselectImage');
     }
 
     // Desktop
     track.addEventListener('mousedown', function (e) {
-      if (window.innerWidth) {
-        if (isImageSelected) {
-          mouseDownAt(track, e);
-        } else {
-          mouseDownAt(track, e);
-        }
+      if (isImageSelected) {
+        mouseDownAt(track, e);
+      } else {
+        mouseDownAt(track, e);
       }
     });
 
     track.addEventListener('mouseup', function () {
-      if (window.innerWidth) {
-        if (isImageSelected) {
-          return;
-        } else {
-          mouseUp(track);
-        }
+      if (isImageSelected) {
+        flipImage(track, image, home);
+      } else {
+        mouseUp(track);
       }
     });
     window.addEventListener('mousemove', function (e) {
-      if (window.innerWidth) {
-        if (isImageSelected) {
-          return;
-        } else {
-          dragImage(track, image, e);
-        }
+      if (isImageSelected) {
+        return;
+      } else {
+        dragImage(track, image, e);
       }
     });
     // Mobile
     track.addEventListener('touchstart', function (e) {
-      if (window.innerWidth) {
-        if (isImageSelected) {
-          touchStart(track, e);
-        } else {
-          touchStart(track, e);
-        }
+      if (isImageSelected) {
+        touchStart(track, e);
+      } else {
+        touchStart(track, e);
       }
     });
     track.addEventListener('touchend', function () {
-      if (window.innerWidth) {
-        if (isImageSelected) {
-          return;
-        } else {
-          touchEnd(track);
-        }
+      if (isImageSelected) {
+        return;
+      } else {
+        touchEnd(track);
       }
     });
     window.addEventListener('touchmove', function (e) {
-      if (window.innerWidth) {
-        if (isImageSelected) {
-          return;
-        } else {
-          touchMove(track, image, isImageSelected, e);
-        }
-      }
-    });
-
-    track.addEventListener('mouseup', function () {
-      if (window.innerWidth) {
-        if (isImageSelected) {
-          flipImage(track, image, home, isImageSelected);
-        } else {
-          return;
-        }
+      if (isImageSelected) {
+        return;
+      } else {
+        touchMove(track, image, e);
       }
     });
 
@@ -483,16 +416,8 @@ var trackModule = (function () {
         // Use event.target to get the clicked image element
         const selectedImage = event.target;
         const order = Array.prototype.indexOf.call(image, selectedImage);
-        selectImage(
-          isImageSelected,
-          track,
-          image,
-          order,
-          links,
-          home,
-          about,
-          store
-        );
+        selectImage(track, image, order, links, home, gallery, about, store);
+        isImageSelected = true;
       });
     }
   }
