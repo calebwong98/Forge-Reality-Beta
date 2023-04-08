@@ -56,8 +56,6 @@ var trackModule = (function () {
       { duration: 500, fill: 'forwards' }
     );
 
-    // Fade out social media links
-    links.classList.add('fade-out');
     // Highlight home
     if (order === 0) {
       home.classList.add('current');
@@ -69,6 +67,9 @@ var trackModule = (function () {
     gallery.classList.remove('current');
     store.classList.remove('current');
     about.classList.remove('current');
+
+    // Remove social media links
+    links.classList.remove('fade-in');
   }
 
   // TOGGLE MENU
@@ -147,8 +148,8 @@ var trackModule = (function () {
 
       track.dataset.prevPercentage = track.dataset.percentage;
 
-      // Add "current" class to gallery link
-      // Remove "current" class from all other links
+      // Add "current" class to gallery
+      // Remove "current" class from all other nav
       gallery.classList.add('current');
       home.classList.remove('current');
       store.classList.remove('current');
@@ -191,7 +192,7 @@ var trackModule = (function () {
     }
 
     // Fade in social media links
-    links.classList.remove('fade-out');
+    links.classList.add('fade-in');
   }
 
   // MOUSEWHEEL SCROLL
@@ -304,7 +305,7 @@ var trackModule = (function () {
   // Public function to initialize the module
   function init() {
     // const body = document.body;
-    const track = document.getElementById('image-track');
+    const track = document.getElementById('track');
     const image = track.children;
 
     // const menu = document.getElementById('menu');
@@ -330,7 +331,7 @@ var trackModule = (function () {
       toggleCheck(check);
     };
 
-    window.addEventListener('wheel', function (e) {
+    track.addEventListener('wheel', function (e) {
       if (isImageSelected) {
         deselectImage(track, image, gallery, home, store, about, links);
         isImageSelected = false;
@@ -374,7 +375,7 @@ var trackModule = (function () {
       }
     });
 
-    track.addEventListener('mouseup', function () {
+    window.addEventListener('mouseup', function () {
       if (isImageSelected) {
         flipImage(track, image, home);
       } else {
@@ -382,10 +383,10 @@ var trackModule = (function () {
       }
     });
     window.addEventListener('mousemove', function (e) {
-      if (isImageSelected) {
-        return;
-      } else {
+      if (!isImageSelected) {
         dragImage(track, image, e);
+      } else {
+        return;
       }
     });
     // Mobile
@@ -397,10 +398,10 @@ var trackModule = (function () {
       }
     });
     track.addEventListener('touchend', function () {
-      if (isImageSelected) {
-        return;
-      } else {
+      if (!isImageSelected) {
         touchEnd(track);
+      } else {
+        return;
       }
     });
     window.addEventListener('touchmove', function (e) {
@@ -413,6 +414,7 @@ var trackModule = (function () {
 
     for (let i = 0; i < image.length; i++) {
       image[i].addEventListener('click', function (event) {
+        if (isImageSelected) return;
         // Use event.target to get the clicked image element
         const selectedImage = event.target;
         const order = Array.prototype.indexOf.call(image, selectedImage);
@@ -428,5 +430,5 @@ var trackModule = (function () {
   };
 })();
 
-// Export the modules
+// Export the module
 export { trackModule };

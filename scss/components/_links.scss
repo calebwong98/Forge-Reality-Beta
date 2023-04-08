@@ -1,0 +1,49 @@
+@use '../abstracts' as *;
+
+#links {
+  display: flex;
+  gap: $link-flex-gap;
+  margin-inline: auto;
+  margin-block: $link-margin-block;
+  overflow: hidden;
+
+  width: fit-content;
+  transition: opacity 500ms 500ms;
+  @include mq($breakpoint-small) {
+    margin-block: $link-margin-block-mobile;
+  }
+}
+
+.link {
+  width: $link-width;
+  height: $link-height;
+  opacity: $link-opacity-passive;
+  transform: translateY(100%);
+
+  clip-path: inset(0 0 0 0);
+
+  @for $i from 1 through 4 {
+    &:nth-child(#{$i}) {
+      transition: transform 500ms (150ms * $i), opacity 250ms;
+    }
+  }
+
+  &:is(:hover, :focus) {
+    opacity: 1;
+  }
+  @include mq($breakpoint-medium) {
+    opacity: $opacity-active;
+  }
+}
+
+// Links fade out
+.fade-in {
+  // opacity: 0;
+  .link {
+    // clip-path: inset(0 0 0 0);
+    transform: translateY(0%);
+  }
+  // @include mq($breakpoint-small) {
+  //   opacity: $opacity-active;
+  // }
+}

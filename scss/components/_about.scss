@@ -1,0 +1,23 @@
+@use '../abstracts' as *;
+
+.about {
+  display: flex;
+  height: 100vh;
+  width: 90%;
+  margin-inline: auto;
+}
+
+.profile {
+  padding: 20vmin;
+  &-picture {
+    width: $image-clip-width-default;
+    // clip-path: $image-clip-height-default;
+    height: 65vmin;
+    object-fit: cover;
+    // display: none;
+  }
+}
+
+.biography {
+  // background-color: red;
+}

@@ -41,7 +41,7 @@
     opacity: $navigation-opacity-passive;
     transition: opacity $navigation-opacity-transition;
 
-    &:is(:hover, :focus) {
+    &:is(:hover) {
       opacity: 1;
     }
 

@@ -13,61 +13,6 @@
   // }
 }
 
-#links {
-  display: flex;
-  gap: $link-flex-gap;
-  margin-inline: auto;
-  margin-block: $link-margin-block;
-
-  width: fit-content;
-  transition: opacity 500ms 500ms;
-  @include mq($breakpoint-small) {
-    margin-block: $link-margin-block-mobile;
-  }
-}
-
-.link {
-  width: $link-width;
-  height: $link-height;
-  opacity: $link-opacity-passive;
-
-  clip-path: inset(0 0 0 0);
-
-  @for $i from 1 through 4 {
-    &:nth-child(#{$i}) {
-      transition: clip-path 500ms (200ms * $i), opacity 250ms;
-    }
-  }
-
-  &:is(:hover, :focus) {
-    opacity: 1;
-  }
-  @include mq($breakpoint-medium) {
-    opacity: $opacity-active;
-  }
-}
-
-.location {
-  display: flex;
-  display: none;
-  justify-content: center;
-  gap: $size-2;
-  margin-inline: auto;
-  opacity: $opacity-active;
-
-  .link {
-    opacity: $opacity-active;
-  }
-  p {
-    width: fit-content;
-  }
-  @include mq($breakpoint-medium) {
-    display: flex;
-    display: none;
-    opacity: $opacity-active;
-  }
-}
-
 #copyright {
   width: fit-content;
   margin: auto;
@@ -76,17 +21,6 @@
   @include mq($breakpoint-medium) {
     opacity: $opacity-passive;
   }
-}
-
-// Links fade out
-.fade-out {
-  // opacity: 0;
-  .link {
-    clip-path: inset(100% 0 100% 0);
-  }
-  // @include mq($breakpoint-small) {
-  //   opacity: $opacity-active;
-  // }
 }
 
 // // Copyright highlight

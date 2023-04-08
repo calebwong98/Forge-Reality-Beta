@@ -1,0 +1,22 @@
+@use '../abstracts' as *;
+
+.location {
+  display: flex;
+  // display: none;
+  // justify-content: center;
+  gap: $size-2;
+  margin-inline: auto;
+  opacity: $opacity-active;
+
+  .link {
+    opacity: $opacity-active;
+  }
+  p {
+    width: fit-content;
+  }
+  @include mq($breakpoint-medium) {
+    display: flex;
+    // display: none;
+    opacity: $opacity-active;
+  }
+}

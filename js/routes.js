@@ -1,7 +1,9 @@
 import page from 'page';
 
+import { navModule } from './navModule.js';
 import { trackModule } from './trackModule.js';
 
+// Render Home & Gallery Page
 function home() {
   fetch('/templates/home.html')
     .then((response) => {
@@ -13,8 +15,8 @@ function home() {
       return response.text();
     })
     .then((html) => {
+      navModule.init();
       document.getElementById('main').innerHTML = html;
-
       trackModule.init();
     })
     .catch((error) => {
@@ -25,6 +27,7 @@ function home() {
     });
 }
 
+// Render Store Page
 function store() {
   fetch('/templates/store.html')
     .then((response) => {
@@ -36,6 +39,7 @@ function store() {
       return response.text();
     })
     .then((html) => {
+      navModule.init();
       document.getElementById('main').innerHTML = html;
     })
     .catch((error) => {
@@ -46,6 +50,7 @@ function store() {
     });
 }
 
+// Render About Page
 function about() {
   fetch('/templates/about.html')
     .then((response) => {
@@ -57,6 +62,7 @@ function about() {
       return response.text();
     })
     .then((html) => {
+      navModule.init();
       document.getElementById('main').innerHTML = html;
     })
     .catch((error) => {
@@ -67,6 +73,30 @@ function about() {
     });
 }
 
+// Render Start Project Page
+function startProject() {
+  fetch('/templates/start-project.html')
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(
+          `Failed to fetch about.html: ${response.status} ${response.statusText}`
+        );
+      }
+      return response.text();
+    })
+    .then((html) => {
+      navModule.init();
+      document.getElementById('main').innerHTML = html;
+    })
+    .catch((error) => {
+      console.error(error); // Log the error to the console
+      // Display an error message to the user or redirect to an error page
+      document.getElementById('main').innerHTML =
+        'Failed to load the about page. Please try again later.';
+    });
+}
+
+// Render 404 not found Page
 function notFound() {
   // Fetch the HTML template for the 404 page
   fetch('/templates/404.html')
@@ -91,4 +121,5 @@ function notFound() {
 page('/', home);
 page('/store', store);
 page('/about', about);
+page('/start-project', startProject);
 page('*', notFound);
