@@ -3,16 +3,19 @@
 .location {
   display: flex;
   // display: none;
-  // justify-content: center;
+  justify-content: right;
   gap: $size-2;
   margin-inline: auto;
   opacity: $opacity-active;
 
+  color: red;
   .link {
     opacity: $opacity-active;
+    transform: translateY(25%);
   }
   p {
     width: fit-content;
+    font-size: $font-size-600;
   }
   @include mq($breakpoint-medium) {
     display: flex;

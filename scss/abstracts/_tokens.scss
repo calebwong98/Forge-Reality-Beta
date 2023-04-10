@@ -45,6 +45,7 @@ $box-shadow-5: 0px 6px 5px rgb(0, 0, 0, 0.04), 0px 22px 18px rgb(0, 0, 0, 0.06),
 $body-font-family: $font-family-regular;
 $body-font-size-default: $font-size-400;
 $body-font-size-bold: $font-size-400;
+$body-font-size-focus: $font-size-800;
 $body-font-weight-default: $font-weight-default;
 $body-font-weight-bold: $font-weight-bold;
 $body-line-height: 2;
@@ -171,7 +172,7 @@ $card-heading-color-default: $card-color-default;
 // image track
 $image-gap: 10%;
 // $image-object-position-default: 50% center;
-$image-clip-width-default: 40vmin;
+$image-clip-width-default: 30vmin;
 // $image-clip-width-default: 100%;
 $image-clip-height-default: inset(18% 0% 18% 0%);
 $image-clip-height-hidden: 100%;

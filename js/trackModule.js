@@ -1,5 +1,5 @@
 var trackModule = (function () {
-  // Private function to handle form submission
+  // Private function to operate image track
   // SELECT IMAGE
   function selectImage(
     track,

@@ -2,6 +2,7 @@ import page from 'page';
 
 import { navModule } from './navModule.js';
 import { trackModule } from './trackModule.js';
+// import { aboutModule } from './aboutModule.js';
 
 // Render Home & Gallery Page
 function home() {
@@ -41,6 +42,7 @@ function store() {
     .then((html) => {
       navModule.init();
       document.getElementById('main').innerHTML = html;
+      trackModule.init();
     })
     .catch((error) => {
       console.error(error); // Log the error to the console
@@ -64,6 +66,7 @@ function about() {
     .then((html) => {
       navModule.init();
       document.getElementById('main').innerHTML = html;
+      // aboutModule.init();
     })
     .catch((error) => {
       console.error(error); // Log the error to the console
