@@ -16,8 +16,9 @@ function home() {
       return response.text();
     })
     .then((html) => {
-      navModule.init();
+      document.getElementById('Home').classList.add('current');
       document.getElementById('main').innerHTML = html;
+      navModule.init();
       trackModule.init();
     })
     .catch((error) => {
@@ -40,8 +41,9 @@ function store() {
       return response.text();
     })
     .then((html) => {
-      navModule.init();
+      document.getElementById('Store').classList.add('current');
       document.getElementById('main').innerHTML = html;
+      navModule.init();
       trackModule.init();
     })
     .catch((error) => {
@@ -64,8 +66,10 @@ function about() {
       return response.text();
     })
     .then((html) => {
-      navModule.init();
+      document.getElementById('About').classList.add('current');
       document.getElementById('main').innerHTML = html;
+      document.getElementById('copyright').classList.add('fade-out');
+      navModule.init();
       // aboutModule.init();
     })
     .catch((error) => {

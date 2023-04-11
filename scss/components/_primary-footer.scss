@@ -18,15 +18,15 @@
   margin: auto;
   opacity: $opacity-passive;
   overflow: hidden;
-  p {
-    transition: 1s;
-  }
   @include mq($breakpoint-medium) {
     opacity: $opacity-passive;
   }
 
+  p {
+    // transition: 1s;
+  }
   &.fade-out {
-    // display: none;
+    display: none;
     p {
       opacity: 0;
     }
