@@ -44,7 +44,6 @@ function store() {
       document.getElementById('Store').classList.add('current');
       document.getElementById('main').innerHTML = html;
       navModule.init();
-      trackModule.init();
     })
     .catch((error) => {
       console.error(error); // Log the error to the console
@@ -122,6 +121,18 @@ function notFound() {
       console.error('Failed to load 404 page:', error);
     });
 }
+
+// page('*', function (ctx, next) {
+//   if (ctx.init) {
+//     next();
+//   } else {
+//     console.log('hello');
+//     setTimeout(function () {
+//       console.log('bye');
+//       next();
+//     }, 300);
+//   }
+// });
 
 // page.base('/', home);
 // page('*', store);

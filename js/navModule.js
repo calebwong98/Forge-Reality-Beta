@@ -9,7 +9,6 @@ var navModule = (function () {
   }
 
   function toggleCheck(check) {
-    console.log(check.checked);
     if (!check.checked) return;
     check.checked = !check.checked;
   }
@@ -25,6 +24,8 @@ var navModule = (function () {
     const gallery = document.getElementById('Gallery');
     const store = document.getElementById('Store');
     const about = document.getElementById('About');
+
+    const track = document.getElementById('track');
 
     logo.onclick = function () {
       links.classList.remove('fade-in');
@@ -42,6 +43,13 @@ var navModule = (function () {
       selectedNav(home, gallery, store, about);
       this.classList.add('current');
       toggleCheck(check);
+    };
+
+    gallery.onclick = function () {
+      if (window.location.pathname !== '/') {
+        window.location.href = window.location.origin + '/';
+        sessionStorage.setItem('deselectImage', 'true');
+      }
     };
 
     store.onclick = function () {

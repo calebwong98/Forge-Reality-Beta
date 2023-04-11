@@ -344,12 +344,11 @@ var trackModule = (function () {
       if (window.location.pathname === '/') {
         deselectImage(track, image, gallery, home, store, about, links);
         isImageSelected = false;
-      } else {
-        sessionStorage.setItem('deselectImage', 'true');
-        window.location.href = window.location.origin + '/';
       }
     };
     if (sessionStorage.getItem('deselectImage') === 'true') {
+      track.classList.remove('intro-load');
+      track.classList.add('track-load');
       // Call the deselectImage function
       deselectImage(
         track,
