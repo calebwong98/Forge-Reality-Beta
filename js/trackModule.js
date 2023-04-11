@@ -347,8 +347,8 @@ var trackModule = (function () {
       }
     };
     if (sessionStorage.getItem('deselectImage') === 'true') {
-      track.classList.remove('intro-load');
-      track.classList.add('track-load');
+      // track.classList.remove('intro-load');
+      // track.classList.add('track-load');
       // Call the deselectImage function
       deselectImage(
         track,
