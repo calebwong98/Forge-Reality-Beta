@@ -12,6 +12,18 @@
   animation: introLoad 2s forwards;
 }
 
+@keyframes pageLoad {
+  0% {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+.page-load {
+  animation: pageLoad 2s both;
+}
+
 @keyframes trackLoad {
   0% {
     transform: translateY(100%);
@@ -32,17 +44,4 @@
       }
     }
   }
-}
-
-@keyframes pageLoad {
-  0% {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
-  100% {
-    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-  }
-}
-.page-load {
-  // animation: pageLoad 0.5s both;
-  opacity: 0;
 }

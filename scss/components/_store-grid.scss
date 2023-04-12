@@ -1,0 +1,83 @@
+@use '../abstracts' as *;
+
+.store-grid {
+  // position: relative;
+  // height: 80vh;
+  width: min(95%, 70rem);
+  margin: auto;
+  // clip-path: $image-clip-height-default;
+  background-color: red;
+
+  display: grid;
+  gap: 1.5rem;
+  grid-auto-columns: 1fr;
+  grid-template-areas:
+    'one'
+    'two'
+    'three'
+    'four'
+    'five';
+}
+
+.store {
+  // position: absolute;
+  // width: $image-clip-width-default;
+  // width: 80%;
+  // clip-path: $image-clip-height-default;
+  // height: $image-clip-height-hidden;
+
+  object-fit: cover;
+}
+
+.store:nth-child(1) {
+  grid-area: one;
+}
+.store:nth-child(2) {
+  grid-area: two;
+}
+.store:nth-child(3) {
+  grid-area: three;
+}
+.store:nth-child(4) {
+  grid-area: four;
+}
+.store:nth-child(5) {
+  grid-area: five;
+}
+
+@media screen and (min-width: 33em) {
+  .store-grid {
+    grid-template-areas:
+      'one one'
+      'two three'
+      'five five'
+      'four four';
+  }
+}
+
+@media screen and (min-width: 38em) {
+  .store-grid {
+    grid-template-areas:
+      'one one'
+      'two five'
+      'three five'
+      'four four';
+  }
+}
+
+@media screen and (min-width: 54em) {
+  .store-grid {
+    grid-template-areas:
+      'one one two'
+      'five five five'
+      'three four four';
+  }
+}
+
+@media screen and (min-width: 75em) {
+  .store-grid {
+    grid-template-areas:
+      'one one two five'
+      'three four four five';
+  }
+}

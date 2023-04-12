@@ -372,11 +372,14 @@ var trackModule = (function () {
       }
     });
 
-    window.addEventListener('mouseup', function () {
+    window.addEventListener('mouseup', function (e) {
+      if (!isImageSelected) {
+        mouseUp(track);
+      }
+    });
+    track.addEventListener('mouseup', function (e) {
       if (isImageSelected) {
         flipImage(track, image, home);
-      } else {
-        mouseUp(track);
       }
     });
     window.addEventListener('mousemove', function (e) {
