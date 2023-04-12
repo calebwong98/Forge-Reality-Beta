@@ -1,0 +1,11 @@
+@use '../abstracts' as *;
+
+.store {
+  position: absolute;
+  width: $image-clip-width-default;
+  width: 80%;
+  // clip-path: $image-clip-height-default;
+  height: $image-clip-height-hidden;
+
+  object-fit: cover;
+}

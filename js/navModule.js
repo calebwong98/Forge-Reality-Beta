@@ -14,7 +14,7 @@ var navModule = (function () {
   }
 
   // Public function to initialize the module
-  function init() {
+  function init(current) {
     const logo = document.getElementById('logo');
     const check = document.getElementById('check');
     const links = document.getElementById('links');
@@ -25,46 +25,52 @@ var navModule = (function () {
     const store = document.getElementById('Store');
     const about = document.getElementById('About');
 
-    const track = document.getElementById('track');
-
-    logo.onclick = function () {
+    if (current === 'home') {
+      home.classList.add('current');
       links.classList.remove('fade-in');
       copyright.classList.remove('fade-out');
+    }
+    if (current === 'store') {
+      store.classList.add('current');
+      links.classList.add('fade-in');
+      copyright.classList.remove('fade-out');
+    }
+    if (current === 'about') {
+      about.classList.add('current');
+      links.classList.remove('fade-in');
+      copyright.classList.add('fade-out');
+    }
 
+    logo.onclick = function () {
       selectedNav(home, gallery, store, about);
       home.classList.add('current');
       toggleCheck(check);
     };
 
     home.onclick = function () {
-      links.classList.remove('fade-in');
-      copyright.classList.remove('fade-out');
-
       selectedNav(home, gallery, store, about);
-      this.classList.add('current');
+      home.classList.add('current');
       toggleCheck(check);
     };
 
     gallery.onclick = function () {
       if (window.location.pathname !== '/') {
-        window.location.href = window.location.origin + '/';
+        gallery.setAttribute('href', '/');
         sessionStorage.setItem('deselectImage', 'true');
+        // gallery.removeAttribute('href');
+        toggleCheck(check);
       }
     };
 
     store.onclick = function () {
-      links.classList.add('fade-in');
-      copyright.classList.remove('fade-out');
       selectedNav(home, gallery, store, about);
-      this.classList.add('current');
+      store.classList.add('current');
       toggleCheck(check);
     };
 
     about.onclick = function () {
-      links.classList.remove('fade-in');
-      copyright.classList.add('fade-out');
       selectedNav(home, gallery, store, about);
-      this.classList.add('current');
+      about.classList.add('current');
       toggleCheck(check);
     };
   }

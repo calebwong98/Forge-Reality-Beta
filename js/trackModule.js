@@ -340,15 +340,13 @@ var trackModule = (function () {
       }
     });
 
-    gallery.onclick = function () {
-      if (window.location.pathname === '/') {
-        deselectImage(track, image, gallery, home, store, about, links);
-        isImageSelected = false;
-      }
+    gallery.onclick = function (e) {
+      e.preventDefault();
+      toggleCheck(check);
+      deselectImage(track, image, gallery, home, store, about, links);
+      isImageSelected = false;
     };
     if (sessionStorage.getItem('deselectImage') === 'true') {
-      // track.classList.remove('intro-load');
-      // track.classList.add('track-load');
       // Call the deselectImage function
       deselectImage(
         track,

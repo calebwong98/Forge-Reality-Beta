@@ -2,7 +2,6 @@ import page from 'page';
 
 import { navModule } from './navModule.js';
 import { trackModule } from './trackModule.js';
-// import { aboutModule } from './aboutModule.js';
 
 // Render Home & Gallery Page
 function home() {
@@ -16,9 +15,8 @@ function home() {
       return response.text();
     })
     .then((html) => {
-      document.getElementById('Home').classList.add('current');
+      navModule.init('home');
       document.getElementById('main').innerHTML = html;
-      navModule.init();
       trackModule.init();
     })
     .catch((error) => {
@@ -41,9 +39,8 @@ function store() {
       return response.text();
     })
     .then((html) => {
-      document.getElementById('Store').classList.add('current');
+      navModule.init('store');
       document.getElementById('main').innerHTML = html;
-      navModule.init();
     })
     .catch((error) => {
       console.error(error); // Log the error to the console
@@ -65,11 +62,8 @@ function about() {
       return response.text();
     })
     .then((html) => {
-      document.getElementById('About').classList.add('current');
+      navModule.init('about');
       document.getElementById('main').innerHTML = html;
-      document.getElementById('copyright').classList.add('fade-out');
-      navModule.init();
-      // aboutModule.init();
     })
     .catch((error) => {
       console.error(error); // Log the error to the console
@@ -126,13 +120,28 @@ function notFound() {
 //   if (ctx.init) {
 //     next();
 //   } else {
-//     console.log('hello');
+//     document.getElementById('main').classList.add('page-load');
 //     setTimeout(function () {
-//       console.log('bye');
+//       document.getElementById('main').classList.remove('page-load');
 //       next();
-//     }, 300);
+//     }, 1000);
 //   }
 // });
+// function pageTransition(ctx, next) {
+//   if (ctx.init) {
+//     next();
+//   } else {
+//     document.getElementById('track').classList.add('page-load');
+//     console.log('hello');
+//     next();
+
+//     setTimeout(function () {
+//       document.getElementById('track').classList.remove('page-load');
+//       console.log('bye');
+//       // next();
+//     }, 1000);
+//   }
+// }
 
 // page.base('/', home);
 // page('*', store);
