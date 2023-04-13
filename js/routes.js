@@ -2,6 +2,35 @@ import page from 'page';
 
 import { navModule } from './navModule.js';
 import { trackModule } from './trackModule.js';
+import { pageModule } from './pageModule.js';
+
+const pageIdMap = {
+  '/': 'track',
+  '/store': 'grid',
+  '/about': 'about',
+};
+
+// Add the beforeOut and afterIn event handlers
+page('*', function (ctx, next) {
+  const currentPage = document.querySelector('.current-page');
+  const nextPageId = pageIdMap[ctx.pathname];
+  const nextPage = document.getElementById(nextPageId);
+  if (nextPage) {
+    pageModule.beforeOut();
+    next();
+    pageModule.afterIn();
+  } else {
+    next('/');
+  }
+});
+
+page('/', home);
+page('/store', store);
+page('/about', about);
+page('/start-project', startProject);
+page('*', notFound);
+
+page.start();
 
 // Render Home & Gallery Page
 function home() {
@@ -18,6 +47,8 @@ function home() {
       navModule.init('home');
       document.getElementById('main').innerHTML = html;
       trackModule.init();
+
+      pageModule.init('track');
     })
     .catch((error) => {
       console.error(error); // Log the error to the console
@@ -41,6 +72,8 @@ function store() {
     .then((html) => {
       navModule.init('store');
       document.getElementById('main').innerHTML = html;
+
+      pageModule.init('grid');
     })
     .catch((error) => {
       console.error(error); // Log the error to the console
@@ -64,6 +97,8 @@ function about() {
     .then((html) => {
       navModule.init('about');
       document.getElementById('main').innerHTML = html;
+
+      pageModule.init('about');
     })
     .catch((error) => {
       console.error(error); // Log the error to the console
@@ -115,38 +150,3 @@ function notFound() {
       console.error('Failed to load 404 page:', error);
     });
 }
-
-// page('*', function (ctx, next) {
-//   if (ctx.init) {
-//     next();
-//   } else {
-//     document.getElementById('main').classList.add('page-load');
-//     setTimeout(function () {
-//       document.getElementById('main').classList.remove('page-load');
-//       next();
-//     }, 1000);
-//   }
-// });
-// function pageTransition(ctx, next) {
-//   if (ctx.init) {
-//     next();
-//   } else {
-//     document.getElementById('track').classList.add('page-load');
-//     console.log('hello');
-//     next();
-
-//     setTimeout(function () {
-//       document.getElementById('track').classList.remove('page-load');
-//       console.log('bye');
-//       // next();
-//     }, 1000);
-//   }
-// }
-
-// page.base('/', home);
-// page('*', store);
-page('/', home);
-page('/store', store);
-page('/about', about);
-page('/start-project', startProject);
-page('*', notFound);
