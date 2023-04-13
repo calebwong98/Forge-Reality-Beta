@@ -27,6 +27,7 @@
 .image {
   position: absolute;
   width: $image-clip-width-default;
+  min-width: $image-clip-width-min;
   clip-path: $image-clip-height-default;
   height: $image-clip-height-hidden;
 

@@ -1,83 +1,67 @@
 @use '../abstracts' as *;
 
-.store-grid {
-  // position: relative;
-  // height: 80vh;
-  width: min(95%, 70rem);
-  margin: auto;
-  // clip-path: $image-clip-height-default;
-  background-color: red;
+// .grid-col-span-2 {
+//   grid-column: span 2;
+// }
 
+.store-grid {
   display: grid;
   gap: 1.5rem;
   grid-auto-columns: 1fr;
   grid-template-areas:
-    'one'
-    'two'
-    'three'
-    'four'
-    'five';
+    'a a b e'
+    'c d d e';
+
+  padding-block: 18vh;
+  width: 80%;
+  margin-inline: auto;
+
+  @include mq($breakpoint-medium) {
+    grid-template-areas:
+      'a a d'
+      'c b d'
+      'e e e';
+  }
+  @include mq($breakpoint-small) {
+    grid-template-areas:
+      'a a'
+      'c d'
+      'b d'
+      'e e';
+  }
 }
 
 .store {
-  // position: absolute;
-  // width: $image-clip-width-default;
-  // width: 80%;
-  // clip-path: $image-clip-height-default;
-  // height: $image-clip-height-hidden;
-
-  object-fit: cover;
-}
-
-.store:nth-child(1) {
-  grid-area: one;
-}
-.store:nth-child(2) {
-  grid-area: two;
-}
-.store:nth-child(3) {
-  grid-area: three;
-}
-.store:nth-child(4) {
-  grid-area: four;
-}
-.store:nth-child(5) {
-  grid-area: five;
-}
-
-@media screen and (min-width: 33em) {
-  .store-grid {
-    grid-template-areas:
-      'one one'
-      'two three'
-      'five five'
-      'four four';
+  padding-block: 15.5vh;
+  @include mq($breakpoint-medium) {
+    padding-block: 10vh;
   }
-}
-
-@media screen and (min-width: 38em) {
-  .store-grid {
-    grid-template-areas:
-      'one one'
-      'two five'
-      'three five'
-      'four four';
+  @include mq($breakpoint-small) {
+    padding-block: 7vh;
   }
-}
 
-@media screen and (min-width: 54em) {
-  .store-grid {
-    grid-template-areas:
-      'one one two'
-      'five five five'
-      'three four four';
+  background-color: grey;
+  background-position: center;
+  background-size: cover;
+
+  &:nth-child(1) {
+    background-image: url(../../images/img1.jpg);
+    grid-area: a;
   }
-}
-
-@media screen and (min-width: 75em) {
-  .store-grid {
-    grid-template-areas:
-      'one one two five'
-      'three four four five';
+  &:nth-child(2) {
+    background-image: url(../../images/img2.jpg);
+    grid-area: b;
+  }
+  &:nth-child(3) {
+    background-image: url(../../images/img3.jpg);
+    grid-area: c;
+  }
+  &:nth-child(4) {
+    background-image: url(../../images/img4.jpg);
+    grid-area: d;
+  }
+  &:nth-child(5) {
+    background-image: url(../../images/img5.jpg);
+    grid-area: e;
   }
 }

@@ -348,16 +348,7 @@ var trackModule = (function () {
     };
     if (sessionStorage.getItem('deselectImage') === 'true') {
       // Call the deselectImage function
-      deselectImage(
-        track,
-        image,
-        gallery,
-        home,
-        store,
-        about,
-        links,
-        isImageSelected
-      );
+      deselectImage(track, image, gallery, home, store, about, links);
       isImageSelected = false;
       // Clear the flag in sessionStorage
       sessionStorage.removeItem('deselectImage');
@@ -372,12 +363,10 @@ var trackModule = (function () {
       }
     });
 
-    window.addEventListener('mouseup', function (e) {
-      if (!isImageSelected) {
-        mouseUp(track);
-      }
+    window.addEventListener('mouseup', function () {
+      mouseUp(track);
     });
-    track.addEventListener('mouseup', function (e) {
+    track.addEventListener('mouseup', function () {
       if (isImageSelected) {
         flipImage(track, image, home);
       }
@@ -392,16 +381,25 @@ var trackModule = (function () {
     // Mobile
     track.addEventListener('touchstart', function (e) {
       if (isImageSelected) {
-        touchStart(track, e);
+        track.dataset.mouseDownAtY = e.touches[0].clientY;
+        // touchStart(track, e);
       } else {
         touchStart(track, e);
       }
     });
-    track.addEventListener('touchend', function () {
-      if (!isImageSelected) {
-        touchEnd(track);
+    track.addEventListener('touchend', function (e) {
+      if (isImageSelected) {
+        console.log(e.changedTouches[0].clientY);
+        if (track.dataset.mouseDownAtY - e.changedTouches[0].clientY > 200) {
+          deselectImage(track, image, gallery, home, store, about, links);
+          isImageSelected = false;
+          track.dataset.mouseDownAtY = 0;
+        } else {
+          track.dataset.mouseDownAtY = 0;
+          touchEnd(track);
+        }
       } else {
-        return;
+        touchEnd(track);
       }
     });
     window.addEventListener('touchmove', function (e) {
