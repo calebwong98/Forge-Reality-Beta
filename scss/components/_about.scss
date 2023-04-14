@@ -53,6 +53,12 @@
     font-size: $body-font-size-focus;
     font-weight: $body-font-weight-bold;
     // text-align: right;
+    overflow: hidden;
+
+    p {
+      display: inline-block;
+      animation: trackLoad 2s both;
+    }
   }
 
   .title {
@@ -76,6 +82,7 @@
 }
 
 .biography {
+  // background-color: red;
   margin-block: 45vh;
 
   @include mq($breakpoint-small) {
@@ -91,5 +98,75 @@
   }
   li {
     list-style: none;
+  }
+}
+
+.default,
+.default-last > li > div:last-child {
+  font-size: $body-font-size-bold;
+  font-weight: $body-font-weight-default;
+}
+
+.passive {
+  opacity: $opacity-passive;
+  transition: opacity 0.5s;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.header {
+  .paragraph:last-child {
+    margin-top: $paragraph-margin-spacing;
+  }
+
+  div {
+    overflow: hidden;
+  }
+
+  .span-1 {
+    display: inline-block;
+    animation: trackLoad 2s both;
+    animation-delay: 0;
+  }
+  .span-2 {
+    display: inline-block;
+    animation: trackLoad 2s both;
+    animation-delay: 0.1s;
+  }
+  .span-3 {
+    display: inline-block;
+    animation: trackLoad 2s both;
+    animation-delay: 0.2s;
+  }
+  .span-4 {
+    display: inline-block;
+    animation: trackLoad 2s both;
+    animation-delay: 0.3s;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: $paragraph-margin-spacing;
+  // background-color: blue;
+
+  &:nth-child(2) {
+    display: none;
+  }
+  &:nth-child(4) {
+    display: none;
+  }
+
+  &-content {
+    width: 80%;
+    margin-left: auto;
+    // background-color: red;
+
+    &.spacing li:not(:first-child) {
+      margin-top: $paragraph-margin-spacing;
+    }
   }
 }

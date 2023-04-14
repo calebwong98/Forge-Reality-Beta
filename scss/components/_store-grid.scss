@@ -1,9 +1,5 @@
 @use '../abstracts' as *;
 
-// .grid-col-span-2 {
-//   grid-column: span 2;
-// }
-
 .store-grid {
   display: grid;
   gap: 1.5rem;
@@ -63,5 +59,12 @@
   &:nth-child(5) {
     background-image: url(../../images/img5.jpg);
     grid-area: e;
+  }
+
+  transition: filter 0.3s ease;
+  filter: brightness(100%);
+
+  &:hover {
+    filter: brightness(200%);
   }
 }

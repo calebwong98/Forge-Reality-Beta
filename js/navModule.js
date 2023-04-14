@@ -18,7 +18,7 @@ var navModule = (function () {
     const logo = document.getElementById('logo');
     const check = document.getElementById('check');
     const links = document.getElementById('links');
-    const copyright = document.getElementById('copyright');
+    const footer = document.getElementById('footer');
 
     const home = document.getElementById('Home');
     const gallery = document.getElementById('Gallery');
@@ -28,17 +28,16 @@ var navModule = (function () {
     if (current === 'home') {
       home.classList.add('current');
       links.classList.remove('fade-in');
-      copyright.classList.remove('fade-out');
+      footer.classList.remove('fade-out');
     }
     if (current === 'store') {
       store.classList.add('current');
       links.classList.add('fade-in');
-      copyright.classList.remove('fade-out');
+      footer.classList.remove('fade-out');
     }
     if (current === 'about') {
       about.classList.add('current');
-      links.classList.remove('fade-in');
-      copyright.classList.add('fade-out');
+      footer.classList.add('fade-out');
     }
 
     logo.onclick = function () {

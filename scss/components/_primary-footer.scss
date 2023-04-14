@@ -7,10 +7,9 @@
   margin-inline: auto;
   margin-block: $primary-footer-margin-block;
 
-  // @include mq($breakpoint-small) {
-  //   position: static;
-  //   margin-block: $primary-footer-margin-block-mobile;
-  // }
+  &.fade-out {
+    display: none;
+  }
 }
 
 #copyright {
@@ -24,12 +23,6 @@
 
   p {
     // transition: 1s;
-  }
-  &.fade-out {
-    // display: none;
-    p {
-      opacity: 0;
-    }
   }
 }
 

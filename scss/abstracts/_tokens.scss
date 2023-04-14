@@ -44,7 +44,7 @@ $box-shadow-5: 0px 6px 5px rgb(0, 0, 0, 0.04), 0px 22px 18px rgb(0, 0, 0, 0.06),
 // Body
 $body-font-family: $font-family-regular;
 $body-font-size-default: $font-size-400;
-$body-font-size-bold: $font-size-400;
+$body-font-size-bold: $font-size-700;
 $body-font-size-focus: $font-size-800;
 $body-font-weight-default: $font-weight-default;
 $body-font-weight-bold: $font-weight-bold;
@@ -73,7 +73,8 @@ $flex-group-gap: $size-11;
 $flow-spacer: $size-2;
 
 $hero-padding-block: clamp(15rem, 15vh, 20rem);
-$section-padding-block: clamp(3rem, 10vh, 7rem);
+$section-padding-block: 20rem;
+$paragraph-margin-spacing: 5rem;
 
 $container-min-margin-inline: $size-8;
 $container-max-width: 60rem;
@@ -95,7 +96,7 @@ $navigation-flex-column-gap: $size-9;
 $navigation-text-transform: uppercase;
 $navigation-color: $body-color-default;
 $navigation-font-family: $body-font-family;
-$navigation-font-size: $body-font-size-bold;
+$navigation-font-size: $body-font-size-default;
 $navigation-font-weight: $body-font-weight-bold;
 $navigation-opacity-passive: $opacity-passive;
 $navigation-opacity-transition: 500ms;
