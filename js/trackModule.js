@@ -46,12 +46,10 @@ var trackModule = (function () {
       }
     );
 
-    image[order].animate(
+    const img = image[order].querySelector('img');
+    img.animate(
       {
-        objectPosition: `${
-          (100 + (track.dataset.imageOrder / (image.length - 1)) * -100) / 2 +
-          (50 / (image.length - 1)) * order
-        }% center`,
+        objectPosition: `center`,
       },
       { duration: 500, fill: 'forwards' }
     );
@@ -121,15 +119,13 @@ var trackModule = (function () {
         fill: 'forwards',
       }
     );
-    image[nextOrder].animate(
-      {
-        objectPosition: `${
-          (100 + (track.dataset.imageOrder / (image.length - 1)) * -100) / 2 +
-          (50 / (image.length - 1)) * nextOrder
-        }% center`,
-      },
-      { duration: 0, fill: 'forwards' }
-    );
+    // const img = image[nextOrder].querySelector('img');
+    // img.animate(
+    //   {
+    //     objectPosition: `center`,
+    //   },
+    //   { duration: 0, fill: 'forwards' }
+    // );
 
     home.classList.toggle('current', nextOrder === 0);
     // gallery.classList.toggle('current', nextOrder !== 0);
@@ -143,6 +139,7 @@ var trackModule = (function () {
   function deselectImage(track, image, gallery, home, store, about, links) {
     if (typeof track.dataset.imageOrder === 'undefined') return;
     for (let i = 0; i < image.length; i++) {
+      const img = image[i].querySelector('img');
       track.dataset.percentage =
         (track.dataset.imageOrder / (image.length - 1)) * -100;
 
@@ -160,7 +157,7 @@ var trackModule = (function () {
       image[i].classList.remove('others');
 
       // Move the image track to the position where the selected image is at the screen center
-      image[i].animate(
+      img.animate(
         {
           objectPosition: `${
             (100 + (track.dataset.imageOrder / (image.length - 1)) * -100) / 2 +
@@ -212,12 +209,18 @@ var trackModule = (function () {
 
     // TranslateX each image and inner image position
     for (let i = 0; i < image.length; i++) {
+      const img = image[i].querySelector('img');
       image[i].animate(
         {
           transform: `translate(${
             i * (100 + 10) -
             (image.length - 1) * ((-nextPercentage / 100) * (100 + 10))
           }%, 0%)`,
+        },
+        { duration: 1200, fill: 'both' }
+      );
+      img.animate(
+        {
           objectPosition: `${
             (100 + nextPercentage) / 2 + (50 / (image.length - 1)) * i
           }% center`,
@@ -249,17 +252,23 @@ var trackModule = (function () {
     track.dataset.percentage = nextPercentage;
 
     for (let i = 0; i < image.length; i++) {
+      const img = image[i].querySelector('img');
       image[i].animate(
         {
           transform: `translate(${
             i * (100 + 10) -
             (image.length - 1) * ((-nextPercentage / 100) * (100 + 10))
           }%, 0%)`,
+        },
+        { duration: 1200, fill: 'both' }
+      );
+      img.animate(
+        {
           objectPosition: `${
             (100 + nextPercentage) / 2 + (50 / (image.length - 1)) * i
           }% center`,
         },
-        { duration: 1200, fill: 'forwards' }
+        { duration: 1200, fill: 'both' }
       );
     }
   }
@@ -287,17 +296,23 @@ var trackModule = (function () {
     track.dataset.percentage = nextPercentage;
 
     for (let i = 0; i < image.length; i++) {
+      const img = image[i].querySelector('img');
       image[i].animate(
         {
           transform: `translate(${
             i * (100 + 10) -
             (image.length - 1) * ((-nextPercentage / 100) * (100 + 10))
           }%, 0%)`,
+        },
+        { duration: 1200, fill: 'both' }
+      );
+      img.animate(
+        {
           objectPosition: `${
             (100 + nextPercentage) / 2 + (50 / (image.length - 1)) * i
           }% center`,
         },
-        { duration: 1200, fill: 'forwards' }
+        { duration: 1200, fill: 'both' }
       );
     }
   }
@@ -414,7 +429,7 @@ var trackModule = (function () {
       image[i].addEventListener('click', function (event) {
         if (isImageSelected) return;
         // Use event.target to get the clicked image element
-        const selectedImage = event.target;
+        const selectedImage = event.target.parentNode;
         const order = Array.prototype.indexOf.call(image, selectedImage);
         selectImage(track, image, order, links, home, gallery, about, store);
         isImageSelected = true;

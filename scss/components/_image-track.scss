@@ -1,7 +1,7 @@
 @use '../abstracts' as *;
 
 .image-track {
-  position: relative;
+  // position: relative;
   height: 100vh;
   width: 100%;
 
@@ -9,19 +9,6 @@
   align-items: center;
   justify-content: center;
   transition: 2s;
-
-  // animation: introLoad 2s forwards;
-
-  // @include mq($breakpoint-small) {
-  //   position: static;
-  //   display: block;
-  //   width: fit-content;
-  //   height: fit-content;
-
-  //   clip-path: inset(0 0 0 0);
-  //   transform: translate(0, 0);
-  //   object-position: center center;
-  // }
 }
 
 .image {
@@ -31,33 +18,23 @@
   clip-path: $image-clip-height-default;
   height: $image-clip-height-hidden;
 
-  object-fit: cover;
-  // object-position: $image-object-position-default;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
   @for $i from 1 through 8 {
     &:nth-child(#{$i}) {
       transform: translate(($i - 1) * (100% + $image-gap), 0%);
-      object-position: (50% + calc(50% / 7) * ($i - 1)) center;
+      img {
+        object-position: (50% + calc(50% / 7) * ($i - 1)) center;
+      }
     }
   }
 
   transition: $image-transition-transform, $image-transition-width,
     $image-clip-selected-height-hidden-transition, $image-transition-height;
-
-  // @include mq($breakpoint-small) {
-  //   display: block;
-  //   position: static;
-  //   width: 100%;
-  //   height: 100vh;
-
-  //   clip-path: inset(0 0 0 0);
-  //   @for $i from 1 through 8 {
-  //     &:nth-child(#{$i}) {
-  //       transform: translate(0, 0) !important;
-  //       object-position: center center !important;
-  //     }
-  //   }
-  // }
 }
 
 .selected {
@@ -68,24 +45,8 @@
   transition: $image-clip-selected-width-transition,
     $image-clip-selected-height-hidden-transition,
     $image-clip-selected-height-transition;
-
-  // @include mq($breakpoint-small) {
-  //   position: static;
-  //   display: block;
-  //   width: 100%;
-  //   height: 100vh;
-  // }
 }
 
 .others {
-  // width: $image-clip-other-width;
-  // height: $image-clip-other-height-hidden;
   clip-path: $image-clip-other-height;
-  // transition: $image-clip-other-width-transition,
-  //   $image-clip-other-height-hidden-transition,
-  //   $image-clip-other-height-transition;
-
-  // @include mq($breakpoint-small) {
-  //   display: none;
-  // }
 }
