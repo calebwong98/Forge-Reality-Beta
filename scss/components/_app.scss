@@ -1,16 +1,13 @@
 @use '../abstracts' as *;
 
 .app {
-  position: relative;
   height: fit-content;
   height: 100vh;
   width: 100%;
   overflow: hidden;
-  // @include mq($breakpoint-small) {
-  //   overflow: visible;
-  // }
 }
 
-.main {
+#main {
   transition: 0.5s;
+  transform: translateY(0%);
 }

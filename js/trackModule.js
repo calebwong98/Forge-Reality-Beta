@@ -51,7 +51,7 @@ var trackModule = (function () {
       {
         objectPosition: `center`,
       },
-      { duration: 500, fill: 'forwards' }
+      { duration: 0, fill: 'forwards' }
     );
 
     // Highlight home
@@ -119,13 +119,13 @@ var trackModule = (function () {
         fill: 'forwards',
       }
     );
-    // const img = image[nextOrder].querySelector('img');
-    // img.animate(
-    //   {
-    //     objectPosition: `center`,
-    //   },
-    //   { duration: 0, fill: 'forwards' }
-    // );
+    const img = image[nextOrder].querySelector('img');
+    img.animate(
+      {
+        objectPosition: `center`,
+      },
+      { duration: 0, fill: 'forwards' }
+    );
 
     home.classList.toggle('current', nextOrder === 0);
     // gallery.classList.toggle('current', nextOrder !== 0);
@@ -164,7 +164,7 @@ var trackModule = (function () {
             (50 / (image.length - 1)) * i
           }% center`,
         },
-        { duration: 100, fill: 'forwards' }
+        { duration: 0, fill: 'forwards' }
       );
 
       if (i !== track.dataset.imageOrder) {
@@ -174,7 +174,7 @@ var trackModule = (function () {
               i * (100 + 10) - track.dataset.imageOrder * (100 + 10)
             }%, 0%)`,
           },
-          { duration: 500, fill: 'forwards' }
+          { duration: 0, fill: 'forwards' }
         );
       } else {
         image[i].animate(
@@ -183,7 +183,7 @@ var trackModule = (function () {
               i * (100 + 10) - track.dataset.imageOrder * (100 + 10)
             }%, 0%)`,
           },
-          { duration: 500, fill: 'forwards' }
+          { duration: 0, fill: 'forwards' }
         );
       }
     }
