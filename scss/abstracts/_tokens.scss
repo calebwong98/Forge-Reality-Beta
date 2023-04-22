@@ -11,7 +11,7 @@ $color-text-interactive-hover: $color-neutral-100;
 
 $-grd-1: (#f2a38d, #f294bd, #af52ed, #9250d7, #af52ed, #f294bd, #f2a38d);
 
-$-grd-2: (#052b2f, #073438, #0e4b50, #2d8f85, #637c54);
+$-grd-2: (#f2a38d, #f294bd, #af52ed, #9250d7);
 
 $color-gradient-1: $-grd-1;
 $color-gradient-2: $-grd-2;
@@ -156,6 +156,7 @@ $button-gradient-background-hover: rgba(0, 0, 0, 0);
 $button-gradient-color-hover: $color-neutral-100;
 $button-gradient-border-width: -0.125rem;
 $button-gradient-conic: $color-gradient-1;
+$button-gradient-linear: $color-gradient-2;
 
 // cards
 $card-font-family: $body-font-family;
@@ -188,7 +189,7 @@ $image-clip-selected-width-transition: width 1s ease-out;
 $image-clip-selected-height-hidden-transition: height 1s ease-in-out;
 $image-clip-selected-height-transition: clip-path 1.8s ease-in-out;
 $image-clip-other-width: 100%;
-$image-clip-other-height: inset(100% 0 100% 0);
+$image-clip-other-height: inset(50% 0 50% 0);
 $image-clip-other-height-hidden: 100%;
 $image-clip-other-width-transition: width 1s ease-out 500ms;
 $image-clip-other-height-hidden-transition: height 1s ease-in-out;

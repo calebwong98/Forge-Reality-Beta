@@ -33,11 +33,11 @@
     clip-path: $image-clip-other-height;
   }
 }
-.image:hover {
-  .hero-text::before {
-    clip-path: $image-clip-selected-height;
-  }
-}
+// .image:hover {
+//   .hero-text::before {
+//     clip-path: $image-clip-selected-height;
+//   }
+// }
 .selected {
   .hero-text::before {
     clip-path: $image-clip-selected-height;
