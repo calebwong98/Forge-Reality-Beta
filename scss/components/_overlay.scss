@@ -1,0 +1,52 @@
+@use '../abstracts' as *;
+
+#overlayCheck {
+  display: none;
+}
+
+#main {
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+#overlayCheck:checked ~ #main {
+  transform: translateY(-100%);
+}
+
+.cta {
+  display: flex;
+  gap: $cta-gap;
+  width: fit-content;
+  height: fit-content;
+  justify-content: flex-end;
+  align-items: center;
+
+  .button {
+    @include mq($breakpoint-small) {
+      display: none;
+    }
+
+    span {
+      display: grid;
+      grid-template: 'container';
+
+      overflow: hidden;
+    }
+    span > * {
+      transition: 0.75s;
+      grid-area: container;
+
+      &:last-child {
+        transform: translateY(150%);
+      }
+    }
+    &.clicked span > * {
+      &:first-child {
+        transform: translateY(-150%);
+      }
+      &:last-child {
+        transform: translateY(0%);
+      }
+    }
+  }
+}

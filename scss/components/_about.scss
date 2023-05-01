@@ -102,7 +102,7 @@
 }
 
 .default,
-.default-last > li > div:last-child {
+.default-last > li > div:not(:first-child) {
   font-size: $body-font-size-bold;
   font-weight: $body-font-weight-default;
 }
@@ -114,6 +114,18 @@
   &:hover {
     opacity: 1;
   }
+}
+
+.active {
+  @keyframes textHighlight {
+    0% {
+      opacity: $opacity-passive;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  animation: textHighlight 1s both 1s;
 }
 
 .header {
@@ -152,13 +164,6 @@
   flex-direction: column;
   gap: $paragraph-margin-spacing;
   // background-color: blue;
-
-  &:nth-child(2) {
-    display: none;
-  }
-  &:nth-child(4) {
-    display: none;
-  }
 
   &-content {
     width: 80%;

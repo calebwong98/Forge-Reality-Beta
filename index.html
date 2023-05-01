@@ -14,7 +14,7 @@
           <a href="/">
             <img id="logo" src="images/logo.svg" alt="CalebWONG Logo" />
           </a>
-          <input type="checkbox" id="check" />
+          <input type="checkbox" id="menuCheck" />
           <nav class="navigation">
             <ul class="flex-group text-center">
               <li>
@@ -39,10 +39,15 @@
             </div>
           </nav>
           <div class="cta">
-            <button class="button" data-type="gradient" id="button-overlay">
-              Start a Project
-            </button>
-            <label for="check" id="menu">
+            <label for="overlayCheck" id="overlay">
+              <button class="button" data-type="gradient" id="button-overlay">
+                <span>
+                  <div>Start a Project</div>
+                  <div>Back</div>
+                </span>
+              </button>
+            </label>
+            <label for="menuCheck" id="menu">
               <svg width="28" height="23" viewBox="0 0 28 23">
                 <path
                   d="M1.51904 1.75H26.1571M1.51904 11.5H26.1571M1.51904 21.25H26.1571"
@@ -55,20 +60,161 @@
           </div>
         </div>
       </header>
+      <input type="checkbox" id="overlayCheck" />
       <main id="main"></main>
+      <div class="contact">
+        <form
+          action="https://formsubmit.co/contact@calebwong.space"
+          method="POST"
+        >
+          <fieldset class="radio-holder">
+            <legend>Project</legend>
+            <label for="illustration">
+              <input
+                type="radio"
+                id="illustration"
+                name="Project"
+                value="Illustration"
+                data-name="Project"
+                required
+              />
+              <span>Illustration</span>
+            </label>
+            <label for="web-development">
+              <input
+                type="radio"
+                id="web-development"
+                name="Project"
+                value="Web_Development"
+                data-name="Project"
+                required
+              />
+              <span>Web Development</span>
+            </label>
+            <label for="custom">
+              <input
+                type="radio"
+                id="custom"
+                name="Project"
+                value="Custom"
+                data-name="Project"
+                required
+              />
+              <span>Custom</span>
+            </label>
+          </fieldset>
+
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="Name"
+            placeholder="Your name.."
+            required
+          />
+
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="Email"
+            placeholder="Email Address.."
+            required
+          />
+
+          <fieldset class="radio-holder">
+            <legend>Project Budget</legend>
+            <label for="$25k - $50K">
+              <input
+                type="radio"
+                id="$25k - $50K"
+                name="Project Budget"
+                value="$25k - $50K"
+                data-name="Project Budget"
+                required
+              />
+              <span>$25k - $50K</span>
+            </label>
+            <label for="$50k - $100K">
+              <input
+                type="radio"
+                id="$50k - $100K"
+                name="Project Budget"
+                value="$50k - $100K"
+                data-name="Project Budget"
+                required
+              />
+              <span>$50k - $100K</span>
+            </label>
+            <label for="$100k++">
+              <input
+                type="radio"
+                id="$100k++"
+                name="Project Budget"
+                value="$100k++"
+                data-name="Project Budget"
+                required
+              />
+              <span>$100k++</span>
+            </label>
+          </fieldset>
+
+          <label for="description">Project Description</label>
+          <textarea
+            id="description"
+            name="Project Description"
+            rows="7"
+            placeholder="We need to launch Earth’s new UI and improve usability on key user flows such as climate, health and orbital escape velocity..."
+            required
+          ></textarea>
+
+          <input
+            type="submit"
+            value="Submit"
+            class="button"
+            data-type="gradient"
+          />
+          <input
+            type="hidden"
+            name="_subject"
+            value="CalebWONG's Project Inquiry"
+          />
+          <input type="hidden" name="_next" value="http://calebwong.space/" />
+        </form>
+      </div>
       <footer id="footer" class="primary-footer">
         <div class="container | flow">
           <div id="links">
-            <a href="#" class="link">
+            <a
+              href="https://twitter.com/CalebW0ng"
+              class="link"
+              target="_blank"
+              rel="noopener"
+            >
               <img src="./images/Twitter.svg" alt="my twitter" />
             </a>
-            <a href="#" class="link">
+            <a
+              href="https://www.instagram.com/caleb_w0ng"
+              class="link"
+              target="_blank"
+              rel="noopener"
+            >
               <img src="./images/Instagram.svg" alt="my instagram" />
             </a>
-            <a href="#" class="link">
+            <a
+              href="https://facebook.com/CalebW0NG"
+              class="link"
+              target="_blank"
+              rel="noopener"
+            >
               <img src="./images/Facebook.svg" alt="my facebook" />
             </a>
-            <a href="#" class="link">
+            <a
+              href="https://discord.gg/E7KZBc6T"
+              class="link"
+              target="_blank"
+              rel="noopener"
+            >
               <img src="./images/Discord.svg" alt="my discord" />
             </a>
           </div>

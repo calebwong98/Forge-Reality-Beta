@@ -9,17 +9,3 @@
     stroke: $hamburger-color;
   }
 }
-
-.cta {
-  display: flex;
-  gap: $cta-gap;
-  width: fit-content;
-  height: fit-content;
-  justify-content: flex-end;
-  align-items: center;
-  .button {
-    @include mq($breakpoint-small) {
-      display: none;
-    }
-  }
-}

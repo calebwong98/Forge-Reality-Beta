@@ -20,10 +20,6 @@
   @include mq($breakpoint-medium) {
     opacity: $opacity-passive;
   }
-
-  p {
-    // transition: 1s;
-  }
 }
 
 // // Copyright highlight

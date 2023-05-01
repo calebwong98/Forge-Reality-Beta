@@ -10,6 +10,7 @@
 
   padding-block: 18vh;
   width: 80%;
+  max-width: 75rem;
   margin-inline: auto;
 
   @include mq($breakpoint-medium) {

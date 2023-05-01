@@ -65,7 +65,7 @@
   &[data-type='gradient'] {
     background: $button-gradient-background;
     color: $button-gradient-color;
-    transition: background 400ms;
+    transition: background 400ms, filter 400ms;
 
     &::before,
     &::after {
@@ -88,7 +88,7 @@
       // animation: blur 3s alternate infinite;
     }
 
-    &:is(:hover, :focus) {
+    &:hover {
       background: $button-gradient-background-hover;
       color: $button-gradient-color-hover;
 
@@ -97,6 +97,10 @@
         // filter: blur(2rem);
         animation: blur 1.5s alternate infinite;
       }
+    }
+
+    &:active {
+      filter: brightness(120%);
     }
   }
 }

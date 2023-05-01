@@ -18,7 +18,7 @@
   width: $link-width;
   height: $link-height;
   opacity: $link-opacity-passive;
-  transform: translateY(100%);
+  transform: translateY(110%);
 
   // clip-path: inset(0 0 0 0);
 
@@ -31,9 +31,9 @@
   &:is(:hover, :focus) {
     opacity: 1;
   }
-  @include mq($breakpoint-medium) {
-    opacity: $opacity-active;
-  }
+  // @include mq($breakpoint-medium) {
+  //   opacity: $opacity-active;
+  // }
 }
 
 // Links fade out

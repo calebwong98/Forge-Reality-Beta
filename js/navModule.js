@@ -16,7 +16,7 @@ var navModule = (function () {
   // Public function to initialize the module
   function init(current) {
     const logo = document.getElementById('logo');
-    const check = document.getElementById('check');
+    const menuCheck = document.getElementById('menuCheck');
     const links = document.getElementById('links');
     const footer = document.getElementById('footer');
 
@@ -24,6 +24,11 @@ var navModule = (function () {
     const gallery = document.getElementById('Gallery');
     const store = document.getElementById('Store');
     const about = document.getElementById('About');
+
+    const buttonOverlay = document.getElementById('button-overlay');
+    const buttonMenu = document.getElementById('button-menu');
+    const overlayCheck = document.getElementById('overlayCheck');
+    const main = document.getElementById('main');
 
     if (current === 'home') {
       home.classList.add('current');
@@ -41,36 +46,76 @@ var navModule = (function () {
     }
 
     logo.onclick = function () {
+      overlayCheck.checked = false;
+      buttonOverlay.classList.remove('clicked');
+
       selectedNav(home, gallery, store, about);
       home.classList.add('current');
-      toggleCheck(check);
+      toggleCheck(menuCheck);
     };
 
     home.onclick = function () {
+      overlayCheck.checked = false;
+      buttonOverlay.classList.remove('clicked');
+
       selectedNav(home, gallery, store, about);
       home.classList.add('current');
-      toggleCheck(check);
+      toggleCheck(menuCheck);
     };
 
     gallery.onclick = function () {
       if (window.location.pathname !== '/') {
+        overlayCheck.checked = false;
+        buttonOverlay.classList.remove('clicked');
+
         gallery.setAttribute('href', '/');
         sessionStorage.setItem('deselectImage', 'true');
-        // gallery.removeAttribute('href');
-        toggleCheck(check);
+        toggleCheck(menuCheck);
       }
     };
 
     store.onclick = function () {
+      overlayCheck.checked = false;
+      buttonOverlay.classList.remove('clicked');
+
       selectedNav(home, gallery, store, about);
       store.classList.add('current');
-      toggleCheck(check);
+      toggleCheck(menuCheck);
     };
 
     about.onclick = function () {
+      overlayCheck.checked = false;
+      buttonOverlay.classList.remove('clicked');
+
       selectedNav(home, gallery, store, about);
       about.classList.add('current');
-      toggleCheck(check);
+      toggleCheck(menuCheck);
+    };
+
+    // Overlay
+    buttonOverlay.onclick = function () {
+      toggleCheck(menuCheck);
+      if (!overlayCheck.checked) {
+        overlayCheck.checked = !overlayCheck.checked;
+        buttonOverlay.classList.add('clicked');
+
+        // links.classList.remove('fade-in');
+        footer.classList.add('fade-out');
+      } else {
+        overlayCheck.checked = !overlayCheck.checked;
+        buttonOverlay.classList.remove('clicked');
+        if (current !== 'about') {
+          footer.classList.remove('fade-out');
+        }
+      }
+    };
+    buttonMenu.onclick = function () {
+      toggleCheck(menuCheck);
+      if (!overlayCheck.checked) {
+        overlayCheck.checked = !overlayCheck.checked;
+        buttonOverlay.classList.add('clicked');
+        footer.classList.add('fade-out');
+      }
     };
   }
 

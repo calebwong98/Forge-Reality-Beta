@@ -2,60 +2,10 @@ import page from 'page';
 
 import { navModule } from './navModule.js';
 import { trackModule } from './trackModule.js';
-// import { pageModule } from './pageModule.js';
-
-// const pageIdMap = {
-//   '/': 'track',
-//   '/store': 'grid',
-//   '/about': 'about',
-// };
-
-// // Add the beforeOut and afterIn event handlers
-// page('*', function (ctx, next) {
-//   const currentPage = document.querySelector('.current-page');
-//   const nextPageId = pageIdMap[ctx.pathname];
-//   const nextPage = document.getElementById(nextPageId);
-//   if (nextPage) {
-//     pageModule.beforeOut();
-//     next();
-//     pageModule.afterIn();
-//   } else {
-//     next('/');
-//   }
-// });
-// page('*', function (ctx, next) {
-//   const currentPage = document.querySelector('.current-page');
-//   const nextPageId = pageIdMap[ctx.pathname];
-//   const nextPage = document.getElementById(nextPageId);
-
-//   if (nextPage) {
-//     pageModule.beforeOut(currentPage, nextPage);
-
-//     fetch(`/templates/${nextPageId}.html`)
-//       .then((response) => {
-//         if (!response.ok) {
-//           throw new Error(`Failed to fetch ${nextPageId}.html`);
-//         }
-//         return response.text();
-//       })
-//       .then((html) => {
-//         document.getElementById('main').innerHTML = html;
-//         document.getElementById(nextPageId).classList.add('current-page');
-//         pageModule.afterIn(currentPage, nextPage);
-//       })
-//       .catch((error) => {
-//         console.error(error);
-//         next('/');
-//       });
-//   } else {
-//     next('/');
-//   }
-// });
 
 page('/', home);
 page('/store', store);
 page('/about', about);
-page('/start-project', startProject);
 page('*', notFound);
 
 page.start();
@@ -127,29 +77,6 @@ function about() {
       document.getElementById('main').innerHTML = html;
 
       // pageModule.init('about');
-    })
-    .catch((error) => {
-      console.error(error); // Log the error to the console
-      // Display an error message to the user or redirect to an error page
-      document.getElementById('main').innerHTML =
-        'Failed to load the about page. Please try again later.';
-    });
-}
-
-// Render Start Project Page
-function startProject() {
-  fetch('/templates/start-project.html')
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(
-          `Failed to fetch about.html: ${response.status} ${response.statusText}`
-        );
-      }
-      return response.text();
-    })
-    .then((html) => {
-      navModule.init();
-      document.getElementById('main').innerHTML = html;
     })
     .catch((error) => {
       console.error(error); // Log the error to the console

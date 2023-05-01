@@ -324,11 +324,12 @@ var trackModule = (function () {
     const image = track.children;
 
     // const menu = document.getElementById('menu');
-    const check = document.getElementById('check');
-    const buttonMenu = document.getElementById('button-menu');
+    const menuCheck = document.getElementById('menuCheck');
+    const overlayCheck = document.getElementById('overlayCheck');
+    const buttonOverlay = document.getElementById('button-overlay');
 
     const links = document.getElementById('links');
-    // const copyright = document.getElementById('copyright');
+    const footer = document.getElementById('footer');
 
     const home = document.getElementById('Home');
     const gallery = document.getElementById('Gallery');
@@ -339,12 +340,8 @@ var trackModule = (function () {
     // const mobile = 560;
 
     let isImageSelected = true;
-    // let lastScroll = 0;
 
     // EVENT LISTENER
-    buttonMenu.onclick = function () {
-      toggleCheck(check);
-    };
 
     track.addEventListener('wheel', function (e) {
       if (isImageSelected) {
@@ -357,7 +354,11 @@ var trackModule = (function () {
 
     gallery.onclick = function (e) {
       e.preventDefault();
-      toggleCheck(check);
+      overlayCheck.checked = false;
+      footer.classList.remove('fade-out');
+      buttonOverlay.classList.remove('clicked');
+
+      toggleCheck(menuCheck);
       deselectImage(track, image, gallery, home, store, about, links);
       isImageSelected = false;
     };

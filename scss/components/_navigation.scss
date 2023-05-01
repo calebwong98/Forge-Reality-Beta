@@ -9,7 +9,7 @@
   }
 }
 
-#check {
+#menuCheck {
   display: none;
 }
 
@@ -120,7 +120,7 @@
   }
 }
 
-#check:checked ~ .navigation {
+#menuCheck:checked ~ .navigation {
   @include mq($breakpoint-medium) {
     // opacity: 1;
     top: 0;
