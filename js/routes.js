@@ -22,6 +22,7 @@ function home() {
       return response.text();
     })
     .then((html) => {
+      document.title = 'CalebWONG';
       navModule.init('home');
       document.getElementById('main').innerHTML = html;
       trackModule.init();
@@ -48,6 +49,7 @@ function store() {
       return response.text();
     })
     .then((html) => {
+      document.title = 'CalebWONG | Store';
       navModule.init('store');
       document.getElementById('main').innerHTML = html;
 
@@ -73,6 +75,7 @@ function about() {
       return response.text();
     })
     .then((html) => {
+      document.title = 'CalebWONG | About';
       navModule.init('about');
       document.getElementById('main').innerHTML = html;
 

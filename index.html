@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Visual Developer & Storyteller</title>
+    <title>CalebWONG</title>
     <link rel="stylesheet" href="/scss/main.scss" />
   </head>
   <body>
@@ -104,23 +104,27 @@
             </label>
           </fieldset>
 
-          <label for="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="Name"
-            placeholder="Your name.."
-            required
-          />
+          <div class="field">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="Name"
+              placeholder="Your name.."
+              required
+            />
+          </div>
 
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="Email"
-            placeholder="Email Address.."
-            required
-          />
+          <div class="field">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="Email"
+              placeholder="Email Address.."
+              required
+            />
+          </div>
 
           <fieldset class="radio-holder">
             <legend>Project Budget</legend>
@@ -159,21 +163,25 @@
             </label>
           </fieldset>
 
-          <label for="description">Project Description</label>
-          <textarea
-            id="description"
-            name="Project Description"
-            rows="7"
-            placeholder="We need to launch Earth’s new UI and improve usability on key user flows such as climate, health and orbital escape velocity..."
-            required
-          ></textarea>
+          <div class="field">
+            <label for="description">Project Description</label>
+            <textarea
+              id="description"
+              name="Project Description"
+              rows="7"
+              placeholder="We need to launch Earth’s new UI and improve usability on key user flows such as climate, health and orbital escape velocity..."
+              required
+            ></textarea>
+          </div>
 
-          <input
+          <button
             type="submit"
-            value="Submit"
             class="button"
             data-type="gradient"
-          />
+            id="button-form"
+          >
+            Submit
+          </button>
           <input
             type="hidden"
             name="_subject"

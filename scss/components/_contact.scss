@@ -23,12 +23,77 @@
 }
 
 form {
+  // background-color: red;
+
+  width: 90%;
+  max-width: 750px;
+  height: fit-content;
+  padding-inline: 5rem;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 2rem;
+  padding-block: 15vh;
+  margin-block: 20vh;
+
+  background: $button-gradient-background;
+  position: relative;
+  // background: rgba(0, 0, 0, 0);
+  color: $button-gradient-color;
+  border: $button-border-default;
+  border-radius: $button-border-radius;
+
+  &::before,
+  &::after {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    inset: -0.2rem;
+    border-radius: 1.9rem;
+    background-image: conic-gradient(
+      from var(--gradient-angle),
+      $button-gradient-conic
+    );
+    animation: rotation 20s linear infinite;
+  }
+
+  &::after {
+    @keyframes blurStrong {
+      0% {
+        filter: blur(4.5rem);
+      }
+      50% {
+        filter: blur(2.5rem);
+      }
+      100% {
+        filter: blur(4.5rem);
+      }
+    }
+    opacity: 0.75;
+    filter: blur(4.5rem);
+    // transition: filter 500ms;
+    animation: blurStrong 5s infinite;
+  }
 }
 
 #overlayCheck:checked ~ .contact {
   clip-path: inset(0 0 0 -10%);
   animation: overlayLoad 2s forwards;
+}
+
+.radio-holder {
+  input:checked {
+    display: none;
+  }
+  border: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+#button-form {
+  margin-left: auto;
+  width: fit-content;
 }
