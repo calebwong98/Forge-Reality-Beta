@@ -22,7 +22,7 @@ function home() {
       return response.text();
     })
     .then((html) => {
-      document.title = 'CalebWONG';
+      document.title = 'Independent Visual Designer & Developer';
       navModule.init('home');
       document.getElementById('main').innerHTML = html;
       trackModule.init();
@@ -49,7 +49,7 @@ function store() {
       return response.text();
     })
     .then((html) => {
-      document.title = 'CalebWONG | Store';
+      document.title = 'Store';
       navModule.init('store');
       document.getElementById('main').innerHTML = html;
 
@@ -75,7 +75,7 @@ function about() {
       return response.text();
     })
     .then((html) => {
-      document.title = 'CalebWONG | About';
+      document.title = 'About';
       navModule.init('about');
       document.getElementById('main').innerHTML = html;
 

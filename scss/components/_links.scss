@@ -6,6 +6,7 @@
   margin-inline: auto;
   margin-block: $link-margin-block;
   overflow: hidden;
+  align-items: center;
 
   width: fit-content;
   transition: opacity 500ms 500ms;
@@ -17,6 +18,7 @@
 .link {
   width: $link-width;
   height: $link-height;
+  height: fit-content;
   opacity: $link-opacity-passive;
   transform: translateY(110%);
 

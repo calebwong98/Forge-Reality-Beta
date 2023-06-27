@@ -23,8 +23,6 @@
 }
 
 form {
-  // background-color: red;
-
   width: 90%;
   max-width: 750px;
   height: fit-content;
@@ -36,9 +34,9 @@ form {
   padding-block: 15vh;
   margin-block: 20vh;
 
+  // Gradient Outline
   background: $button-gradient-background;
   position: relative;
-  // background: rgba(0, 0, 0, 0);
   color: $button-gradient-color;
   border: $button-border-default;
   border-radius: $button-border-radius;
@@ -50,6 +48,7 @@ form {
     position: absolute;
     inset: -0.2rem;
     border-radius: 1.9rem;
+    background-image: conic-gradient(from 0deg, $button-gradient-conic);
     background-image: conic-gradient(
       from var(--gradient-angle),
       $button-gradient-conic
@@ -63,7 +62,7 @@ form {
         filter: blur(4.5rem);
       }
       50% {
-        filter: blur(2.5rem);
+        filter: blur(1rem);
       }
       100% {
         filter: blur(4.5rem);
@@ -71,8 +70,7 @@ form {
     }
     opacity: 0.75;
     filter: blur(4.5rem);
-    // transition: filter 500ms;
-    animation: blurStrong 5s infinite;
+    animation: rotation 20s linear infinite, blurStrong 10s infinite;
   }
 }
 
@@ -81,16 +79,31 @@ form {
   animation: overlayLoad 2s forwards;
 }
 
-.radio-holder {
-  input:checked {
-    display: none;
-  }
-  border: 0;
+legend {
+  // background-color: red;
 }
 
-.field {
+.field,
+fieldset {
   display: flex;
   flex-direction: column;
+  border: 0;
+
+  label {
+    font-size: large;
+  }
+
+  input,
+  textarea {
+    color: inherit;
+    border: 0;
+    background: transparent;
+    resize: none;
+
+    &:focus {
+      border: 0;
+    }
+  }
 }
 
 #button-form {

@@ -8,8 +8,10 @@
     "build": "vite build",
     "preview": "vite preview"
   },
+  "browserslist": "> 0.5%, not dead, not op_mini all",
   "devDependencies": {
     "page": "^1.11.6",
+    "postcss-preset-env": "^8.3.2",
     "prettier": "2.8.6",
     "sass": "^1.59.3",
     "vite": "^4.2.0",

@@ -12,17 +12,20 @@
 
 .image {
   cursor: pointer;
+  overflow: hidden;
 
   position: absolute;
   width: $image-clip-width-default;
   min-width: $image-clip-width-min;
-  clip-path: $image-clip-height-default;
   height: $image-clip-height-hidden;
+  // clip-path: $image-clip-height-default;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    clip-path: $image-clip-height-default;
+    transition: $image-transition-height;
   }
 
   @for $i from 1 through 8 {
@@ -34,31 +37,27 @@
     }
   }
 
-  transition: $image-transition-transform, $image-transition-width,
-    $image-clip-selected-height-hidden-transition, $image-transition-height,
-    opacity 1s;
+  transition: $image-transition-transform, $image-transition-width, opacity 1s;
 }
-
-// .image[data-type='unfinished'] {
-//   opacity: $opacity-active;
-
-//   &:hover {
-//     opacity: 1;
-//   }
-// }
 
 .selected {
   cursor: default;
 
   z-index: 99;
   width: $image-clip-selected-width;
-  height: $image-clip-selected-height-hidden;
-  clip-path: $image-clip-selected-height;
-  transition: $image-clip-selected-width-transition,
-    $image-clip-selected-height-hidden-transition,
-    $image-clip-selected-height-transition;
+  height: $image-clip-height-hidden;
+
+  transition: $image-clip-selected-width-transition;
+
+  img {
+    clip-path: $image-clip-selected-height;
+    transition: $image-clip-selected-height-transition;
+  }
 }
 
 .others {
-  clip-path: $image-clip-other-height;
+  img {
+    clip-path: $image-clip-other-height;
+  }
+  width: $image-clip-height-hidden;
 }
