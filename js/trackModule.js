@@ -427,11 +427,12 @@ var trackModule = (function () {
     });
 
     for (let i = 0; i < image.length; i++) {
-      image[i].addEventListener('click', function (event) {
+      image[i].children[0].addEventListener('click', function (event) {
         if (isImageSelected) return;
         // Use event.target to get the clicked image element
         const selectedImage = event.target.parentNode;
         const order = Array.prototype.indexOf.call(image, selectedImage);
+        if (order == -1) return;
         selectImage(track, image, order, links, home, gallery, about, store);
         isImageSelected = true;
       });

@@ -5,9 +5,7 @@
   position: absolute;
   top: 0;
   width: 100%;
-  padding-top: $primary-header-padding-top;
-  // transition: $primary-header-transition;
-
+  padding-block: $primary-header-padding-top;
   transition: transform 1s;
 
   .container {
@@ -15,8 +13,14 @@
     align-items: center;
     justify-content: space-between;
   }
-}
 
-// .remove-overlay-top .primary-header {
-//   transform: translate3d(0, -100%, 0);
-// }
+  @include mq($breakpoint-small) {
+    .container {
+      // position: fixed;
+      // flex-direction: column;
+      // justify-content: space-between;
+      // height: 100%;
+    }
+    // height: 100%;
+  }
+}

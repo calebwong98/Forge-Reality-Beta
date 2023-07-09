@@ -8,4 +8,7 @@
     display: block;
     stroke: $hamburger-color;
   }
+
+  @include mq($breakpoint-small) {
+  }
 }

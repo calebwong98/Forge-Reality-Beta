@@ -21,11 +21,13 @@
   justify-content: flex-end;
   align-items: center;
 
-  .button {
-    @include mq($breakpoint-small) {
+  @include mq($breakpoint-small) {
+    #overlay {
       display: none;
     }
+  }
 
+  .button {
     span {
       display: grid;
       grid-template: 'container';
