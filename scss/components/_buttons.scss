@@ -118,44 +118,46 @@
   // }
 
   &[data-type='gooey'] {
-    $prime: #00ff80;
-    $second: #0c1016;
-
-    color: $second;
-    border: none;
-    background: $prime;
+    color: $button-gradient-color;
+    background: $button-gradient-background;
     position: relative;
 
     filter: url('#gooey');
 
-    &:focus {
-      outline: none;
+    &::before {
+      content: '';
+      z-index: -1;
+      position: absolute;
+      border-radius: inherit;
+      inset: $button-gradient-border-width;
+      background: linear-gradient(60deg, $button-gradient-linear);
+      background-size: 300% 300%;
+      animation: moveGradient 20s alternate infinite;
     }
 
     .bubbles {
-      // position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
+      opacity: 0;
+    }
+
+    // BUTTON STATE
+
+    &:hover {
+      background: $button-gradient-background-hover;
+      color: $button-gradient-color-hover;
+
+      .bubbles {
+        opacity: 1;
+      }
+    }
+
+    &:active {
+      filter: brightness(120%) url('#gooey');
+      // filter: brightness(120%) url("#gooey");
 
       .bubble {
-        background-color: $prime;
-        border-radius: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: block;
-        z-index: -1;
-
         @for $bubble from 1 through 10 {
           &:nth-child(#{$bubble}) {
-            $size: 25px;
-            left: (random(90) + 10) + px;
-            width: $size;
-            height: $size;
-            animation: move-#{$bubble} #{3 + $bubble * 0.02}s infinite;
-            animation-delay: #{$bubble * 0.2}s;
+            animation-duration: #{2 + $bubble * 0.02}s, 20s;
           }
         }
       }
@@ -164,10 +166,41 @@
 }
 
 // Gooey Bubbles
-svg {
-  position: absolute;
-  top: -4000px;
-  left: -4000px;
+#GooeyBubblesFilter {
+  display: none;
+}
+
+.bubbles {
+  // position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  .bubble {
+    background: linear-gradient(60deg, $button-gradient-linear);
+    background-size: 500% 500%;
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    z-index: -9;
+
+    @for $bubble from 1 through 10 {
+      &:nth-child(#{$bubble}) {
+        $size: 22px;
+        left: (random(90) + 10) + px;
+        width: $size;
+        height: $size;
+        animation-name: move-#{$bubble}, moveBubblesGradient;
+        animation-duration: #{3 + $bubble * 0.02}s, 20s;
+        animation-iteration-count: infinite;
+        animation-delay: #{$bubble * 0.2}s;
+        animation-direction: normal, alternate;
+      }
+    }
+  }
 }
 
 @for $bubble from 1 through 10 {
@@ -182,5 +215,16 @@ svg {
       transform: translate(0, 0);
       opacity: 0;
     }
+  }
+}
+
+@keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
+  }
+}
+@keyframes moveBubblesGradient {
+  50% {
+    background-position: 100% 100%;
   }
 }
